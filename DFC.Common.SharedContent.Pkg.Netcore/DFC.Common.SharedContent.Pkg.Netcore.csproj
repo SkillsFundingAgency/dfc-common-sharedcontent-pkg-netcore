@@ -1,14 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>10.0</LangVersion>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <ProjectGuid>{B024CC8F-ECD4-48A7-9955-08265AEE4F1B}</ProjectGuid>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="GraphQL.Client" Version="6.0.2" />
-    <PackageReference Include="RestSharp" Version="110.2.0" />
-  </ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<ProjectGuid>{B024CC8F-ECD4-48A7-9955-08265AEE4F1B}</ProjectGuid>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<RootNamespace>DFC.Common.SharedContent.Pkg.Netcore</RootNamespace>
+		<Version>1.1.0</Version>
+		<Nullable>enable</Nullable>
+		<AssemblyName>DFC.Common.SharedContent.Pkg.Netcore</AssemblyName>
+		<OutputType>Library</OutputType>
+		<CodeAnalysisRuleSet>../DFC.Digital.CodeAnalysis.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="GraphQL.Client" Version="6.0.2" />
+		<PackageReference Include="RestSharp" Version="110.2.0" />
+		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 </Project>
