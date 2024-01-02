@@ -6,7 +6,6 @@
 		<ProjectGuid>{B024CC8F-ECD4-48A7-9955-08265AEE4F1B}</ProjectGuid>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<RootNamespace>DFC.Common.SharedContent.Pkg.Netcore</RootNamespace>
-		<Version>1.1.0</Version>
 		<Nullable>enable</Nullable>
 		<AssemblyName>DFC.Common.SharedContent.Pkg.Netcore</AssemblyName>
 		<OutputType>Library</OutputType>
