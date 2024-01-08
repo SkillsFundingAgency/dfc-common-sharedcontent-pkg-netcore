@@ -2,7 +2,7 @@
 
 namespace DFC.Common.SharedContent.Pkg.Netcore
 {
-    internal class RedisActions : IRedisActions
+    public class RedisActions : IRedisActions
     {
         public async Task<bool> AddEntityToCacheAsync(string nodeId, string content)
         {
