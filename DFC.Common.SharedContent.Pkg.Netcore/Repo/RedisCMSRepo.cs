@@ -32,9 +32,11 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Repo
             return response.Data;
         }
 
-        public Task<TResponse> GetSqlData<TResponse>(string query, string cacheKey, bool disableCache = false)
+        public async Task<TResponse> GetSqlData<TResponse>(string query, string cacheKey, bool disableCache = false)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest(query);
+            var response = await this.sqlClient.GetAsync<TResponse>(request);
+            return response;
         }
     }
 }
