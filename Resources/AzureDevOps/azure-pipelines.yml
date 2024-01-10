@@ -3,6 +3,8 @@ variables:
     BuildPlatform: 'any cpu'
     BuildConfiguration: 'release'
 
+trigger: none
+
 resources:
   repositories:
   - repository: self
