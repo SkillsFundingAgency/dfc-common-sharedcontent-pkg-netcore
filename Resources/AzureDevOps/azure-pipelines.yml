@@ -47,6 +47,11 @@ stages:
       runOnce:
         deploy:
           steps:
+          - checkout: self
+            persistCredentials: true
+          - script: |
+              git tag -a v$(Build.BuildNumber)
+              git push --tags
           - task: NuGetCommand@2
             displayName: 'NuGet push'
             inputs:
