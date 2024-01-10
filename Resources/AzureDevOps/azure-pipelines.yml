@@ -54,6 +54,7 @@ stages:
               git config --global user.name "Automated tag from build"
               git tag -a v$(Build.BuildNumber) -m "Automated tag of $(Build.BuildNumber) from build server"
               git push --tags
+            displayName: Tag release
           - task: NuGetCommand@2
             displayName: 'NuGet push'
             inputs:
