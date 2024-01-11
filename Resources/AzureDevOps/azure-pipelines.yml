@@ -39,7 +39,13 @@ stages:
   displayName: Publish Package to NuGet
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:
+  - job: CleanArtifacts
+    displayName: Clean artifacts directory
+    workspace:
+      clean: all
+
   - deployment: PublishNugetPackage
+    dependsOn: CleanArtifacts
     environment: LiveService_NUGET
     strategy:
       runOnce:
