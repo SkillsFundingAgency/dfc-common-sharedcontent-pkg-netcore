@@ -69,7 +69,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         }
 
         [Fact]
-        public async Task packageTestAsync()
+        public async Task PackageTestAsync()
         {
             //var logger = new ILogger<RedisCacheRepoTests>();
 
