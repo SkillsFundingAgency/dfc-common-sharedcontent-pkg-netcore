@@ -101,7 +101,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 
             var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
-            var string2 = await sharedContentRedisInterface.GetDataAsync<Page>("page/test");
+            var string2 = await sharedContentRedisInterface.GetDataAsync<Page>("page/skills-assessment/skills-assessment");
         }
     }
 }

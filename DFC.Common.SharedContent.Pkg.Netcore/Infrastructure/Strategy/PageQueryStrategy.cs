@@ -1,5 +1,6 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -17,10 +18,13 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
 
     public async Task<Page> ExecuteQueryAsync(string key)
     {
+        var startIndex = key.IndexOf('/');
+        var result = key.Substring(startIndex, key.Length - startIndex);
+
         //GraphQL or SQL query here
         string query = @$"
                query page {{
-                  page(status: PUBLISHED, first: 1 , where: {{pageLocation: {{url: ""{key}""}}}}) {{
+                  page(status: PUBLISHED, first: 1 , where: {{pageLocation: {{url: ""{result}""}}}}) {{
                     displayText
                     description
                     pageLocation {{
@@ -89,7 +93,8 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
 ";
 
         //This will return the result of the query
-        var response = await client.SendQueryAsync<Page>(query);
-        return await Task.FromResult(response.Data);
+        var response = await client.SendQueryAsync<PageResponse>(query);
+        //return await Task.FromResult(response.Data);
+        return await Task.FromResult(response.Data.Page.FirstOrDefault());
     }
 }

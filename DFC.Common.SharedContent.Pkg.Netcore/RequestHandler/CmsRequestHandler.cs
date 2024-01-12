@@ -1,4 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Constant;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
@@ -65,32 +66,41 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
         private async Task<TResponse> GenerateApiToken<TResponse>()
             where TResponse : class
         {
-            var tokenEndpointUrl = config[ConfigKeys.TokenEndPointUrl]==String.Empty? "https://localhost:44376/connect/token": config[ConfigKeys.TokenEndPointUrl];
-            var clientId = config[ConfigKeys.ClientId] == String.Empty ? "9f9a7faf-a2b3-4178-a46d-573d67cc0783" : config[ConfigKeys.ClientId];
-            var clientSecret = config[ConfigKeys.ClientSecret] == String.Empty ? "[TBD]" : config[ConfigKeys.ClientSecret];
-            var client = this.httpClientFactory.CreateClient();
-            var formData = new Dictionary<string, string>();
-            formData.Add(CmsOpenIdConfig.ClientIdTokenRequestParam, clientId);
-            formData.Add(CmsOpenIdConfig.ClientSecretTokenRequestParam, clientSecret);
-            formData.Add(CmsOpenIdConfig.GrantTypeTokenRequestParam, CmsOpenIdConfig.GrantTypeTokenRequestParamValue);
-            var requestBody = new HttpRequestMessage(HttpMethod.Post, tokenEndpointUrl)
+            try
             {
-                Content = new FormUrlEncodedContent(formData),
-            };
-
-            using (HttpResponseMessage response = await client.SendAsync(requestBody))
-            {
-                string responseBody = await response.Content.ReadAsStringAsync();
-                if (!response.IsSuccessStatusCode)
+                var tokenEndpointUrl = "xx";//config[ConfigKeys.TokenEndPointUrl] == String.Empty ? "https://localhost:44376/connect/token" : config[ConfigKeys.TokenEndPointUrl];
+                var clientId = "xxx"; //config[ConfigKeys.ClientId] == String.Empty ? "9f9a7faf-a2b3-4178-a46d-573d67cc0783" : config[ConfigKeys.ClientId];
+                var clientSecret = "xxx";  //config[ConfigKeys.ClientSecret] == String.Empty ? "[TBD]" : config[ConfigKeys.ClientSecret];
+                var client = this.httpClientFactory.CreateClient();
+                var formData = new Dictionary<string, string>();
+                formData.Add(CmsOpenIdConfig.ClientIdTokenRequestParam, clientId);
+                formData.Add(CmsOpenIdConfig.ClientSecretTokenRequestParam, clientSecret);
+                formData.Add(CmsOpenIdConfig.GrantTypeTokenRequestParam, CmsOpenIdConfig.GrantTypeTokenRequestParamValue);
+                var requestBody = new HttpRequestMessage(HttpMethod.Post, tokenEndpointUrl)
                 {
-                    // remove client secret from the exception logging
-                    formData.Remove(CmsOpenIdConfig.ClientSecretTokenRequestParam);
+                    Content = new FormUrlEncodedContent(formData),
+                };
 
-                    string errorDetail = $"StatusCode:{response.StatusCode},\n ResponsePhrase:{response.ReasonPhrase},\n TokenEndPointUrl:{tokenEndpointUrl}, \n ResponseBody:{responseBody}, \n FormData:{string.Join(Environment.NewLine, formData)}";
-                    throw new WebException($"Unable to retrieve token. Response details are : {errorDetail}");
+                using (HttpResponseMessage response = await client.SendAsync(requestBody))
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        // remove client secret from the exception logging
+                        formData.Remove(CmsOpenIdConfig.ClientSecretTokenRequestParam);
+
+                        string errorDetail = $"StatusCode:{response.StatusCode},\n ResponsePhrase:{response.ReasonPhrase},\n TokenEndPointUrl:{tokenEndpointUrl}, \n ResponseBody:{responseBody}, \n FormData:{string.Join(Environment.NewLine, formData)}";
+                        throw new WebException($"Unable to retrieve token. Response details are : {errorDetail}");
+                    }
+
+                    return JsonConvert.DeserializeObject<TResponse>(responseBody);
+
                 }
-
-                return JsonConvert.DeserializeObject<TResponse>(responseBody);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
             }
         }
     }
