@@ -1,6 +1,7 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DfE.NCS.Framework.Cache.Interface;
+using GraphQL;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using System.Threading;
@@ -21,14 +22,14 @@ public class SharedContentRedisInterface : ISharedContentRedisInterface
 
     public async Task<T?> GetDataAsync<T>(string cacheKey)
     {
-        //get redis cache data from cachekey - use zhaomings function
         try
         {
+            //get redis cache data from cachekey - use zhaomings function
             var cachedContent = await cache.GetStringAsync(cacheKey);
+            //var cacheResponse = cache.GetEntity<TResponse>(cacheKey);
 
             if (!string.IsNullOrWhiteSpace(cachedContent))
             {
-                //NEED TO UPDATE EXPIRY - SAVEENTITY(key, content, expiry in seconds)
                 return JsonConvert.DeserializeObject<T>(cachedContent);
             }
 
@@ -41,6 +42,8 @@ public class SharedContentRedisInterface : ISharedContentRedisInterface
 
             //set new item in redis as content from gathered function - use zhaomings function
             await cache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(staxContent));
+
+            //cache.SaveEntity(cacheKey, graphQLResponse);
 
             return staxContent;
         }

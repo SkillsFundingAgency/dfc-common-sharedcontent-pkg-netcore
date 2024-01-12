@@ -1,6 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DFC.Common.SharedContent.Pkg.Netcore.Model;
 using DFC.Common.SharedContent.Pkg.Netcore.Repo;
 using DfE.NCS.Framework.Cache;
 using DfE.NCS.Framework.Cache.Interface;
@@ -19,6 +18,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using DfE.NCS.ContentApi.Extensions;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 {
@@ -82,8 +82,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 
             var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
-            var string1 = await sharedContentRedisInterface.GetDataAsync<SharedHtmlContentItem>("sharedcontent/test");
-            var string2 = await sharedContentRedisInterface.GetDataAsync<PageQueryStrategy>("page/test");
+            var string1 = await sharedContentRedisInterface.GetDataAsync<SharedHtml>("jobprofiles/administration");
+            var string2 = await sharedContentRedisInterface.GetDataAsync<Page>("page/test");
         }
     }
 }

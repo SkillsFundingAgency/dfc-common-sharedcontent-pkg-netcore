@@ -3,14 +3,12 @@ using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
+public class PageBannerQueryStrategy : ISharedContentRedisInterfaceStrategy<PageBanner>
 {
-    public async Task<Page> ExecuteQueryAsync(string key)
+    public async Task<PageBanner> ExecuteQueryAsync(string key)
     {
-
-        return await Task.FromResult(new Page
+        return await Task.FromResult(new PageBanner
         {
-
         });
     }
 }
