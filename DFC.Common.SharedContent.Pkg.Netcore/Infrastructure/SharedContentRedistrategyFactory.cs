@@ -3,11 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 
-public class SharedContentRedisInterfaceStrategyFactory : ISharedContentRedisInterfaceStrategyFactory
+public class SharedContentRedistrategyFactory : ISharedContentRedisInterfaceStrategyFactory
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public SharedContentRedisInterfaceStrategyFactory(IServiceProvider serviceProvider)
+    public SharedContentRedistrategyFactory(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }

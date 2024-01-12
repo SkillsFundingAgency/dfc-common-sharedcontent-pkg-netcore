@@ -7,8 +7,6 @@ public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<Shar
 {
     public async Task<SharedHtmlContentItem> ExecuteQueryAsync(string key)
     {
-
-
         return await Task.FromResult(new SharedHtmlContentItem
         {
             Id = key,

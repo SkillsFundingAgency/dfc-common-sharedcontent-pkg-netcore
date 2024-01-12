@@ -16,8 +16,8 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PagesContentItem>, PageQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategy<SharedHtmlContentItem>, SharedHtmlQueryStrategy>();
 
-        services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisInterfaceStrategyFactory>();
+        services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedistrategyFactory>();
 
-        services.AddScoped<ISharedContentRedisInterface, SharedContentRedisInterface>();
+        services.AddScoped<ISharedContentRedisInterface, SharedContentRedis>();
     }
 }

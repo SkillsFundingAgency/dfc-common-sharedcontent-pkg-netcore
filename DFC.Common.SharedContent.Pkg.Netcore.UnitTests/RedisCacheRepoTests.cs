@@ -82,7 +82,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 
             var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
-            var string1 = await sharedContentRedisInterface.GetDataAsync<SharedHtmlContentItem>("sharedcontent/test");
+            var string1 = await sharedContentRedisInterface.GetDataAsync<SharedHtmlContentItem>("sharedcontent/contactus2");
             var string2 = await sharedContentRedisInterface.GetDataAsync<PageQueryStrategy>("page/test");
         }
     }
