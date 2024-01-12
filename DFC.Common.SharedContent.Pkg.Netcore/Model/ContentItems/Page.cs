@@ -1,20 +1,42 @@
-﻿namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
+﻿using System.Text.Json.Serialization;
+
+namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 
 public class Page
 {
-    public string? FullUrl { get; set; }
+    [JsonPropertyName("displayText")]
+    public string DisplayText { get; set; }
 
-    public string? UrlName { get; set; }
+    [JsonPropertyName("description")]
+    public object Description { get; set; }
 
-    public bool? DefaultPageForLocation { get; set; }
+    [JsonPropertyName("pageLocation")]
+    public PageLocation PageLocation { get; set; }
 
-    public string? RedirectLocations { get; set; }
+    [JsonPropertyName("breadcrumb")]
+    public Breadcrumb Breadcrumb { get; set; }
 
-    public string? ChangeFrequency { get; set; }
+    [JsonPropertyName("useBrowserWidth")]
+    public bool? UseBrowserWidth { get; set; }
 
-    public bool? Exclude { get; set; }
+    [JsonPropertyName("showBreadcrumb")]
+    public bool ShowBreadcrumb { get; set; }
 
-    public bool? OverrideSitemapConfig { get; set; }
+    [JsonPropertyName("showHeroBanner")]
+    public bool ShowHeroBanner { get; set; }
 
-    public int? Priority { get; set; }
+    [JsonPropertyName("herobanner")]
+    public Herobanner Herobanner { get; set; }
+
+    [JsonPropertyName("useInTriageTool")]
+    public bool UseInTriageTool { get; set; }
+
+    [JsonPropertyName("triageToolSummary")]
+    public TriageToolSummary TriageToolSummary { get; set; }
+
+    [JsonPropertyName("triageToolFilters")]
+    public TriageToolFilters TriageToolFilters { get; set; }
+
+    [JsonPropertyName("flow")]
+    public Flow Flow { get; set; }
 }
