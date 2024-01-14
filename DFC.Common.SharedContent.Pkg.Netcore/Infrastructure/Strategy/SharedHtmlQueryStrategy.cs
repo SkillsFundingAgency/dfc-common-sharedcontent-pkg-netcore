@@ -35,10 +35,7 @@ public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<Shar
                ";
 
 
-        //This will return the result of the query
-        //This will return the result of the query
         var response = await client.SendQueryAsync<SharedHtmlResponse>(query);
-        //return await Task.FromResult(response.Data);
         return await Task.FromResult(response.Data.SharedContent.FirstOrDefault().Content);
     }
 }

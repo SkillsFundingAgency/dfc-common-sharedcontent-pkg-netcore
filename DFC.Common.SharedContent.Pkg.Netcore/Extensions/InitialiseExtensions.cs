@@ -4,6 +4,7 @@ using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.SharedHtml;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DFC.Common.SharedContent.Pkg.Netcore.RequestHandler;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
@@ -37,6 +38,8 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategy<Page>, PageQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<SharedHtml>, SharedHtmlQueryStrategy>();
+
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
 
         services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisInterfaceStrategyFactory>();
 
