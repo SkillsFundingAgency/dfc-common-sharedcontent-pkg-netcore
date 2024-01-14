@@ -1,22 +1,26 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
 
-namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
-
-public class PageBanner
+namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner
 {
-    public partial class Pagebanner
+    public class PageBanner
     {
-   
+        [JsonProperty("banner")]
         public Banner Banner { get; set; }
 
         [JsonProperty("displayText")]
         public string DisplayText { get; set; }
 
         [JsonProperty("addabanner")]
-        public Addabanner Addabanner { get; set; }
+        public AddABanner AddABanner { get; set; }
     }
 
-    public partial class Addabanner
+    public partial class AddABanner
     {
         [JsonProperty("contentItems")]
         public ContentItem[] ContentItems { get; set; }

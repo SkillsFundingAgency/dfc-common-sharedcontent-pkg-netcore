@@ -2,6 +2,7 @@
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
+using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 
@@ -19,11 +20,11 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
     public async Task<Page> ExecuteQueryAsync(string key)
     {
         var startIndex = key.IndexOf('/');
-        var result = key.Substring(startIndex, key.Length - startIndex);
+        var url = key.Substring(startIndex, key.Length - startIndex);
 
         string query = @$"
                query page {{
-                  page(status: PUBLISHED, first: 1 , where: {{pageLocation: {{url: ""{result}""}}}}) {{
+                  page(status: PUBLISHED, first: 1 , where: {{pageLocation: {{url: ""{url}""}}}}) {{
                     displayText
                     description
                     pageLocation {{
