@@ -68,9 +68,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
         {
             try
             {
-                var tokenEndpointUrl = "xx";//config[ConfigKeys.TokenEndPointUrl] == String.Empty ? "https://localhost:44376/connect/token" : config[ConfigKeys.TokenEndPointUrl];
-                var clientId = "xxx"; //config[ConfigKeys.ClientId] == String.Empty ? "9f9a7faf-a2b3-4178-a46d-573d67cc0783" : config[ConfigKeys.ClientId];
-                var clientSecret = "xxx";  //config[ConfigKeys.ClientSecret] == String.Empty ? "[TBD]" : config[ConfigKeys.ClientSecret];
+                var tokenEndpointUrl = config[ConfigKeys.TokenEndPointUrl];
+                var clientId = config[ConfigKeys.ClientId];
+                var clientSecret = config[ConfigKeys.ClientSecret];
                 var client = this.httpClientFactory.CreateClient();
                 var formData = new Dictionary<string, string>();
                 formData.Add(CmsOpenIdConfig.ClientIdTokenRequestParam, clientId);
