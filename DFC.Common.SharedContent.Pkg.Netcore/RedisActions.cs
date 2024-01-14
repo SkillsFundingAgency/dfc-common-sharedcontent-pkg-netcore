@@ -9,8 +9,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore
             return true;
         }
 
-        public async Task<bool> InvalidateEntityAsync(string nodeId)
+        public async Task<bool> InvalidateEntityAsync(string cachekey)
         {
+            //delete cachekey
             return true;
         }
     }
