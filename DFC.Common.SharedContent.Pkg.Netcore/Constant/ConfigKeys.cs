@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DFC.Common.SharedContent.Pkg.Netcore.Constant
+﻿namespace DFC.Common.SharedContent.Pkg.Netcore.Constant
 {
     public class ConfigKeys
     {
@@ -32,6 +26,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Constant
         /// The client secret.
         /// </summary>
         public const string ClientSecret = "Cms:ClientSecret";
+
         /// <summary>
         /// The API Url for the CMS.
         /// </summary>
