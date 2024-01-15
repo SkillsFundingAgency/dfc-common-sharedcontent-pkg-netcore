@@ -1,20 +1,15 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
-using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DfE.NCS.Framework.Cache.Interface;
-using GraphQL;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
-using System.Threading;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore;
 
-public class SharedContentRedisInterface : ISharedContentRedisInterface
+public class SharedContentRedis : ISharedContentRedisInterface
 {
     private readonly ISharedContentRedisInterfaceStrategyFactory sharedContentRedisInterfaceStrategyFactory;
     private readonly IDistributedCache cache;
 
-
-    public SharedContentRedisInterface(IDistributedCache cache, ISharedContentRedisInterfaceStrategyFactory sharedContentRedisInterfaceStrategyFactory)
+    public SharedContentRedis(IDistributedCache cache, ISharedContentRedisInterfaceStrategyFactory sharedContentRedisInterfaceStrategyFactory)
     {
         this.cache = cache;
         this.sharedContentRedisInterfaceStrategyFactory = sharedContentRedisInterfaceStrategyFactory;

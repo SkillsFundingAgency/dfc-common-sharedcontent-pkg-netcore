@@ -7,11 +7,6 @@ using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Repo
 {
@@ -39,7 +34,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Repo
             isConfigCacheEnabled = this.config.GetValue<bool>(ConfigKeys.RedisCacheEnabled);
         }
 
-        public async Task<CacheRepoResponse<TResponse>> GetGraphQLData<TResponse>(string query, string cacheKey, bool disableCache = false) where TResponse : class
+        public async Task<CacheRepoResponse<TResponse>> GetGraphQLData<TResponse>(string query, string cacheKey, bool disableCache = false)
+            where TResponse : class
         {
             logger.LogInformation("Redis cache -> GetGraphQLData started");
             bool isCacheEnabled = !disableCache;
@@ -66,6 +62,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Repo
                     };
                 }
             }
+
             logger.LogInformation("Redis cache -> ExecuteGraphQL started.");
             var graphQLResponse = await ExecuteGraphQL<TResponse>(query);
             var response = new CacheRepoResponse<TResponse>()
@@ -86,6 +83,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Repo
             {
                 logger.LogWarning("Error Message: " + ex.Message);
             }
+
             logger.LogInformation("Redis cache -> GetGraphQLData completed.");
             return response;
         }
@@ -136,14 +134,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Repo
             {
                 logger.LogWarning("Error Message: " + ex.Message);
             }
+
             logger.LogInformation("Redis cache -> GetSqlData completed.");
             return response;
         }
 
-        private async Task<TResponse> ExecuteSQL<TResponse>(string queryName) where TResponse : class
+        private async Task<TResponse> ExecuteSQL<TResponse>(string queryName) 
+            where TResponse : class
         {
             var request = new RestRequest(queryName);
-            var response = await this.sqlClient.GetAsync<TResponse>(request);
+            var response = await sqlClient.GetAsync<TResponse>(request);
             return response;
         }
 

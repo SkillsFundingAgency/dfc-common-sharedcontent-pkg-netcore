@@ -16,7 +16,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
-using DfE.NCS.ContentApi.Extensions;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
