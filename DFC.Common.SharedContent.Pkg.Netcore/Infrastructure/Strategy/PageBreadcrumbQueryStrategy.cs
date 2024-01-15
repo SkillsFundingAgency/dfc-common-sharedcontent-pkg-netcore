@@ -25,8 +25,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
         public async Task<PageBreadcrumb> ExecuteQueryAsync(string key)
         {
-            //sql shit here
-
             var request = new RestRequest("PageLocation");
             var response = await sqlClient.GetAsync<BreadcrumbResponse>(request);
             return response.Items.FirstOrDefault();
