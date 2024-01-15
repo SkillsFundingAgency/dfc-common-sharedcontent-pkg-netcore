@@ -19,7 +19,6 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
     {
         var status = key.Substring(key.LastIndexOf('/') + 1);
         var url = key.Substring(key.IndexOf('/'), key.Length - status.Length - key.IndexOf('/') - 1);
-        
 
         string query = @$"
                query page {{
