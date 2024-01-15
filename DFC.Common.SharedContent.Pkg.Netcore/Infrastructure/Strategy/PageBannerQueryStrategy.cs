@@ -26,10 +26,15 @@ public class PageBannerQueryStrategy : ISharedContentRedisInterfaceStrategy<Page
                       webPageURL
                       webPageName
                     }}
-                    displayText
+                    graphSync {{
+                      nodeId
+                      }}
                     addabanner {{
                       contentItems {{
                         ... on Banner {{
+                          graphSync {{
+                            nodeId
+                          }}
                           displayText
                           isGlobal
                           isActive
