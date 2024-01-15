@@ -1,15 +1,9 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Constant;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
 {
@@ -94,7 +88,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
                     }
 
                     return JsonConvert.DeserializeObject<TResponse>(responseBody);
-
                 }
             }
             catch (Exception exception)

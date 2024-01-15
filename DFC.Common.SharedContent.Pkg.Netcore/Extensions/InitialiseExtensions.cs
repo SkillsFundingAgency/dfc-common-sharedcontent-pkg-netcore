@@ -13,9 +13,8 @@ using GraphQL.Client.Serializer.Newtonsoft;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using static System.Net.WebRequestMethods;
 
-namespace DfE.NCS.ContentApi.Extensions;
+namespace DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 
 public static class InitialiseExtensions
 {
@@ -44,8 +43,8 @@ public static class InitialiseExtensions
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
 
-        services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisInterfaceStrategyFactory>();
+        services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
-        services.AddScoped<ISharedContentRedisInterface, SharedContentRedisInterface>();
+        services.AddScoped<ISharedContentRedisInterface, SharedContentRedis>();
     }
 }

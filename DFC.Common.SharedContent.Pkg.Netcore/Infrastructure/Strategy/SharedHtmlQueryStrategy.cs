@@ -1,18 +1,12 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using GraphQL;
-using GraphQL.Client.Abstractions;
-using GraphQL.Client.Http;
-using System.Net;
-using System;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.SharedHtml;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
+using GraphQL.Client.Abstractions;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-
 public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<SharedHtml>
 {
-
     private readonly IGraphQLClient client;
 
     public SharedHtmlQueryStrategy(IGraphQLClient client)
@@ -33,7 +27,6 @@ public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<Shar
                   }}
                 }}
                ";
-
 
         var response = await client.SendQueryAsync<SharedHtmlResponse>(query);
         return await Task.FromResult(response.Data.SharedContent.FirstOrDefault().Content);
