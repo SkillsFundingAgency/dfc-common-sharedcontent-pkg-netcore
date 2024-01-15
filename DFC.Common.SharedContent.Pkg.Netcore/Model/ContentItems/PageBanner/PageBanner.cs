@@ -7,8 +7,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner
         [JsonProperty("banner")]
         public Banner Banner { get; set; }
 
-        [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
+        [JsonProperty("graphSync")]
+        public GraphSync GraphSync { get; set; }
 
         [JsonProperty("addabanner")]
         public AddABanner AddABanner { get; set; }
@@ -33,6 +33,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner
 
         [JsonProperty("content")]
         public Content Content { get; set; }
+
+        [JsonProperty("graphSync")]
+        public GraphSync GraphSync { get; set; }
     }
 
     public partial class Content
@@ -48,5 +51,11 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner
 
         [JsonProperty("webPageName")]
         public string WebPageName { get; set; }
+    }
+
+    public partial class GraphSync
+    {
+        [JsonProperty("nodeId")]
+        public string NodeId { get; set; }
     }
 }
