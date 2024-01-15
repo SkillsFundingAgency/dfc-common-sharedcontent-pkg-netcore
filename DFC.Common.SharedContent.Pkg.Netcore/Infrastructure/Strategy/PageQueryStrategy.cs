@@ -94,7 +94,6 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
 
         //This will return the result of the query
         var response = await client.SendQueryAsync<PageResponse>(query);
-        //return await Task.FromResult(response.Data);
         return await Task.FromResult(response.Data.Page.FirstOrDefault());
     }
 }
