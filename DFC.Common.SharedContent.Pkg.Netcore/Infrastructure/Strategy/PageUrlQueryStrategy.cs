@@ -5,7 +5,7 @@ using GraphQL.Client.Abstractions;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class PageUrlQueryStrategy : ISharedContentRedisInterfaceStrategy<IList<PageUrl>>
+    public class PageUrlQueryStrategy : ISharedContentRedisInterfaceStrategy<PageUrlReponse>
     {
         private readonly IGraphQLClient client;
 
@@ -14,7 +14,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.client = client;
         }
 
-        public async Task<IList<PageUrl>> ExecuteQueryAsync(string key)
+        public async Task<PageUrlReponse> ExecuteQueryAsync(string key)
         {
             var index = key.IndexOf("url/") + 4;
             var status = key.Substring(index);//    page/url/PUBLISHED page/url/DRAFT
@@ -46,7 +46,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                     }} 
                     }}
                 }}";
-            var response = await client.SendQueryAsync<IList<PageUrl>>(query);
+            var response = await client.SendQueryAsync<PageUrlReponse>(query);
             return response.Data;
         }
     }
