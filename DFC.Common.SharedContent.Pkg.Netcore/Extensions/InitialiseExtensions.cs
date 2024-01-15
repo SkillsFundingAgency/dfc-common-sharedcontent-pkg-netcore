@@ -1,4 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore;
+using DFC.Common.SharedContent.Pkg.Netcore.Constant;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
@@ -13,6 +14,10 @@ using GraphQL.Client.Serializer.Newtonsoft;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using RestSharp;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 
@@ -35,11 +40,38 @@ public static class InitialiseExtensions
             return client;
         });
 
+        services.AddScoped<IRestClient>(s =>
+        {
+            var option = new RestClientOptions()
+            {
+                BaseUrl = new Uri("https://dfc-dev-stax-editor-as.azurewebsites.net/api/queries"),
+                ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
+            };
+            JsonSerializerSettings defaultSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                DefaultValueHandling = DefaultValueHandling.Include,
+                TypeNameHandling = TypeNameHandling.None,
+                NullValueHandling = NullValueHandling.Ignore,
+                Formatting = Formatting.None,
+                ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+            };
+
+            var client = new RestClient(option);
+            return client;
+        }
+
+);
+
         services.AddScoped<ISharedContentRedisInterfaceStrategy<Page>, PageQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<SharedHtml>, SharedHtmlQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PageBanner>, PageBannerQueryStrategy>();
+
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<PageUrlReponse>, PageUrlQueryStrategy>();
+
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<PageBreadcrumb>, PageBreadcrumbQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
 
