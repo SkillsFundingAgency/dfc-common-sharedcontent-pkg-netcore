@@ -21,6 +21,7 @@ public class JobCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<Job
                     displayText
                     pageLocation {{
                       fullUrl
+                      urlName
                     }}
                   }}
                 }}
