@@ -11,7 +11,7 @@ public class PageBannerQueryStrategy : ISharedContentRedisInterfaceStrategy<Page
     private readonly IGraphQLClient client;
     private readonly ILogger<PageBannerQueryStrategy> logger;
 
-    public PageBannerQueryStrategy(IGraphQLClient client)
+    public PageBannerQueryStrategy(IGraphQLClient client, ILogger<PageBannerQueryStrategy> logger)
     {
         this.client = client;
         this.logger = logger;
