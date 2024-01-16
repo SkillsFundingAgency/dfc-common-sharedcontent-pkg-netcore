@@ -2,23 +2,26 @@
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
+using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
 public class PageBannerQueryStrategy : ISharedContentRedisInterfaceStrategy<PageBanner>
 {
     private readonly IGraphQLClient client;
+    private readonly ILogger<PageBannerQueryStrategy> logger;
 
     public PageBannerQueryStrategy(IGraphQLClient client)
     {
         this.client = client;
+        this.logger = logger;
     }
 
     public async Task<PageBanner> ExecuteQueryAsync(string key)
     {
         var startIndex = key.IndexOf('/');
         var url = key.Substring(startIndex, key.Length - startIndex);
-
+        logger.LogInformation("PageBannerQueryStrategy -> ExecuteQueryAsync ->  url=" + url);
         string query = @$"
                query PageBanner {{
                   pagebanner(where: {{banner: {{webPageURL: ""{url}""}}}}) {{
