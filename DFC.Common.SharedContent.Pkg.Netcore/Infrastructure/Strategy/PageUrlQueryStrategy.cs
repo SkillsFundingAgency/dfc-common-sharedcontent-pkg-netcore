@@ -20,8 +20,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
         public async Task<PageUrlReponse> ExecuteQueryAsync(string key)
         {
-            var index = key.IndexOf("url/") + 4;
-            var status = key.Substring(index);//    page/url/PUBLISHED page/url/DRAFT
+            var index = key.IndexOf("/") + 1;
+            var status = key.Substring(index);//    pageurls/PUBLISHED pageurls/DRAFT
             logger.LogInformation("PageUrlQueryStrategy -> ExecuteQueryAsync ->  status="+status);
             string query = @$"
                 query pageurl {{
