@@ -6,25 +6,22 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class PageBannerQueryStrategy : ISharedContentRedisInterfaceStrategy<PageBanner>
+public class PageBannersAllQueryStrategy : ISharedContentRedisInterfaceStrategy<PageBannerResponse>
 {
     private readonly IGraphQLClient client;
     private readonly ILogger<PageBannerQueryStrategy> logger;
 
-    public PageBannerQueryStrategy(IGraphQLClient client, ILogger<PageBannerQueryStrategy> logger)
+    public PageBannersAllQueryStrategy(IGraphQLClient client, ILogger<PageBannerQueryStrategy> logger)
     {
         this.client = client;
         this.logger = logger;
     }
 
-    public async Task<PageBanner> ExecuteQueryAsync(string key)
+    public async Task<PageBannerResponse> ExecuteQueryAsync(string key)
     {
-        var startIndex = key.IndexOf('/') + 1;
-        var url = key.Substring(startIndex, key.Length - startIndex);
-        logger.LogInformation("PageBannerQueryStrategy -> ExecuteQueryAsync ->  url=" + url);
         string query = @$"
                query PageBanner {{
-                  pagebanner(where: {{banner: {{webPageURL: ""{url}""}}}}) {{
+                  pagebanner {{
                     banner {{
                       webPageURL
                       webPageName
@@ -52,6 +49,6 @@ public class PageBannerQueryStrategy : ISharedContentRedisInterfaceStrategy<Page
             ";
 
         var response = await client.SendQueryAsync<PageBannerResponse>(query);
-        return await Task.FromResult(response.Data.PageBanner.FirstOrDefault());
+        return await Task.FromResult(response.Data);
     }
 }
