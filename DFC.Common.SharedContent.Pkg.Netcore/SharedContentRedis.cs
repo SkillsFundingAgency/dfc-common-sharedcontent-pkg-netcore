@@ -35,10 +35,11 @@ public class SharedContentRedis : ISharedContentRedisInterface
                 return staxContent;
             }
 
-            //set new item in redis as content from gathered function - use zhaomings function
-            await cache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(staxContent));
-
-            //cache.SaveEntity(cacheKey, graphQLResponse);
+            await cache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(staxContent), new DistributedCacheEntryOptions
+            {
+                //sliding expiration time for cachekey. Resets when accessed
+                SlidingExpiration = TimeSpan.FromHours(4)
+            });
 
             return staxContent;
         }
