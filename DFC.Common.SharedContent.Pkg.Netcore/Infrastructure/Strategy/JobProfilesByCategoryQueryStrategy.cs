@@ -22,7 +22,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
         public async Task<JobProfilesResponse> ExecuteQueryAsync(string key)
         {
             var filter = key.Substring(key.IndexOf("/") + 1);
-            var request = new RestRequest("GetJobProfilesFilteredBy" + filter);
+            var request = new RestRequest("JobProfilesByCategory?parameters={ urlName: \"" + filter + "\"}");
             var response = await sqlClient.GetAsync<JobProfilesResponse>(request);
             return response;
         }

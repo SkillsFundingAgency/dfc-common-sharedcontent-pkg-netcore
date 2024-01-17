@@ -18,7 +18,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.Jo
         [JsonProperty("Overview")]
         public string Overview { get; set; }
 
-        [JsonProperty("Fullurl")]
-        public string Fullurl { get; set; }
+        [JsonProperty("UrlName")]
+        public string UrlName { get; set; }
     }
 }
