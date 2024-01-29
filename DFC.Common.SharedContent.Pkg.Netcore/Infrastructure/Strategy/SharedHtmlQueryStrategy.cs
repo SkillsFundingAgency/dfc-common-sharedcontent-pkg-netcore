@@ -20,7 +20,7 @@ public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<Shar
 
         string query = $@"
                query sharedContent {{
-                  sharedContent(where: {{graphSync: {{nodeId: ""<<contentapiprefix>>/sharedcontent/{contentId}""}}}}) {{
+                  sharedContent(where: {{graphSync: {{nodeId: ""<<contentapiprefix>>/sharedcontent/{contentId}""}}}}, status: PUBLISHED) {{
                     content {{
                       html
                     }}

@@ -17,7 +17,7 @@ public class JobCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<Job
     {
         string query = $@"
                 query JobProfileCategories {{
-                  jobProfileCategory {{
+                  jobProfileCategory(status: PUBLISHED) {{
                     displayText
                     pageLocation {{
                       fullUrl
