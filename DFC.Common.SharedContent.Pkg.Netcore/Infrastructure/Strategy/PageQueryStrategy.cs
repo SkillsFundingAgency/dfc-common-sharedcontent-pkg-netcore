@@ -58,6 +58,26 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
                     }}
                     flow {{
                       widgets {{
+                        contentType
+                        ... on Form {{
+                            metadata {{
+                                alignment
+                                size
+                               }}
+                            form {{
+                                method
+                                action
+                                }}
+                            flow {{
+                            widgets {{
+                            ... on HTML {{
+                            htmlBody {{
+                                html
+                                    }}
+                                    }}
+                                }}
+                              }}
+                            }}
                         ... on HTML {{
                           metadata {{
                             alignment

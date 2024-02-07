@@ -39,4 +39,7 @@ public class Page
 
     [JsonPropertyName("flow")]
     public Flow Flow { get; set; }
+
+    [JsonPropertyName("form")]
+    public Form? Form { get; set; }
 }
