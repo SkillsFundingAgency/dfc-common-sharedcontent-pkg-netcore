@@ -29,6 +29,12 @@ public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<Shar
                ";
 
         var response = await client.SendQueryAsync<SharedHtmlResponse>(query);
+
+        if (response.Data.SharedContent.Count == 0)
+        {
+            response.Data.SharedContent.Add(new SharedHtmlContent() { Content = new SharedHtml() { Html = string.Empty } });
+        }
+
         return await Task.FromResult(response.Data.SharedContent.FirstOrDefault().Content);
     }
 }
