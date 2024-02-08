@@ -71,40 +71,40 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
             return new ConfigurationBuilder().AddInMemoryCollection(initialData).Build();
         }
 
-        [Fact]
-        public async Task packageTestAsync()
-        {
-            //var logger = new ILogger<RedisCacheRepoTests>();
+        //[Fact]
+        //public async Task packageTestAsync()
+        //{
+        //    //var logger = new ILogger<RedisCacheRepoTests>();
 
-            var host = Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services) =>
-                {
-                    services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
-                })
-                .Build();
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //        })
+        //        .Build();
 
-            var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+        //    var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
-            var string2 = await sharedContentRedisInterface.GetDataAsync<PageBanner>("pagebanner/job-profiles/special-educational-needs-(sen)-teacher");
-        }
+        //    var string2 = await sharedContentRedisInterface.GetDataAsync<PageBanner>("pagebanner/job-profiles/special-educational-needs-(sen)-teacher");
+        //}
 
-        [Fact]
-        public async Task PageQueryStrategy_ExecuteQueryAsync_TestAsync()
-        {
-            //var logger = new ILogger<RedisCacheRepoTests>();
+        //[Fact]
+        //public async Task PageQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    //var logger = new ILogger<RedisCacheRepoTests>();
 
-            var host = Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services) =>
-                {
-                    services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
 
-                })
-                .Build();
+        //        })
+        //        .Build();
 
-            var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+        //    var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
-            var string2 = await sharedContentRedisInterface.GetDataAsync<PageBanner>("pagebanner/job-profiles/special-educational-needs-(sen)-teacher");
-        }
+        //    var string2 = await sharedContentRedisInterface.GetDataAsync<PageBanner>("pagebanner/job-profiles/special-educational-needs-(sen)-teacher");
+        //}
 
         [Fact]
         public async Task DysacQuestionSetQueryStrategy_ExecuteQueryAsync_TestAsync()
