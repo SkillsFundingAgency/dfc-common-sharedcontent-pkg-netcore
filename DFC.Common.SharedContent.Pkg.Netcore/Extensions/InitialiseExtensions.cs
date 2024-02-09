@@ -18,6 +18,7 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using RestSharp;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 
@@ -80,5 +81,7 @@ public static class InitialiseExtensions
         services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
         services.AddScoped<ISharedContentRedisInterface, SharedContentRedis>();
+
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityQuestionSet>, DysacQuestionSetQueryStrategy>();
     }
 }
