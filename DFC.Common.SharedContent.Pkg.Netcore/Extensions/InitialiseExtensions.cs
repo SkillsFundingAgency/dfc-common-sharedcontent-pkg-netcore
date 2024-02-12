@@ -83,5 +83,7 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterface, SharedContentRedis>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityQuestionSet>, DysacQuestionSetQueryStrategy>();
+
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityFilteringQuestionResponse>, DysacFilteringQuestionQueryStrategy>();
     }
 }
