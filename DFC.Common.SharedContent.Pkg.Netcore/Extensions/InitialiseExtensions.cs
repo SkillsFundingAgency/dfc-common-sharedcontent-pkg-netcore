@@ -70,6 +70,7 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PageBanner>, PageBannerQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PageUrlReponse>, PageUrlQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<TriageToolFilter>, TriageToolAllQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PageBreadcrumb>, PageBreadcrumbQueryStrategy>();
 
