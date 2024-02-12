@@ -38,7 +38,7 @@ public class SharedContentRedis : ISharedContentRedisInterface
             await cache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(staxContent), new DistributedCacheEntryOptions
             {
                 //sliding expiration time for cachekey. Resets when accessed
-                SlidingExpiration = TimeSpan.FromHours(4)
+                SlidingExpiration = TimeSpan.FromHours(4),
             });
 
             return staxContent;

@@ -21,7 +21,7 @@ public class PageBannersAllQueryStrategy : ISharedContentRedisInterfaceStrategy<
     {
         string query = @$"
                query PageBanner {{
-                  pagebanner {{
+                  pagebanner(status: PUBLISHED) {{
                     banner {{
                       webPageURL
                       webPageName

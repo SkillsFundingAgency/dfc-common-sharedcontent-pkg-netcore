@@ -24,7 +24,7 @@ public class PageBannerQueryStrategy : ISharedContentRedisInterfaceStrategy<Page
         logger.LogInformation("PageBannerQueryStrategy -> ExecuteQueryAsync ->  url=" + url);
         string query = @$"
                query PageBanner {{
-                  pagebanner(where: {{banner: {{webPageURL: ""{url}""}}}}) {{
+                  pagebanner(where: {{banner: {{webPageURL: ""{url}""}}}}, status: PUBLISHED) {{
                     banner {{
                       webPageURL
                       webPageName
