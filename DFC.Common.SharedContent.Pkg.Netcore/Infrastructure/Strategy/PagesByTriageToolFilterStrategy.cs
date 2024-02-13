@@ -4,10 +4,11 @@ using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Net.NetworkInformation;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-    public class PagesByTriageToolFilterStrategy : ISharedContentRedisInterfaceStrategy<TriagePage>
+    public class PagesByTriageToolFilterStrategy : ISharedContentRedisInterfaceStrategy<TriagePageResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PagesByTriageToolFilterStrategy> logger;
@@ -19,29 +20,100 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
         }
   
 
-    public async Task<TriagePage> ExecuteQueryAsync(string key)
+    public async Task<TriagePageResponse> ExecuteQueryAsync(string key)
         {
-
-       
         string query = @$"
-          query MyQuery {{
-  page(orderBy: {{displayText: ASC}}) {{
-    displayText
-    triageToolFilters {{
-      contentItems {{
-        displayText
-       }}
-    }}
-    graphSync {{
-      nodeId
-    }}
-    useInTriageTool
-  }}
-}}
+         query page {{
+                  page(where: {{pageLocation: {{useInTriageTool: true }}}}) {{
+                    displayText
+                    description
+                    pageLocation {{
+                      urlName
+                      fullUrl
+                      redirectLocations
+                      defaultPageForLocation
+                    }}
+                    breadcrumb: pageLocations {{
+                          termContentItems {{
+                            ... on PageLocation {{
+                              displayText
+                              modifiedUtc
+                              breadcrumbText
+                            }}
+                          }}
+                        }}
+                    showBreadcrumb
+                    showHeroBanner
+                    herobanner {{
+                        html
+                    }}
+                    useInTriageTool
+                    triageToolSummary {{
+                      html
+                    }}
+                    triageToolFilters {{
+                      contentItems {{
+                        ... on TriageToolFilter {{
+                          displayText
+                        }}
+                      }}
+                    }}
+                    flow {{
+                      widgets {{
+                        contentType
+                        ... on Form {{
+                            metadata {{
+                                alignment
+                                size
+                               }}
+                            form {{
+                                method
+                                action
+                                }}
+                            flow {{
+                            widgets {{
+                            ... on HTML {{
+                            htmlBody {{
+                                html
+                                    }}
+                                    }}
+                                }}
+                              }}
+                            }}
+                        ... on HTML {{
+                          metadata {{
+                            alignment
+                            size
+                          }}
+                          htmlBody {{
+                            html
+                          }}
+                        }}
+                        
+                        ... on HTMLShared {{
+                          metadata {{
+                            alignment
+                            size
+                          }}
+                          sharedContent {{
+                            contentItems {{
+                              ... on SharedContent {{
+                                displayText
+                                content {{
+                                  html
+                                }}
+                              }}
+                            }}
+                          }}
+                        }}
+                      }}
+                    }}
+                  }}
+                }}
     
 ";
         var response = await client.SendQueryAsync<TriagePageResponse>(query);
-        return response.Data.Page.FirstOrDefault();
-        }
+        return response.Data;
+    }
 }
 

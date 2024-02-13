@@ -65,7 +65,7 @@ public static class InitialiseExtensions
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<Page>, PageQueryStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<TriagePage>, PagesByTriageToolFilterStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<TriagePageResponse>, PagesByTriageToolFilterStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<SharedHtml>, SharedHtmlQueryStrategy>();
 
