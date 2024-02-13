@@ -25,7 +25,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             logger.LogInformation("JobProfileOverviewQueryStrategy -> ExecuteQueryAsync");
             string query = @$"query MyQuery {{
                                 jobProfile(where: {{displayText: ""{jobProfile}""}}) {{
-                                    contentItemId
                                     displayText
                                     overview
                                     salarystarterperyear
@@ -36,13 +35,23 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                                     }}
                                     maximumhours
                                     minimumhours
-                                        workingPattern {{
-                                            contentItems {{
-                                                displayText
+                                    workingPattern {{
+                                        contentItems {{
+                                            displayText
                                             }}
                                         }}
+                                    workingHoursDetails {{
+                                        contentItems {{
+                                            displayText
+                                        }}
                                     }}
-                                }}";
+                                    workingPatternDetails {{
+                                        contentItems {{
+                                            displayText
+                                        }}
+                                    }}
+                                }}
+                            }}";
 
             var response = await client.SendQueryAsync<JobProfileOverviewResponse>(query);
             return await Task.FromResult(response.Data);
