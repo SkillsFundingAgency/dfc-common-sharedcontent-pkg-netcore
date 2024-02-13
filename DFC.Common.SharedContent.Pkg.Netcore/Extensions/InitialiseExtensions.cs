@@ -78,6 +78,8 @@ public static class InitialiseExtensions
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
 
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileOverviewResponse>, JobProfileOverviewQueryStrategy>();
+
         services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
         services.AddScoped<ISharedContentRedisInterface, SharedContentRedis>();
