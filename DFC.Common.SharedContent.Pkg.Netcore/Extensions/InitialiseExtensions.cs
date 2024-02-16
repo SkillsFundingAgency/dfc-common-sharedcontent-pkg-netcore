@@ -18,6 +18,7 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using RestSharp;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.PersonalityTrait;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 
@@ -79,6 +80,7 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfilesByCategoryQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityTrait>, TraitsQueryStrategy>();
 
         services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
