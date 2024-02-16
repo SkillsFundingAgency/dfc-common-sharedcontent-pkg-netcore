@@ -36,11 +36,13 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                           displayText
                           impact
                           contentItemId
+                          graphSync {{nodeId}}
                           trait {{
                             contentItems {{
                               displayText
                               ... on PersonalityTrait {{
                                 displayText
+                                graphSync {{nodeId}}
                                 jobProfileCategories {{
                                   contentItems {{
                                     displayText
