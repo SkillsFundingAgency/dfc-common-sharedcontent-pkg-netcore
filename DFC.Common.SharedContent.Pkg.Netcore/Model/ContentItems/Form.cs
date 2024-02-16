@@ -9,5 +9,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 
         [JsonProperty("method")]
         public string Method { get; set; }
+
+        [JsonProperty("encType")]
+        public string EncType { get; set; }
     }
 }

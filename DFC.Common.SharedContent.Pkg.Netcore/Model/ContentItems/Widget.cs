@@ -20,10 +20,22 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         [JsonProperty("formElement")]
         public FormElement FormElement { get; set; }
 
-        [JsonProperty("form")]
+        [JsonPropertyName("form")]
         public Form Form { get; set; }
 
-        [JsonProperty("flow")]
+        [JsonPropertyName("flow")]
         public Flow Flow { get; set; }
+
+        [JsonProperty("encType")]
+        public string? EncType { get; set; }
+
+        [JsonProperty("method")]
+        public string? Method { get; set; }
+
+        [JsonPropertyName("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonPropertyName("widgets")]
+        public List<Widget> ContentItems { get; set; }
     }
 }
