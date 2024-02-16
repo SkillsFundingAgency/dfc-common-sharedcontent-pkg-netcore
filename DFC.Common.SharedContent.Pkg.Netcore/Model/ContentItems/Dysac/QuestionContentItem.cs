@@ -16,6 +16,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac
         [JsonProperty("impact")]
         public string Impact { get; set; }
 
+        [JsonProperty("contentItemId")]
+        public string ContentItemId { get; set; }
+
         [JsonProperty("trait")]
         public Trait Trait { get; set; }
 
