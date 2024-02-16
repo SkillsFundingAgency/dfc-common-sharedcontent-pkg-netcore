@@ -21,7 +21,7 @@ public class TriageToolAllQueryStrategy : ISharedContentRedisInterfaceStrategy<T
     {
         string query = @$"
            query MyQuery {{
-  triageToolFilter {{
+  triageToolFilter(status: PUBLISHED) {{
     displayText
     graphSync {{
       nodeId
