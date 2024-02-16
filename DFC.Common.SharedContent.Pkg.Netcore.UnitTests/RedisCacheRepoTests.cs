@@ -1,6 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DFC.Common.SharedContent.Pkg.Netcore.Repo;
 using DfE.NCS.Framework.Cache;
 using DfE.NCS.Framework.Cache.Interface;
 using DfE.NCS.Framework.Cache.Model;
