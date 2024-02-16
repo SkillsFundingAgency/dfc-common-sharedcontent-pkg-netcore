@@ -28,13 +28,14 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             logger.LogInformation("DysacQuestionSetQueryStrategy -> ExecuteQueryAsync");
             string query = @$"
                 query MyQuery {{
-                  personalityQuestionSet(first: 1) {{
+                  personalityQuestionSet(first: 1, status: PUBLISHED) {{
                     displayText
                     questions {{
                       contentItems {{
                         ... on PersonalityShortQuestion {{
                           displayText
                           impact
+                          contentItemId
                           trait {{
                             contentItems {{
                               displayText
