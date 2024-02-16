@@ -1,7 +1,6 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
-using DFC.Common.SharedContent.Pkg.Netcore.Repo;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 
