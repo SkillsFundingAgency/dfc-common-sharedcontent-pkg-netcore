@@ -61,8 +61,8 @@ public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<Personal
 
         foreach (JobProfileCategory category in trait.JobProfileCategories.ContentItems)
         {
-            var jobProfileResponse = await client.SendQueryAsync<TraitsJobProfilesResponse>(string.Format(jobProfileQuery, category.ContentItemId));
-            category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.TraitsJobProfiles);
+            var jobProfileResponse = await client.SendQueryAsync<JobProfileDysacResponse>(string.Format(jobProfileQuery, category.ContentItemId));
+            category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfile);
         }
         return trait;
     }
