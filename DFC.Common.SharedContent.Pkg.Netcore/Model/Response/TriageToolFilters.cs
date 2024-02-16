@@ -4,15 +4,18 @@ using System.Text.Json.Serialization;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 {
-    public class TriageToolFilters
+    public class TriageToolFilter
     {
         [JsonPropertyName("contentItems")]
         public List<object> ContentItems { get; set; }
-
         [JsonProperty("displayText")]
         public string DisplayText { get; set; }
-
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
+    }
+    public partial class GraphSync
+    {
+        [JsonProperty("nodeId")]
+        public string NodeId { get; set; }
     }
 }
