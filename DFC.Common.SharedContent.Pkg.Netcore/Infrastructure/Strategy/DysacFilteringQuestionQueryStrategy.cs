@@ -50,6 +50,20 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                   }}
                 }}";
             var response = await client.SendQueryAsync<PersonalityFilteringQuestionResponse>(query);
+
+            foreach (var item in response.Data.PersonalityFilteringQuestion)
+            {
+                if (item.SOCSkillsMatrix.ContentItems.Count() > 0)
+                {
+                    int i = 0;
+                    foreach (var skill in item.SOCSkillsMatrix.ContentItems)
+                    {
+                        skill.Ordinal = i;
+                        i++;
+                    }
+                }
+            }
+
             return response.Data;
         }
     }
