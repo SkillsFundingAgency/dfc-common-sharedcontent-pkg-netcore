@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class PageUrlQueryStrategy : ISharedContentRedisInterfaceStrategy<PageUrlReponse>
+    public class PageUrlQueryStrategy : ISharedContentRedisInterfaceStrategy<PageUrlResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PageUrlQueryStrategy> logger;
@@ -17,7 +17,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<PageUrlReponse> ExecuteQueryAsync(string key)
+        public async Task<PageUrlResponse> ExecuteQueryAsync(string key)
         {
             var index = key.IndexOf("/") + 1;
             var status = key.Substring(index);//    pageurls/PUBLISHED pageurls/DRAFT
@@ -50,7 +50,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                     }} 
                     }}
                 }}";
-            var response = await client.SendQueryAsync<PageUrlReponse>(query);
+            var response = await client.SendQueryAsync<PageUrlResponse>(query);
             return response.Data;
         }
     }
