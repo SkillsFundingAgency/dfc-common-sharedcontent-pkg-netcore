@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 {
-    public class PageUrlReponse
+    public class PageUrlResponse
     {
         [JsonPropertyName("page")]
         public List<PageUrl> Page { get; set; }
