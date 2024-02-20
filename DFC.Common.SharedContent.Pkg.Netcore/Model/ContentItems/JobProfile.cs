@@ -18,6 +18,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         [JsonProperty("pageLocation")]
         public PageLocation PageLocation { get; set; }
 
+        [JsonProperty("relatedskills")]
+        public Relatedskills Relatedskills { get; set; }
+
         [JsonProperty("overview")]
         public string? Overview { get; set; }
 
@@ -42,4 +45,26 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         [JsonProperty("workingPatternDetails")]
         public WorkingPatternDetails WorkingPatternDetails { get; set; }
     }
+
+    public partial class Relatedskills
+    {
+        [JsonProperty("contentItems")]
+        public RelatedSkill[] ContentItems { get; set; }
+    }
+
+    public partial class RelatedSkill
+    {
+        [JsonProperty("displayText")]
+        public string DisplayText { get; set; }
+
+        [JsonProperty("oNetAttributeType")]
+        public string ONetAttributeType { get; set; }
+
+        [JsonProperty("oNetRank")]
+        public string ONetRank { get; set; }
+
+        [JsonProperty("graphSync")]
+        public GraphSync GraphSync { get; set; }
+    }
+
 }

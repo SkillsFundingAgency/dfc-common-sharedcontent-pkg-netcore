@@ -34,18 +34,4 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.Personal
         [JsonProperty("contentItems")]
         public JobProfileCategory[] ContentItems { get; set; }
     }
-
-    public partial class JobProfileCategory
-    {
-        [JsonProperty("contentItemId")]
-        public string ContentItemId { get; set; }
-
-        [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
-
-        [JsonProperty("graphSync")]
-        public GraphSync GraphSync { get; set; }
-        
-        public List<JobProfile> JobProfiles { get; set; }
-    }
 }
