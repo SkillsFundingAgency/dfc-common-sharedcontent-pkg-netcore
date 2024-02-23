@@ -6,7 +6,7 @@ using GraphQL.Client.Abstractions;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<PersonalityTrait>
+public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<PersonalityTraitResponse>
 {
     private readonly IGraphQLClient client;
 
@@ -15,12 +15,11 @@ public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<Personal
         this.client = client;
     }
 
-    public async Task<PersonalityTrait> ExecuteQueryAsync(string key)
+    public async Task<PersonalityTraitResponse> ExecuteQueryAsync(string key)
     {
-        var filter = key.Substring(key.LastIndexOf("/") + 1);
         string traitsQuery = $@"
                 query MyQuery {{
-                  personalityTrait(where: {{displayText: ""{filter}""}}, status: PUBLISHED) {{
+                  personalityTrait(status: PUBLISHED) {{
                     displayText
                     description
                     graphSync {{
@@ -58,13 +57,20 @@ public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<Personal
         ";
 
         var response = await client.SendQueryAsync<PersonalityTraitResponse>(traitsQuery);
-        var trait = await Task.FromResult(response.Data.PersonalityTraits.FirstOrDefault());
+        var traits = await Task.FromResult(response.Data);
 
-        foreach (JobProfileCategory category in trait.JobProfileCategories.ContentItems)
+        if (traits is not null)
         {
-            var jobProfileResponse = await client.SendQueryAsync<JobProfileDysacResponse>(string.Format(jobProfileQuery, category.ContentItemId));
-            category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfile);
+            foreach (var trait in traits.PersonalityTraits)
+            {
+                foreach (JobProfileCategory category in trait.JobProfileCategories.ContentItems)
+                {
+                    var jobProfileResponse = await client.SendQueryAsync<JobProfileDysacResponse>(string.Format(jobProfileQuery, category.ContentItemId));
+                    category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfile);
+                }
+            }
         }
-        return trait;
+
+        return traits;
     }
 }
