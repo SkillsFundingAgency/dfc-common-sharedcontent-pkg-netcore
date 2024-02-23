@@ -65,9 +65,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
                 var tokenEndpointUrl = config[ConfigKeys.TokenEndPointUrl];
                 var clientId = config[ConfigKeys.ClientId];
                 var clientSecret = config[ConfigKeys.ClientSecret];
-                tokenEndpointUrl = "https://dfc-dev-stax-editor-as.azurewebsites.net/connect/token";
-                clientId = "e23cc54e-ff71-4a08-8a06-239cb70de310";
-                clientSecret = "/3LtK4?1gCh(";
                 var client = this.httpClientFactory.CreateClient();
                 var formData = new Dictionary<string, string>();
                 formData.Add(CmsOpenIdConfig.ClientIdTokenRequestParam, clientId);
