@@ -45,7 +45,11 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                                 graphSync {{nodeId}}
                                 jobProfileCategories {{
                                   contentItems {{
-                                    displayText
+                                     ... on JobProfileCategory {{
+                                        displayText
+                                        graphSync {{
+                                            nodeId
+                                    }}
                                   }}
                                 }}
                               }}
