@@ -11,7 +11,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac
     {
 
         [JsonPropertyName("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonPropertyName("questions")]
         public Questions Questions { get; set; }

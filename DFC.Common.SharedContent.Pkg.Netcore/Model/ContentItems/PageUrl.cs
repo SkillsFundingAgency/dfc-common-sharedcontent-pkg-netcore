@@ -5,7 +5,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
     public class PageUrl
     {
         [JsonPropertyName("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonPropertyName("pageLocation")]
         public PageLocation PageLocation { get; set; }

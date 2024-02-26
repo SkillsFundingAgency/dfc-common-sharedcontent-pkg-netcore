@@ -5,12 +5,12 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
     public class Form
     {
         [JsonProperty("action")]
-        public string Action { get; set; }
+        public string? Action { get; set; }
 
         [JsonProperty("method")]
-        public string Method { get; set; }
+        public string? Method { get; set; }
 
         [JsonProperty("encType")]
-        public string EncType { get; set; }
+        public string? EncType { get; set; }
     }
 }

@@ -6,13 +6,13 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
     public class ContentItem
     {
         [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonProperty("isGlobal")]
-        public bool IsGlobal { get; set; }
+        public bool? IsGlobal { get; set; }
 
         [JsonProperty("isActive")]
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
         [JsonProperty("content")]
         public Content Content { get; set; }

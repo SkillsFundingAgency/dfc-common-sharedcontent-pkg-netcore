@@ -13,13 +13,13 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac
     public class QuestionContentItem
     {
         [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonProperty("impact")]
-        public string Impact { get; set; }
+        public string? Impact { get; set; }
 
         [JsonProperty("contentItemId")]
-        public string ContentItemId { get; set; }
+        public string? ContentItemId { get; set; }
 
         [JsonPropertyName("graphSync")]
         public GraphSync GraphSync { get; set; }

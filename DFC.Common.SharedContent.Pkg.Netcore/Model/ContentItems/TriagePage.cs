@@ -5,10 +5,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 public class TriagePage
 {
     [JsonPropertyName("displayText")]
-    public string DisplayText { get; set; }
+    public string? DisplayText { get; set; }
 
     [JsonPropertyName("description")]
-    public object Description { get; set; }
+    public object? Description { get; set; }
 
     [JsonPropertyName("pageLocation")]
     public PageLocation PageLocation { get; set; }
@@ -20,16 +20,16 @@ public class TriagePage
     public bool? UseBrowserWidth { get; set; }
 
     [JsonPropertyName("showBreadcrumb")]
-    public bool ShowBreadcrumb { get; set; }
+    public bool? ShowBreadcrumb { get; set; }
 
     [JsonPropertyName("showHeroBanner")]
-    public bool ShowHeroBanner { get; set; }
+    public bool? ShowHeroBanner { get; set; }
 
     [JsonPropertyName("herobanner")]
     public Herobanner Herobanner { get; set; }
 
     [JsonPropertyName("useInTriageTool")]
-    public bool UseInTriageTool { get; set; }
+    public bool? UseInTriageTool { get; set; }
 
     [JsonPropertyName("triageToolSummary")]
     public TriageToolSummary TriageToolSummary { get; set; }

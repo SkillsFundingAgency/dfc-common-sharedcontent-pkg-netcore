@@ -11,10 +11,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac
     public class PersonalityFilteringQuestion
     {
         [JsonPropertyName("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonPropertyName("text")]
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         [JsonPropertyName("ordinal")]
         public int? Ordinal { get; set; }
