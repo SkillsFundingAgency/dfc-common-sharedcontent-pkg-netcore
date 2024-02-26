@@ -22,7 +22,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
         {
             logger.LogInformation("JobProfileOverviewQueryStrategy -> ExecuteQueryAsync");
             string query = @$"query MyQuery {{
-                                jobProfile(status: PUBLISHED) {{
+                                jobProfile(first: 1000, status: PUBLISHED) {{
                                     displayText
                                     overview
                                     salarystarterperyear
