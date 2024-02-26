@@ -25,6 +25,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
         public async Task<PersonalityFilteringQuestionResponse> ExecuteQueryAsync(string key)
         {
             logger.LogInformation("DysacFilteringQuestionQueryStrategy -> ExecuteQueryAsync");
+
             string query = @$"
                 query MyQuery {{
                   personalityFilteringQuestion(status: PUBLISHED) {{
