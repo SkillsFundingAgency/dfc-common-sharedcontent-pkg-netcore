@@ -20,10 +20,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
         public async Task<JobProfileDysacResponse> ExecuteQueryAsync(string key)
         {
-            var jobProfile = key.Substring(key.LastIndexOf("/") + 1);
             logger.LogInformation("JobProfileOverviewQueryStrategy -> ExecuteQueryAsync");
             string query = @$"query MyQuery {{
-                                jobProfile(where: {{displayText: ""{jobProfile}""}}) {{
+                                jobProfile(status: PUBLISHED) {{
                                     displayText
                                     overview
                                     salarystarterperyear
