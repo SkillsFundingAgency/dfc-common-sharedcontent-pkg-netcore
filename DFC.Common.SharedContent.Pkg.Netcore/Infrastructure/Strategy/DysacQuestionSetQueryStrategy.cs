@@ -49,6 +49,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                                         displayText
                                         graphSync {{
                                             nodeId
+                                        }}
                                     }}
                                   }}
                                 }}
