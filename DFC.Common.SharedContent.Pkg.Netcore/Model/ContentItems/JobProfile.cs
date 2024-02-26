@@ -25,16 +25,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public string? Overview { get; set; }
 
         [JsonProperty("salarystarterperyear")]
-        public int? Salarystarterperyear { get; set; }
+        public string? Salarystarterperyear { get; set; }
 
         [JsonProperty("salaryexperiencedperyear")]
-        public int? Salaryexperiencedperyear { get; set; }
+        public string? Salaryexperiencedperyear { get; set; }
 
         [JsonProperty("maximumhours")]
-        public int? Maximumhours { get; set; }
+        public string? Maximumhours { get; set; }
 
         [JsonProperty("minimumhours")]
-        public int? Minimumhours { get; set; }
+        public string? Minimumhours { get; set; }
 
         [JsonProperty("workingPattern")]
         public WorkingPattern WorkingPattern { get; set; }
