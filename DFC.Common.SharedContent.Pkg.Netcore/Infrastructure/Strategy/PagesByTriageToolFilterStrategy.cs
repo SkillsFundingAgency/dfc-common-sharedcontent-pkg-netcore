@@ -55,6 +55,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
                       contentItems {{
                         ... on TriageToolFilter {{
                           displayText
+                          contentType
                           graphSync {{
                                 nodeId
                       }}

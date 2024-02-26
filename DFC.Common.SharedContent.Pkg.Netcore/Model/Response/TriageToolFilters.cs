@@ -13,9 +13,4 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
     }
-    public partial class GraphSync
-    {
-        [JsonProperty("nodeId")]
-        public string NodeId { get; set; }
-    }
 }
