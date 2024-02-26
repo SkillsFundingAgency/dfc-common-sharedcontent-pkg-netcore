@@ -11,10 +11,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.Personal
     public class PersonalityTrait
     {
         [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
@@ -26,7 +26,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.Personal
     public partial class GraphSync
     {
         [JsonProperty("nodeId")]
-        public string NodeId { get; set; }
+        public string? NodeId { get; set; }
     }
 
     public partial class JobProfileCategories

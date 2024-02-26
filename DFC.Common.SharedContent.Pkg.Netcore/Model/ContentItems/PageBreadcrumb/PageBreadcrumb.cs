@@ -11,6 +11,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb
     {
         [JsonPropertyName("content")]
 
-        public string Content { get; set; }
+        public string? Content { get; set; }
     }
 }

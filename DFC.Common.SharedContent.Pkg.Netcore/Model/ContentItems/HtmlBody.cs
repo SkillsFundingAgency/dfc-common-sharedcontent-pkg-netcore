@@ -5,6 +5,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
     public class HtmlBody
     {
         [JsonPropertyName("html")]
-        public string Html { get; set; }
+        public string? Html { get; set; }
     }
 }

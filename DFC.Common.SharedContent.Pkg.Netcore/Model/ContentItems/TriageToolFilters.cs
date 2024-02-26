@@ -10,7 +10,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public List<object> ContentItems { get; set; }
 
         [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }

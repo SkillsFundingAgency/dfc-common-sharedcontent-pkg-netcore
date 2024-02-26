@@ -10,15 +10,15 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.Jo
     public class JobProfile
     {
         [JsonProperty("Title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [JsonProperty("AlternativeTitle")]
-        public string AlternativeTitle { get; set; }
+        public string? AlternativeTitle { get; set; }
 
         [JsonProperty("Overview")]
-        public string Overview { get; set; }
+        public string? Overview { get; set; }
 
         [JsonProperty("UrlName")]
-        public string UrlName { get; set; }
+        public string? UrlName { get; set; }
     }
 }

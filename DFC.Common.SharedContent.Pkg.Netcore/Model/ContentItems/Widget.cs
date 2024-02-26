@@ -15,7 +15,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public SharedContent SharedContent { get; set; }
 
         [JsonPropertyName("formContent")]
-        public string FormContent { get; set; }
+        public string? FormContent { get; set; }
 
         [JsonProperty("formElement")]
         public FormElement FormElement { get; set; }
@@ -33,7 +33,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public string? Method { get; set; }
 
         [JsonPropertyName("contentType")]
-        public string ContentType { get; set; }
+        public string? ContentType { get; set; }
 
         [JsonPropertyName("widgets")]
         public List<Widget> ContentItems { get; set; }

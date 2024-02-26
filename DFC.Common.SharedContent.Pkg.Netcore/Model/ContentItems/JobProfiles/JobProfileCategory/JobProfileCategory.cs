@@ -5,7 +5,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.Jo
     public class JobProfileCategory
     {
         [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonProperty("pageLocation")]
         public PageLocation PageLocation { get; set; }
@@ -14,9 +14,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.Jo
     public partial class PageLocation
     {
         [JsonProperty("fullUrl")]
-        public string FullUrl { get; set; }
+        public string? FullUrl { get; set; }
 
         [JsonProperty("urlName")]
-        public string UrlName { get; set; }
+        public string? UrlName { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
     public class JobProfile
     {
         [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
@@ -25,16 +25,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public string? Overview { get; set; }
 
         [JsonProperty("salarystarterperyear")]
-        public int Salarystarterperyear { get; set; }
+        public string? Salarystarterperyear { get; set; }
 
         [JsonProperty("salaryexperiencedperyear")]
-        public int Salaryexperiencedperyear { get; set; }
+        public string? Salaryexperiencedperyear { get; set; }
 
         [JsonProperty("maximumhours")]
-        public int Maximumhours { get; set; }
+        public string? Maximumhours { get; set; }
 
         [JsonProperty("minimumhours")]
-        public int Minimumhours { get; set; }
+        public string? Minimumhours { get; set; }
 
         [JsonProperty("workingPattern")]
         public WorkingPattern WorkingPattern { get; set; }
@@ -55,13 +55,13 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
     public partial class RelatedSkill
     {
         [JsonProperty("displayText")]
-        public string DisplayText { get; set; }
+        public string? DisplayText { get; set; }
 
         [JsonProperty("oNetAttributeType")]
-        public string ONetAttributeType { get; set; }
+        public string? ONetAttributeType { get; set; }
 
         [JsonProperty("oNetRank")]
-        public string ONetRank { get; set; }
+        public string? ONetRank { get; set; }
 
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
