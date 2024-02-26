@@ -15,7 +15,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
     public class TriageToolFilterResponse
     {
         [JsonPropertyName("TriageToolFilters")]
-        public List<TriageToolFilter> TriageToolFilter { get; set; }
+        public List<TriageToolFilters> TriageToolFilter { get; set; }
     }
 
 }
