@@ -24,5 +24,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac
 
         [JsonPropertyName("oNetRank")]
         public string? ONetRank { get; set; }
+
+        public int? Ordinal { get; set; }
     }
 }
