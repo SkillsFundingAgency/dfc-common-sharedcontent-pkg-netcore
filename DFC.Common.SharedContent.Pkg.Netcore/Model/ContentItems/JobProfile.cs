@@ -65,6 +65,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
+
+        public int? Ordinal { get; set; }
     }
 
 }
