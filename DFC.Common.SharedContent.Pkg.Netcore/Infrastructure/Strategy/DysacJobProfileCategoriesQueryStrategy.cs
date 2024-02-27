@@ -64,6 +64,20 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
         foreach (var category in categories.JobProfileCategories)
         {
             var jobProfileResponse = await client.SendQueryAsync<JobProfileDysacResponse>(string.Format(jobProfileQuery, category.ContentItemId));
+
+            foreach (var jobProfile in jobProfileResponse.Data.JobProfile)
+            {
+                if (jobProfile.Relatedskills.ContentItems.Count() > 0)
+                {
+                    int i = 0;
+                    foreach (var skill in jobProfile.Relatedskills.ContentItems)
+                    {
+                        skill.Ordinal = i;
+                        i++;
+                    }
+                }
+            }
+
             category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfile);
         }
 
