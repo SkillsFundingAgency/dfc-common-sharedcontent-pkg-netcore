@@ -1,9 +1,5 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
+using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -11,8 +7,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 {
     public class JobProfilesResponse
     {
-        [JsonPropertyName("items")]
-
-        public List<JobProfile> Items { get; set; }
+        [JsonProperty("jobProfile")]
+        public List<JobProfile> JobProfiles { get; set; }
     }
 }
