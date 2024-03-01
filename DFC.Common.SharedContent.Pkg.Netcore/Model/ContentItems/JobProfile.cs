@@ -70,6 +70,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public GraphSync GraphSync { get; set; }
 
         public int? Ordinal { get; set; }
-    }
 
+        [JsonProperty("relatedSkill")]
+        public string? RelatedSkillDesc { get; set; }
+    }
 }

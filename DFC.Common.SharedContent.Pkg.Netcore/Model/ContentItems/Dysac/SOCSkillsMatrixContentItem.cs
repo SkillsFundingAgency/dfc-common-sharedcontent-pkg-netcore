@@ -26,5 +26,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac
         public string? ONetRank { get; set; }
 
         public int? Ordinal { get; set; }
+
+        [JsonPropertyName("relatedSkill")]
+        public string? RelatedSkill { get; set; }
     }
 }

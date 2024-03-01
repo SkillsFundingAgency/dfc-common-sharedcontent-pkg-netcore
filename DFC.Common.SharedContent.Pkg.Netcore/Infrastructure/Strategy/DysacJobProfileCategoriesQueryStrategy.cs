@@ -22,7 +22,7 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
     {
         string jobProfileCategoryQuery = $@"
                 query MyQuery {{
-                  jobProfileCategory(status: PUBLISHED) {{
+                  jobProfileCategory(where: {{displayText_not: ""null""}}, status: PUBLISHED) {{
                     contentItemId
                     graphSync {{
                       nodeId
@@ -46,6 +46,7 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
                       contentItems {{
                         ... on SOCSkillsMatrix {{
                           displayText
+                          relatedSkill
                           oNetAttributeType
                           oNetRank
                           graphSync {{
@@ -64,20 +65,6 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
         foreach (var category in categories.JobProfileCategories)
         {
             var jobProfileResponse = await client.SendQueryAsync<JobProfileDysacResponse>(string.Format(jobProfileQuery, category.ContentItemId));
-
-            foreach (var jobProfile in jobProfileResponse.Data.JobProfile)
-            {
-                if (jobProfile.Relatedskills.ContentItems.Count() > 0)
-                {
-                    int i = 0;
-                    foreach (var skill in jobProfile.Relatedskills.ContentItems)
-                    {
-                        skill.Ordinal = i;
-                        i++;
-                    }
-                }
-            }
-
             category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfile);
         }
 
