@@ -39,6 +39,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                       contentItems {{
                         ... on SOCSkillsMatrix {{
                           displayText
+                          relatedSkill
                           modifiedUtc
                           graphSync {{
                                 nodeId

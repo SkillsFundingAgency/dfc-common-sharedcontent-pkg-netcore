@@ -15,6 +15,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
 
+        [JsonProperty("alternativeTitle")]
+        public string? AlternativeTitle { get; set; }
+
         [JsonProperty("pageLocation")]
         public PageLocation PageLocation { get; set; }
 
