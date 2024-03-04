@@ -20,6 +20,7 @@ using RestSharp;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.PersonalityTrait;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Sitemap;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 
@@ -66,6 +67,7 @@ public static class InitialiseExtensions
 );
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<Page>, PageQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<SitemapResponse>, PageSitemapStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<TriagePageResponse>, PagesByTriageToolFilterStrategy>();
 
