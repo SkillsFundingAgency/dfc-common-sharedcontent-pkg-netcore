@@ -22,13 +22,13 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<PersonalityFilteringQuestionResponse> ExecuteQueryAsync(string key)
+        public async Task<PersonalityFilteringQuestionResponse> ExecuteQueryAsync(string key, string filter)
         {
             logger.LogInformation("DysacFilteringQuestionQueryStrategy -> ExecuteQueryAsync");
 
             string query = @$"
                 query MyQuery {{
-                  personalityFilteringQuestion(status: PUBLISHED) {{
+                  personalityFilteringQuestion(status: {filter}) {{
                     displayText
                     text
                     ordinal

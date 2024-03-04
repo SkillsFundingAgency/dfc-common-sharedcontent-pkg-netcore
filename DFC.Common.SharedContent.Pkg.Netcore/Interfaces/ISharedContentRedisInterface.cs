@@ -6,6 +6,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Interfaces
     {
         Task<T?> GetDataAsync<T>(string cacheKey);
 
-        Task<bool> InvalidateEntityAsync(string cachekey);
+        Task<bool> InvalidateEntityAsync(string cachekey, string filter);
     }
 }

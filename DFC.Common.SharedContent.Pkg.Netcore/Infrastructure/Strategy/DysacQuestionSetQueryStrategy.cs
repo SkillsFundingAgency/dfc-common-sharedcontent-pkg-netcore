@@ -23,12 +23,12 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<PersonalityQuestionSet> ExecuteQueryAsync(string key)
+        public async Task<PersonalityQuestionSet> ExecuteQueryAsync(string key, string filter)
         {
             logger.LogInformation("DysacQuestionSetQueryStrategy -> ExecuteQueryAsync");
             string query = @$"
                 query MyQuery {{
-                  personalityQuestionSet(first: 1, status: PUBLISHED) {{
+                  personalityQuestionSet(first: 1, status: {filter}) {{
                     displayText
                     questions {{
                       contentItems {{

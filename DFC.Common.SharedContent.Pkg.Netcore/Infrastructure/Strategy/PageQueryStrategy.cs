@@ -15,14 +15,13 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
         this.client = client;
     }
 
-    public async Task<Page> ExecuteQueryAsync(string key)
+    public async Task<Page> ExecuteQueryAsync(string key, string filter)
     {
-        var status = key.Substring(key.LastIndexOf('/') + 1);
-        var url = key.Substring(key.IndexOf('/'), key.Length - status.Length - key.IndexOf('/') - 1);
+        var url = key.Substring(key.IndexOf('/'), key.Length - filter.Length - key.IndexOf('/') - 1);
 
         string query = @$"
                query page {{
-                  page(status: {status}, first: 1 , where: {{pageLocation: {{url: ""{url}""}}}}) {{
+                  page(status: {filter}, first: 1 , where: {{pageLocation: {{url: ""{url}""}}}}) {{
                     displayText
                     description
                     pageLocation {{

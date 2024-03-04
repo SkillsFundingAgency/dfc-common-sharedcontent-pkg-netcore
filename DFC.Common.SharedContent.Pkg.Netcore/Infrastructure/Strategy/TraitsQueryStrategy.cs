@@ -15,11 +15,11 @@ public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<Personal
         this.client = client;
     }
 
-    public async Task<PersonalityTraitResponse> ExecuteQueryAsync(string key)
+    public async Task<PersonalityTraitResponse> ExecuteQueryAsync(string key, string filter)
     {
         string traitsQuery = $@"
                 query MyQuery {{
-                  personalityTrait(status: PUBLISHED) {{
+                  personalityTrait(status: {filter}) {{
                     displayText
                     description
                     graphSync {{
