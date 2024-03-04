@@ -1,11 +1,18 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Extensions;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DfE.NCS.Framework.Cache;
 using DfE.NCS.Framework.Cache.Interface;
 using DfE.NCS.Framework.Cache.Model;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Moq;
 using RestSharp;
@@ -14,13 +21,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
-using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
-using DFC.Common.SharedContent.Pkg.Netcore.Extensions;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 {
