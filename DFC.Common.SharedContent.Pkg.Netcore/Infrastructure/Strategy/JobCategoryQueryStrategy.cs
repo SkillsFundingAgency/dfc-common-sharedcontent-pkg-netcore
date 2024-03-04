@@ -13,11 +13,11 @@ public class JobCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<Job
         this.client = client;
     }
 
-    public async Task<JobProfileCategoriesResponse> ExecuteQueryAsync(string key)
+    public async Task<JobProfileCategoriesResponse> ExecuteQueryAsync(string key, string filter)
     {
         string query = $@"
                 query JobProfileCategories {{
-                  jobProfileCategory(status: PUBLISHED) {{
+                  jobProfileCategory(status: {filter}) {{
                     displayText
                     pageLocation {{
                       fullUrl

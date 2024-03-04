@@ -20,7 +20,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
         }
   
 
-    public async Task<TriagePageResponse> ExecuteQueryAsync(string key)
+    public async Task<TriagePageResponse> ExecuteQueryAsync(string key, string filter)
         {
         string query = @$"
          query page {{

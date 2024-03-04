@@ -17,11 +17,11 @@ public class TriageToolAllQueryStrategy : ISharedContentRedisInterfaceStrategy<T
         this.logger = logger;
     }
 
-    public async Task<TriageToolFilterResponse> ExecuteQueryAsync(string key)
+    public async Task<TriageToolFilterResponse> ExecuteQueryAsync(string key, string filter )
     {
         string query = @$"
            query MyQuery {{
-  triageToolFilter(status: PUBLISHED) {{
+  triageToolFilter(status: {filter}) {{
     displayText
     graphSync {{
       nodeId

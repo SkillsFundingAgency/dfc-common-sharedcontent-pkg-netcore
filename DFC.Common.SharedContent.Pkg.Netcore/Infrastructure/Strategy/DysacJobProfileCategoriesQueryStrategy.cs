@@ -18,11 +18,11 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
         this.client = client;
     }
 
-    public async Task<Model.ContentItems.JobProfileCategoriesResponse> ExecuteQueryAsync(string key)
+    public async Task<Model.ContentItems.JobProfileCategoriesResponse> ExecuteQueryAsync(string key, string filter)
     {
         string jobProfileCategoryQuery = $@"
                 query MyQuery {{
-                  jobProfileCategory(where: {{displayText_not: ""null""}}, status: PUBLISHED) {{
+                  jobProfileCategory(where: {{displayText_not: ""null""}}, status: {filter}) {{
                     contentItemId
                     graphSync {{
                       nodeId
@@ -34,7 +34,7 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
 
         string jobProfileQuery = @"
                 query MyQuery {{
-                  jobProfile(where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{0}""}}}}, status: PUBLISHED) {{
+                  jobProfile(status: {filter}, where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{0}""}}}}) {{
                     displayText
                     graphSync {{
                       nodeId

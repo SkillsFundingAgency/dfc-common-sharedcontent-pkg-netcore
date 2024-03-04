@@ -14,13 +14,13 @@ public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<Shar
         this.client = client;
     }
 
-    public async Task<SharedHtml> ExecuteQueryAsync(string key)
+    public async Task<SharedHtml> ExecuteQueryAsync(string key, string filter)
     {
         var contentId = key.Substring(key.IndexOf('/') + 1);
 
         string query = $@"
                query sharedContent {{
-                  sharedContent(where: {{graphSync: {{nodeId: ""<<contentapiprefix>>/sharedcontent/{contentId}""}}}}, status: PUBLISHED) {{
+                  sharedContent(where: {{graphSync: {{nodeId: ""<<contentapiprefix>>/sharedcontent/{contentId}""}}}}, status: {filter} ) {{
                     content {{
                       html
                     }}

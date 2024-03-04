@@ -15,12 +15,12 @@ public class SharedContentRedis : ISharedContentRedisInterface
         this.sharedContentRedisInterfaceStrategyFactory = sharedContentRedisInterfaceStrategyFactory;
     }
 
-    public async Task<T?> GetDataAsync<T>(string cacheKey)
+    public async Task<T?> GetDataAsync<T>(string cacheKey, string filter)
     {
         try
         {
             //get redis cache data from cachekey - use zhaomings function
-            var cachedContent = await cache.GetStringAsync(cacheKey);
+            var cachedContent = await cache.GetStringAsync(cacheKey + "/" + filter);
             //var cacheResponse = cache.GetEntity<TResponse>(cacheKey);
 
             if (!string.IsNullOrWhiteSpace(cachedContent))
@@ -29,13 +29,13 @@ public class SharedContentRedis : ISharedContentRedisInterface
             }
 
             var strategy = sharedContentRedisInterfaceStrategyFactory.GetStrategy<T>();
-            var staxContent = await strategy.ExecuteQueryAsync(cacheKey);
+            var staxContent = await strategy.ExecuteQueryAsync(cacheKey, filter);
             if (staxContent == null)
             {
                 return staxContent;
             }
 
-            await cache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(staxContent), new DistributedCacheEntryOptions
+            await cache.SetStringAsync(cacheKey + "/" + filter, JsonConvert.SerializeObject(staxContent), new DistributedCacheEntryOptions
             {
                 //sliding expiration time for cachekey. Resets when accessed
                 SlidingExpiration = TimeSpan.FromHours(4),
@@ -50,9 +50,19 @@ public class SharedContentRedis : ISharedContentRedisInterface
         }
     }
 
-    public async Task<bool> InvalidateEntityAsync(string cacheKey)
+    public Task<T?> GetDataAsync<T>(string cacheKey)
     {
-        await cache.RemoveAsync(cacheKey);
+        throw new NotImplementedException();
+    }
+
+    public async Task<bool> InvalidateEntityAsync(string cacheKey, string filter)
+    {
+        await cache.RemoveAsync(cacheKey + "/" + filter);
         return true;
+    }
+
+    public Task<bool> InvalidateEntityAsync(string cachekey)
+    {
+        throw new NotImplementedException();
     }
 }
