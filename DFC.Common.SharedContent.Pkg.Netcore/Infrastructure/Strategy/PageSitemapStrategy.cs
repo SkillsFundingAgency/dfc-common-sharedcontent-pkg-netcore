@@ -34,6 +34,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
     pageLocation {{
       fullUrl
       urlName
+      defaultPageForLocation
     }}
   }}
 }}
