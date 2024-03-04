@@ -10,22 +10,22 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class SitemapStrategy : ISharedContentRedisInterfaceStrategy<SitemapResponse>
+    public class PageSitemapStrategy : ISharedContentRedisInterfaceStrategy<SitemapResponse>
     {
         private readonly IGraphQLClient client;
-        private readonly ILogger<SitemapStrategy> logger;
+        private readonly ILogger<PageSitemapStrategy> logger;
         private readonly int sitemapLimit = 150;
 
-        public SitemapStrategy(IGraphQLClient client, ILogger<SitemapStrategy> logger)
+        public PageSitemapStrategy(IGraphQLClient client, ILogger<PageSitemapStrategy> logger)
         {
             this.client = client;
             this.logger = logger;
         }
 
-        public async Task<SitemapResponse> ExecuteQueryAsync(string key)
+        public async Task<SitemapResponse> ExecuteQueryAsync(string key, string filter)
         {
             string query = $@"query MyQuery {{
-  page(first: {sitemapLimit}) {{
+  page(first: {sitemapLimit}, status: {filter}) {{
     sitemap {{
       changeFrequency
       exclude
