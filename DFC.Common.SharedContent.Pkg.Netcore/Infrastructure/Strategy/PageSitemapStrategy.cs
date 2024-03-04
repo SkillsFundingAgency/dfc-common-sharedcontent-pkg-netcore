@@ -29,11 +29,15 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
     sitemap {{
       changeFrequency
       exclude
-      overrideSitemapConfig
       priority
+    }}
+    pageLocation {{
+      fullUrl
+      urlName
     }}
   }}
 }}
+
 ";
 
             var response = await client.SendQueryAsync<SitemapResponse>(query);

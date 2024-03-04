@@ -11,6 +11,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Sitemap
     {
         [JsonPropertyName("sitemap")]
         public SitemapModel? Sitemap { get; set; }
+
+        [JsonPropertyName("pageLocation")]
+        public PageLocation? PageLocation { get; set; }
     }
 
     public partial class SitemapModel
@@ -21,10 +24,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Sitemap
         [JsonPropertyName("exclude")]
         public bool? Exclude { get; set; }
 
-        [JsonPropertyName("overrideSitemapConfig")]
-        public bool? OverrideSitemapConfig { get; set; }
-
         [JsonPropertyName("priority")]
         public double? Priority { get; set; }
+    }
+
+    public partial class PageLocation
+    {
+        [JsonPropertyName("fullUrl")]
+        public string? FullUrl { get; set; }
+
+        [JsonPropertyName("urlName")]
+        public string? urlName { get; set; }
     }
 }
