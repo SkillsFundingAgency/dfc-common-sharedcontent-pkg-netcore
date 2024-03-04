@@ -35,5 +35,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Sitemap
 
         [JsonPropertyName("urlName")]
         public string? urlName { get; set; }
+
+        [JsonPropertyName("defaultPageForLocation")]
+        public bool? DefaultPageForLocation { get; set; }
     }
 }
