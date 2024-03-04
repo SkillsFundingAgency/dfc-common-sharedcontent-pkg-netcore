@@ -17,14 +17,14 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<PageUrlResponse> ExecuteQueryAsync(string key)
+        public async Task<PageUrlResponse> ExecuteQueryAsync(string key, string filter)
         {
             var index = key.IndexOf("/") + 1;
             var status = key.Substring(index);//    pageurls/PUBLISHED pageurls/DRAFT
             logger.LogInformation("PageUrlQueryStrategy -> ExecuteQueryAsync ->  status="+status);
             string query = @$"
                 query pageurl {{
-                    page(status: {status}) {{
+                    page(status: {filter}) {{
                        displayText
 	                    pageLocation {{
                         urlName

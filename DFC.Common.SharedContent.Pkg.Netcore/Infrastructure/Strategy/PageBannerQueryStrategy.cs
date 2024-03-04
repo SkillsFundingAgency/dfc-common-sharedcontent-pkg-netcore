@@ -17,14 +17,14 @@ public class PageBannerQueryStrategy : ISharedContentRedisInterfaceStrategy<Page
         this.logger = logger;
     }
 
-    public async Task<PageBanner> ExecuteQueryAsync(string key)
+    public async Task<PageBanner> ExecuteQueryAsync(string key, string filter)
     {
         var startIndex = key.IndexOf('/') + 1;
         var url = key.Substring(startIndex, key.Length - startIndex);
         logger.LogInformation("PageBannerQueryStrategy -> ExecuteQueryAsync ->  url=" + url);
         string query = @$"
                query PageBanner {{
-                  pagebanner(where: {{banner: {{webPageURL: ""{url}""}}}}, status: PUBLISHED) {{
+                  pagebanner(where: {{banner: {{webPageURL: ""{url}""}}}}, status: {filter}) {{
                     banner {{
                       webPageURL
                       webPageName

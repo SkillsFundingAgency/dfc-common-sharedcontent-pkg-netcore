@@ -22,12 +22,12 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.client = client;
         }
 
-        public async Task<JobProfilesResponse> ExecuteQueryAsync(string key)
+        public async Task<JobProfilesResponse> ExecuteQueryAsync(string key, string status)
         {
             var filter = key.Substring(key.LastIndexOf("/") + 1);
 
             string categoryQuery = $@"query MyQuery {{
-                jobProfileCategory(where: {{ displayText: ""{filter}""}}) {{
+                jobProfileCategory(status: {status}, where: {{ displayText: ""{filter}""}}) {{
                     contentItemId
                 }}
             }}";
@@ -37,7 +37,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             var categoryId = responseCategory.Data.JobProfileCategories.FirstOrDefault()?.ContentItemId;
 
             string profileQuery = $@"query MyQuery {{
-              jobProfile(
+              jobProfile(status: {status}, 
                 where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{categoryId}""}}}}
               ) {{
                 displayText

@@ -17,11 +17,11 @@ public class PageBannersAllQueryStrategy : ISharedContentRedisInterfaceStrategy<
         this.logger = logger;
     }
 
-    public async Task<PageBannerResponse> ExecuteQueryAsync(string key)
+    public async Task<PageBannerResponse> ExecuteQueryAsync(string key, string filter)
     {
         string query = @$"
                query PageBanner {{
-                  pagebanner(status: PUBLISHED) {{
+                  pagebanner(status: {filter}) {{
                     banner {{
                       webPageURL
                       webPageName

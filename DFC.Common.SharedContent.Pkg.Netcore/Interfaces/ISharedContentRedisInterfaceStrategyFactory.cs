@@ -7,5 +7,5 @@ public interface ISharedContentRedisInterfaceStrategyFactory
 
 public interface ISharedContentRedisInterfaceStrategy<T>
 {
-    Task<T> ExecuteQueryAsync(string key);
+    Task<T> ExecuteQueryAsync(string key, string filter);
 }

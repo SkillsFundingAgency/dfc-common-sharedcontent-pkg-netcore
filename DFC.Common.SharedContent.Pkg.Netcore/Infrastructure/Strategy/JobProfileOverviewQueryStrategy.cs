@@ -18,11 +18,11 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<JobProfileDysacResponse> ExecuteQueryAsync(string key)
+        public async Task<JobProfileDysacResponse> ExecuteQueryAsync(string key, string filter)
         {
             logger.LogInformation("JobProfileOverviewQueryStrategy -> ExecuteQueryAsync");
             string query = @$"query MyQuery {{
-                                jobProfile(first: 1000, status: PUBLISHED) {{
+                                jobProfile(first: 1000, status: {filter}) {{
                                     displayText
                                     overview
                                     salarystarterperyear
