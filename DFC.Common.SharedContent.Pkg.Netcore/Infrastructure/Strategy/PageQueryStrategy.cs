@@ -17,7 +17,8 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
 
     public async Task<Page> ExecuteQueryAsync(string key, string filter)
     {
-        var url = key.Substring(key.IndexOf('/'));
+        var status = key.Substring(key.LastIndexOf('/') + 1);
+        var url = key.Substring(key.IndexOf('/'), key.Length - status.Length - key.IndexOf('/') - 1);
 
         string query = @$"
                query page {{
