@@ -34,7 +34,7 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
 
         string jobProfileQuery = @"
                 query MyQuery {{
-                  jobProfile(status: {filter}, where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{0}""}}}}) {{
+                  jobProfile(where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{0}""}}}}) {{
                     displayText
                     graphSync {{
                       nodeId
