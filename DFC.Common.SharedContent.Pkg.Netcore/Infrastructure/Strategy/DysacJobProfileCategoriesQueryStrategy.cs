@@ -43,29 +43,60 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
                       fullUrl
                     }}
                     relatedskills {{
-                      contentItems {{
+                        contentItems {{
                         ... on SOCSkillsMatrix {{
-                          displayText
-                          relatedSkill
-                          oNetAttributeType
-                          oNetRank
-                          graphSync {{
-                            nodeId
-                          }}
+                            displayText
+                            relatedSkill
+                            oNetAttributeType
+                            oNetRank
+                            graphSync {{
+                                nodeId
+                                }}
+                            }}
                         }}
-                      }}
                     }}
                   }}
                 }}
         ";
-
+        string jobProfileQuerySecond = @"
+                query MyQuery {{
+                  jobProfile(first: 100, skip: 100, where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{0}""}}}}) {{
+                    displayText
+                    graphSync {{
+                      nodeId
+                    }}
+                    pageLocation {{
+                      fullUrl
+                    }}
+                    relatedskills {{
+                        contentItems {{
+                        ... on SOCSkillsMatrix {{
+                            displayText
+                            relatedSkill
+                            oNetAttributeType
+                            oNetRank
+                            graphSync {{
+                                nodeId
+                                }}
+                            }}
+                        }}
+                    }}
+                  }}
+                }}
+        ";
         var response = await client.SendQueryAsync<Model.ContentItems.JobProfileCategoriesResponse>(jobProfileCategoryQuery);
         var categories = await Task.FromResult(response.Data);
 
         foreach (var category in categories.JobProfileCategories)
         {
             var jobProfileResponse = await client.SendQueryAsync<JobProfileDysacResponse>(string.Format(jobProfileQuery, category.ContentItemId));
+
             category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfile);
+            if (jobProfileResponse.Data.JobProfile.Count() == 100)
+            {
+                var jobProfileResponseSecond = await client.SendQueryAsync<JobProfileDysacResponse>(string.Format(jobProfileQuerySecond, category.ContentItemId));
+                category.JobProfiles.AddRange(await Task.FromResult(jobProfileResponseSecond.Data.JobProfile));
+            }
         }
 
         return categories;
