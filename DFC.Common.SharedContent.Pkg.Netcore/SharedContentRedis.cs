@@ -60,4 +60,10 @@ public class SharedContentRedis : ISharedContentRedisInterface
         await cache.RemoveAsync(cacheKey + "/" + filter);
         return true;
     }
+    public async Task<bool> InvalidateEntityAsync(string cacheKey)
+    {
+        await cache.RemoveAsync(cacheKey);
+        return true;
+    }
+
 }
