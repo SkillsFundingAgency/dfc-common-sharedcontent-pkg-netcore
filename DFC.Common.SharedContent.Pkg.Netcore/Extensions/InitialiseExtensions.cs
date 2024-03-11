@@ -1,10 +1,10 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore;
-using DFC.Common.SharedContent.Pkg.Netcore.Constant;
-using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.SharedHtml;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DFC.Common.SharedContent.Pkg.Netcore.RequestHandler;
@@ -14,13 +14,9 @@ using GraphQL.Client.Serializer.Newtonsoft;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using RestSharp;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.PersonalityTrait;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Sitemap;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 
@@ -62,9 +58,7 @@ public static class InitialiseExtensions
 
             var client = new RestClient(option);
             return client;
-        }
-
-);
+        });
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<Page>, PageQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategy<SitemapResponse>, PageSitemapStrategy>();
@@ -87,7 +81,6 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategy<Model.ContentItems.JobProfileCategoriesResponse>, DysacJobProfileCategoriesQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<Model.Response.JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
-
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityQuestionSet>, DysacQuestionSetQueryStrategy>();
 
