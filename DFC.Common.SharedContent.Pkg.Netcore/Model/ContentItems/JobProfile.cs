@@ -13,16 +13,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public string? DisplayText { get; set; }
 
         [JsonProperty("graphSync")]
-        public GraphSync GraphSync { get; set; }
+        public GraphSync? GraphSync { get; set; }
 
         [JsonProperty("alternativeTitle")]
         public string? AlternativeTitle { get; set; }
 
         [JsonProperty("pageLocation")]
-        public PageLocation PageLocation { get; set; }
+        public PageLocation? PageLocation { get; set; }
 
         [JsonProperty("relatedskills")]
-        public Relatedskills Relatedskills { get; set; }
+        public Relatedskills? Relatedskills { get; set; }
 
         [JsonProperty("overview")]
         public string? Overview { get; set; }
@@ -40,19 +40,19 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public string? Minimumhours { get; set; }
 
         [JsonProperty("workingPattern")]
-        public WorkingPattern WorkingPattern { get; set; }
+        public WorkingPattern? WorkingPattern { get; set; }
 
         [JsonProperty("workingHoursDetails")]
-        public WorkingHoursDetails WorkingHoursDetails { get; set; }
+        public WorkingHoursDetails? WorkingHoursDetails { get; set; }
 
         [JsonProperty("workingPatternDetails")]
-        public WorkingPatternDetails WorkingPatternDetails { get; set; }
+        public WorkingPatternDetails? WorkingPatternDetails { get; set; }
     }
 
     public partial class Relatedskills
     {
         [JsonProperty("contentItems")]
-        public RelatedSkill[] ContentItems { get; set; }
+        public RelatedSkill[]? ContentItems { get; set; }
     }
 
     public partial class RelatedSkill
@@ -67,7 +67,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public string? ONetRank { get; set; }
 
         [JsonProperty("graphSync")]
-        public GraphSync GraphSync { get; set; }
+        public GraphSync? GraphSync { get; set; }
 
         public int? Ordinal { get; set; }
 

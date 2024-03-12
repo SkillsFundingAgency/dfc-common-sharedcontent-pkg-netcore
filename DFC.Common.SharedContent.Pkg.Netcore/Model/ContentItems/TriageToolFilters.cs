@@ -7,7 +7,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
     public class TriageToolFilters
     {
         [JsonPropertyName("contentItems")]
-        public List<TriageToolFilters> ContentItems { get; set; }
+        public List<TriageToolFilters>? ContentItems { get; set; }
 
         [JsonProperty("displayText")]
         public string? DisplayText { get; set; }
