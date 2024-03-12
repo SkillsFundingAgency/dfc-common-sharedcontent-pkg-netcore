@@ -24,7 +24,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure
                 foreach (var endPoint in redis.GetEndPoints(configuredOnly: true))
                 {
                     var server = redis.GetServer(endPoint);
-                    if (server.ServerType != ServerType.Cluster && CheckGraphQlHealthAsync().Result == HttpStatusCode.OK)
+                    if (server.ServerType != ServerType.Cluster)
                     {
                         await redis.GetDatabase().PingAsync();
                         await server.PingAsync();
@@ -46,7 +46,14 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure
                     }
                 }
 
-                return HealthCheckResult.Healthy();
+                if (GraphQlHealthCheckAsync().Result == HttpStatusCode.OK)
+                {
+                    return HealthCheckResult.Healthy();
+                }
+                else
+                {
+                    return new HealthCheckResult(context.Registration.FailureStatus, description: "GraphQl has returned unhealthy");
+                }
             }
             catch (Exception ex)
             {
@@ -54,7 +61,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure
             }
         }
 
-        public async Task<HttpStatusCode> CheckGraphQlHealthAsync()
+        private async Task<HttpStatusCode> GraphQlHealthCheckAsync()
         {
             string query = $@"
                         query MyQuery {{
