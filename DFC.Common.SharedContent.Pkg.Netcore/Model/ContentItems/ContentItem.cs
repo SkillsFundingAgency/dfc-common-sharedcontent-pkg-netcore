@@ -15,9 +15,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public bool? IsActive { get; set; }
 
         [JsonProperty("content")]
-        public Content Content { get; set; }
+        public Content? Content { get; set; }
 
         [JsonProperty("graphSync")]
-        public GraphSync GraphSync { get; set; }
+        public GraphSync? GraphSync { get; set; }
     }
 }

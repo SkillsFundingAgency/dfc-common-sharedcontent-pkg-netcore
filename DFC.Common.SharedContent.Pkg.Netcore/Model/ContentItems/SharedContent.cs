@@ -6,6 +6,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
     public class SharedContent
     {
         [JsonPropertyName("contentItems")]
-        public List<ContentItem> ContentItems { get; set; }
+        public List<ContentItem>? ContentItems { get; set; }
     }
 }

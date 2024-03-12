@@ -11,7 +11,7 @@ public class TriagePage
     public object? Description { get; set; }
 
     [JsonPropertyName("pageLocation")]
-    public PageLocation PageLocation { get; set; }
+    public PageLocation? PageLocation { get; set; }
 
     [JsonPropertyName("breadcrumb")]
     public Breadcrumb Breadcrumb { get; set; }
@@ -26,19 +26,19 @@ public class TriagePage
     public bool? ShowHeroBanner { get; set; }
 
     [JsonPropertyName("herobanner")]
-    public Herobanner Herobanner { get; set; }
+    public Herobanner? Herobanner { get; set; }
 
     [JsonPropertyName("useInTriageTool")]
     public bool? UseInTriageTool { get; set; }
 
     [JsonPropertyName("triageToolSummary")]
-    public TriageToolSummary TriageToolSummary { get; set; }
+    public TriageToolSummary? TriageToolSummary { get; set; }
 
     [JsonPropertyName("triageToolFilters")]
-    public TriageToolFilters TriageToolFilters { get; set; }
+    public TriageToolFilters? TriageToolFilters { get; set; }
 
     [JsonPropertyName("flow")]
-    public Flow Flow { get; set; }
+    public Flow? Flow { get; set; }
 
     [JsonPropertyName("form")]
     public Form? Form { get; set; }
