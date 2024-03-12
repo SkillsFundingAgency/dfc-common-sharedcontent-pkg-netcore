@@ -18,5 +18,9 @@
         public const string SharedContent = "SharedContent";
         public const string ContactusSharedContent = "SharedContent/c0117ac7-115a-4bc1-9350-3fb4b00c7857";
         public const string SpeakToAnAdviserSharedContent = "SharedContent/2c9da1b3-3529-4834-afc9-9cd741e59788";
+        public const string PagesUrlSuffix = "Pagesurl";
+        public const string PageSuffix = "Page";
+        public const string PageLocationSuffix = "PageLocation";
+        public const string JobProfileSuffix = "JobProfiles";
     }
 }
