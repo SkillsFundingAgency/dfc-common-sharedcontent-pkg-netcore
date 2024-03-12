@@ -1,15 +1,20 @@
-﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
+using GraphQL.Client.Abstractions;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using StackExchange.Redis;
+using System.Net;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure
 {
     public class HealthCheck : IHealthCheck
     {
         private readonly IConnectionMultiplexer redis;
+        private readonly IGraphQLClient client;
 
-        public HealthCheck(IConnectionMultiplexer redisCache)
+        public HealthCheck(IConnectionMultiplexer redisCache, IGraphQLClient client)
         {
             redis = redisCache;
+            this.client = client;
         }
 
         public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
@@ -19,7 +24,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure
                 foreach (var endPoint in redis.GetEndPoints(configuredOnly: true))
                 {
                     var server = redis.GetServer(endPoint);
-                    if (server.ServerType != ServerType.Cluster)
+                    if (server.ServerType != ServerType.Cluster && CheckGraphQlHealthAsync().Result == HttpStatusCode.OK)
                     {
                         await redis.GetDatabase().PingAsync();
                         await server.PingAsync();
@@ -46,6 +51,28 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure
             catch (Exception ex)
             {
                 return new HealthCheckResult(context.Registration.FailureStatus, exception: ex);
+            }
+        }
+
+        public async Task<HttpStatusCode> CheckGraphQlHealthAsync()
+        {
+            string query = $@"
+                        query MyQuery {{
+                            sharedContent(first: 1) {{
+                                content {{
+                                    html
+                                }}
+                            }}
+                        }}";
+
+            var response = await client.SendQueryAsync<SharedHtmlResponse>(query);
+            if (response.Data.SharedContent.Any())
+            {
+                return HttpStatusCode.OK;
+            }
+            else
+            {
+                return HttpStatusCode.NotFound;
             }
         }
     }
