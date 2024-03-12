@@ -61,7 +61,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure
             }
         }
 
-        public async Task<HttpStatusCode> GraphQlHealthCheckAsync()
+        private async Task<HttpStatusCode> GraphQlHealthCheckAsync()
         {
             string query = $@"
                         query MyQuery {{
