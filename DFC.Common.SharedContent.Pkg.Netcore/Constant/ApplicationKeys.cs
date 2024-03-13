@@ -21,6 +21,6 @@
         public const string PagesUrlSuffix = "Pagesurl";
         public const string PageSuffix = "Page";
         public const string PageLocationSuffix = "PageLocation";
-        public const string JobProfileSuffix = "JobProfiles";
+        public const string JobProfileSuffix = "JobProfiles"; 
     }
 }
