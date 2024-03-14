@@ -19,11 +19,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public GraphSync GraphSync { get; set; }
 
         public List<JobProfile> JobProfiles { get; set; }
-    }
 
-    public class JobProfileCategoriesResponse
-    {
-        [JsonProperty("jobProfileCategory")]
-        public JobProfileCategory[] JobProfileCategories { get; set; }
+        [JsonProperty("pageLocation")]
+        public PageLocation PageLocation { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
     public class JobProfilesResponse
     {
         [JsonProperty("jobProfile")]
-        public List<JobProfile> JobProfiles { get; set; }
+        public List<JobProfile>? JobProfiles { get; set; }
     }
 }

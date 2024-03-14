@@ -78,16 +78,14 @@ public static class InitialiseExtensions
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfilesByCategoryQueryStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<Model.ContentItems.JobProfileCategoriesResponse>, DysacJobProfileCategoriesQueryStrategy>();
-
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<Model.Response.JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityQuestionSet>, DysacQuestionSetQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityFilteringQuestionResponse>, DysacFilteringQuestionQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityTraitResponse>, TraitsQueryStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileDysacResponse>, JobProfileOverviewQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfileOverviewQueryStrategy>();
 
         services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
