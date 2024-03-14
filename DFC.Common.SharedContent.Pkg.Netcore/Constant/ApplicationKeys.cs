@@ -12,7 +12,7 @@
         public const string DysacJobProfileOverviews = "DYSAC/JobProfileOverviews";
         public const string DysacShortQuestion = "DYSAC/ShortQuestion";
         public const string DysacPersonalityTrait = "DYSAC/Traits";
-        public const string JobProfileCategories = "JobProfiles/Categories";
+        public const string JobProfileCategories = "ExploreCareers/JobProfiles/Categories";
         public const string TriageToolFilters = "TriageToolFilters/All";
         public const string TriagePages = "TriageToolPages";
         public const string SharedContent = "SharedContent";
@@ -21,6 +21,6 @@
         public const string PagesUrlSuffix = "Pagesurl";
         public const string PageSuffix = "Page";
         public const string PageLocationSuffix = "PageLocation";
-        public const string JobProfileSuffix = "JobProfiles";
+        public const string JobProfileSuffix = "ExploreCareers/JobProfiles";
     }
 }
