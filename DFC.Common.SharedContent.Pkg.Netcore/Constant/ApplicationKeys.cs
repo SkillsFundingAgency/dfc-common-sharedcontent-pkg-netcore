@@ -13,8 +13,8 @@
         public const string DysacShortQuestion = "DYSAC/ShortQuestion";
         public const string DysacPersonalityTrait = "DYSAC/Traits";
         public const string JobProfileCategories = "ExploreCareers/JobProfiles/Categories";
-        public const string TriageToolFilters = "TriageToolFilters/All";
-        public const string TriagePages = "TriageToolPages";
+        public const string TriageToolFilters = "TriageTool/TriageToolFilters/All";
+        public const string TriagePages = "TriageTool/TriageToolPages";
         public const string SharedContent = "SharedContent";
         public const string ContactusSharedContent = "SharedContent/c0117ac7-115a-4bc1-9350-3fb4b00c7857";
         public const string SpeakToAnAdviserSharedContent = "SharedContent/2c9da1b3-3529-4834-afc9-9cd741e59788";
