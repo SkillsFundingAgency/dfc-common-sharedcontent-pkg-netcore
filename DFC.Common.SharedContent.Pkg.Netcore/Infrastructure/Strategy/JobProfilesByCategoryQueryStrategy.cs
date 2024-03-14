@@ -32,7 +32,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                 }}
             }}";
 
-            var responseCategory = await client.SendQueryAsync<Model.ContentItems.JobProfileCategoriesResponse>(categoryQuery);
+            var responseCategory = await client.SendQueryAsync<JobProfileCategoriesResponse>(categoryQuery);
 
             var categoryId = responseCategory.Data.JobProfileCategories.FirstOrDefault()?.ContentItemId;
 
