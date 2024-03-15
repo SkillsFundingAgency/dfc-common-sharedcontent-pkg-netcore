@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
+using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
@@ -37,5 +38,32 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 
         [JsonPropertyName("widgets")]
         public List<Widget>? ContentItems { get; set; }
+    }
+
+    public class FormElement
+    {
+        [JsonProperty("id")]
+        public string? Id { get; set; }
+    }
+
+    public class HtmlBody
+    {
+        [JsonPropertyName("html")]
+        public string? Html { get; set; }
+    }
+
+    public class Metadata
+    {
+        [JsonPropertyName("alignment")]
+        public string? Alignment { get; set; }
+
+        [JsonPropertyName("size")]
+        public int? Size { get; set; }
+    }
+
+    public class SharedContent
+    {
+        [JsonPropertyName("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 }
