@@ -1,4 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 
@@ -15,9 +16,13 @@ public class JobCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<Job
 
     public async Task<JobProfileCategoriesResponse> ExecuteQueryAsync(string key, string filter)
     {
-        string query = $@"
-                query JobProfileCategories {{
-                  jobProfileCategory(status: {filter}) {{
+        string jobProfileCategoryQuery = $@"
+                query MyQuery {{
+                  jobProfileCategory(where: {{displayText_not: ""null""}}, status: {filter}) {{
+                    contentItemId
+                    graphSync {{
+                      nodeId
+                    }}
                     displayText
                     pageLocation {{
                       fullUrl
@@ -27,7 +32,43 @@ public class JobCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<Job
                 }}
                ";
 
-        var response = await client.SendQueryAsync<JobProfileCategoriesResponse>(query);
-        return await Task.FromResult(response.Data);
+        string jobProfileQuery = @"
+                query MyQuery {{
+                  jobProfile(first: 1000, where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{0}""}}}}) {{
+                    displayText
+                    graphSync {{
+                      nodeId
+                    }}
+                    pageLocation {{
+                      fullUrl
+                    }}
+                    relatedskills {{
+                        contentItems {{
+                        ... on SOCSkillsMatrix {{
+                            displayText
+                            relatedSkill
+                            oNetAttributeType
+                            oNetRank
+                            graphSync {{
+                                nodeId
+                                }}
+                            }}
+                        }}
+                    }}
+                  }}
+                }}
+        ";
+
+        var response = await client.SendQueryAsync<JobProfileCategoriesResponse>(jobProfileCategoryQuery);
+        var categories = await Task.FromResult(response.Data);
+
+        foreach (var category in categories.JobProfileCategories)
+        {
+            var jobProfileResponse = await client.SendQueryAsync<JobProfilesResponse>(string.Format(jobProfileQuery, category.ContentItemId));
+
+            category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfiles);
+        }
+
+        return categories;
     }
 }

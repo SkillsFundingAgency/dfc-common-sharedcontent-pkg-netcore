@@ -7,7 +7,7 @@ using System;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfileOverviewQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfileDysacResponse>
+    public class JobProfileOverviewQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfilesResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PageUrlQueryStrategy> logger;
@@ -18,7 +18,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<JobProfileDysacResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<JobProfilesResponse> ExecuteQueryAsync(string key, string filter)
         {
             logger.LogInformation("JobProfileOverviewQueryStrategy -> ExecuteQueryAsync");
             string query = @$"query MyQuery {{
@@ -51,7 +51,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                                 }}
                             }}";
 
-            var response = await client.SendQueryAsync<JobProfileDysacResponse>(query);
+            var response = await client.SendQueryAsync<JobProfilesResponse>(query);
             return await Task.FromResult(response.Data);
         }
     }
