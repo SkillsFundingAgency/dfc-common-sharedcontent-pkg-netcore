@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
+namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 {
     public class Form
     {
