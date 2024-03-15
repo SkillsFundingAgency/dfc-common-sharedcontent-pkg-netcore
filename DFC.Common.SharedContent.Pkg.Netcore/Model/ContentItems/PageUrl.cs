@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 {
