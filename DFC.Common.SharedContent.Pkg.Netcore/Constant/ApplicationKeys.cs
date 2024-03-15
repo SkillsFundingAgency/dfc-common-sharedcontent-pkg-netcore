@@ -8,7 +8,6 @@
         public const string Prefix = "<<contentapiprefix>>/sharedcontent";
         public const string DysacFilteringQuestion = "DYSAC/FilteringQuestions";
         public const string DysacQuestionSet = "DYSAC/QuestionSets";
-        public const string DysacJobProfileCategories = "DYSAC/JobProfileCategories";
         public const string DysacJobProfileOverviews = "DYSAC/JobProfileOverviews";
         public const string DysacShortQuestion = "DYSAC/ShortQuestion";
         public const string DysacPersonalityTrait = "DYSAC/Traits";
