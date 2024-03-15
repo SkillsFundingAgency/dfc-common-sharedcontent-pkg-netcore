@@ -1,4 +1,5 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 

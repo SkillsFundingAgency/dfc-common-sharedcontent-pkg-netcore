@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using Newtonsoft.Json;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
