@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
+using Newtonsoft.Json;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner
 {
@@ -20,30 +21,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner
         public ContentItem[] ContentItems { get; set; }
     }
 
-    public partial class ContentItem
-    {
-        [JsonProperty("displayText")]
-        public string? DisplayText { get; set; }
-
-        [JsonProperty("isGlobal")]
-        public bool? IsGlobal { get; set; }
-
-        [JsonProperty("isActive")]
-        public bool? IsActive { get; set; }
-
-        [JsonProperty("content")]
-        public Content Content { get; set; }
-
-        [JsonProperty("graphSync")]
-        public GraphSync GraphSync { get; set; }
-    }
-
-    public partial class Content
-    {
-        [JsonProperty("html")]
-        public string? Html { get; set; }
-    }
-
     public partial class Banner
     {
         [JsonProperty("webPageURL")]
@@ -51,11 +28,5 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner
 
         [JsonProperty("webPageName")]
         public string? WebPageName { get; set; }
-    }
-
-    public partial class GraphSync
-    {
-        [JsonProperty("nodeId")]
-        public string? NodeId { get; set; }
     }
 }

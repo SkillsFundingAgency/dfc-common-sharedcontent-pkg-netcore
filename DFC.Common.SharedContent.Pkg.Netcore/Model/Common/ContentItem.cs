@@ -1,7 +1,7 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
 using Newtonsoft.Json;
 
-namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
+namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 {
     public class ContentItem
     {
@@ -19,5 +19,11 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 
         [JsonProperty("graphSync")]
         public GraphSync? GraphSync { get; set; }
+    }
+
+    public partial class Content
+    {
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 }

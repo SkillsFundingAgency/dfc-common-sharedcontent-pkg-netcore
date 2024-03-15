@@ -1,5 +1,4 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using System;
@@ -9,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
-public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfaceStrategy<Model.ContentItems.JobProfileCategoriesResponse>
+public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfaceStrategy<Model.Common.JobProfileCategoriesResponse>
 {
     private readonly IGraphQLClient client;
 
@@ -18,7 +17,7 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
         this.client = client;
     }
 
-    public async Task<Model.ContentItems.JobProfileCategoriesResponse> ExecuteQueryAsync(string key, string filter)
+    public async Task<Model.Common.JobProfileCategoriesResponse> ExecuteQueryAsync(string key, string filter)
     {
         string jobProfileCategoryQuery = $@"
                 query MyQuery {{
@@ -84,7 +83,7 @@ public class DysacJobProfileCategoriesQueryStrategy : ISharedContentRedisInterfa
                   }}
                 }}
         ";
-        var response = await client.SendQueryAsync<Model.ContentItems.JobProfileCategoriesResponse>(jobProfileCategoryQuery);
+        var response = await client.SendQueryAsync<Model.Common.JobProfileCategoriesResponse>(jobProfileCategoryQuery);
         var categories = await Task.FromResult(response.Data);
 
         foreach (var category in categories.JobProfileCategories)

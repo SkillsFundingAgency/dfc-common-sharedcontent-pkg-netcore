@@ -1,8 +1,7 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
-namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
+namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 {
     public class TriageToolFilters
     {
@@ -17,11 +16,5 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 
         [JsonProperty("contentType")]
         public string? ContentType { get; set; }
-    }
-
-    public partial class GraphSync
-    {
-        [JsonProperty("nodeId")]
-        public string? NodeId { get; set; }
     }
 }

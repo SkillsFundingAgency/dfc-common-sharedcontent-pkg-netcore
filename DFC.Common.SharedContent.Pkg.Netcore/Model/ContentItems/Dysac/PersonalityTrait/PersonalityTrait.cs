@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DFC.Common.SharedContent.Pkg.Netcore.Model;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.PersonalityTrait
 {
@@ -21,12 +22,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.Personal
 
         [JsonProperty("jobProfileCategories")]
         public JobProfileCategories JobProfileCategories { get; set; }
-    }
-
-    public partial class GraphSync
-    {
-        [JsonProperty("nodeId")]
-        public string? NodeId { get; set; }
     }
 
     public partial class JobProfileCategories

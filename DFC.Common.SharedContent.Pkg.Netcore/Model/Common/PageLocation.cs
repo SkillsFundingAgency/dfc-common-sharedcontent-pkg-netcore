@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
+namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 {
     public class PageLocation
     {
