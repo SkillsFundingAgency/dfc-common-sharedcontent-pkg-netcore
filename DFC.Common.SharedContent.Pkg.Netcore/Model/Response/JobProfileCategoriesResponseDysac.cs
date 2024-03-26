@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 {
-    public class JobProfileCategoriesResponse
+    public class JobProfileCategoriesResponseDysac
     {
         [JsonProperty("jobProfileCategory")]
         public JobProfileCategory[] JobProfileCategories { get; set; }

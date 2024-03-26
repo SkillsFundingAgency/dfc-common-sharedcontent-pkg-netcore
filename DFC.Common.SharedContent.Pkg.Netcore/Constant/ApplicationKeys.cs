@@ -11,7 +11,8 @@
         public const string DysacJobProfileOverviews = "DYSAC/JobProfileOverviews";
         public const string DysacShortQuestion = "DYSAC/ShortQuestion";
         public const string DysacPersonalityTrait = "DYSAC/Traits";
-        public const string JobProfileCategories = "JobProfiles/Categories";
+        public const string DysacJobProfileCategories = "DYSAC/JobProfiles/Categories";
+        public const string ExploreCareersJobProfileCategories = "ExploreCareers/JobProfiles/Categories";
         public const string TriageToolFilters = "TriageTool/TriageToolFilters/All";
         public const string TriagePages = "TriageTool/TriageToolPages";
         public const string SharedContent = "SharedContent";
