@@ -5,16 +5,16 @@ using GraphQL.Client.Abstractions;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class JobCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>
+public class JobCategoryQueryStrategyDysac : ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponseDysac>
 {
     private readonly IGraphQLClient client;
 
-    public JobCategoryQueryStrategy(IGraphQLClient client)
+    public JobCategoryQueryStrategyDysac(IGraphQLClient client)
     {
         this.client = client;
     }
 
-    public async Task<JobProfileCategoriesResponse> ExecuteQueryAsync(string key, string filter)
+    public async Task<JobProfileCategoriesResponseDysac> ExecuteQueryAsync(string key, string filter)
     {
         string jobProfileCategoryQuery = $@"
                 query MyQuery {{
@@ -59,7 +59,7 @@ public class JobCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<Job
                 }}
         ";
 
-        var response = await client.SendQueryAsync<JobProfileCategoriesResponse>(jobProfileCategoryQuery);
+        var response = await client.SendQueryAsync<JobProfileCategoriesResponseDysac>(jobProfileCategoryQuery);
         var categories = await Task.FromResult(response.Data);
 
         foreach (var category in categories.JobProfileCategories)
