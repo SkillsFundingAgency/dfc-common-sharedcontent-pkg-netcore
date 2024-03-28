@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfilesByCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfilesResponse>
+    public class JobProfilesByCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfilesResponseExploreCareers>
     {
         private readonly IGraphQLClient client;
 
@@ -22,9 +22,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.client = client;
         }
 
-        public async Task<JobProfilesResponse> ExecuteQueryAsync(string key, string status)
+        public async Task<JobProfilesResponseExploreCareers> ExecuteQueryAsync(string key, string status)
         {
             var filter = key.Substring(key.LastIndexOf("/") + 1);
+            filter = filter.Replace('-', ' ');
 
             string categoryQuery = $@"query MyQuery {{
                 jobProfileCategory(status: {status}, where: {{ displayText: ""{filter}""}}) {{
@@ -50,7 +51,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             }}
             ";
 
-            var responseProfiles = await client.SendQueryAsync<JobProfilesResponse>(profileQuery);
+            var responseProfiles = await client.SendQueryAsync<JobProfilesResponseExploreCareers>(profileQuery);
             return responseProfiles.Data;
         }
     }
