@@ -74,6 +74,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 
         [JsonProperty("relatedSkill")]
         public string? RelatedSkillDesc { get; set; }
+
+        [JsonProperty("relatedSOCcode")]
+        public string? RelatedSOCcode { get; set; }
     }
 
     public class WorkingPattern
