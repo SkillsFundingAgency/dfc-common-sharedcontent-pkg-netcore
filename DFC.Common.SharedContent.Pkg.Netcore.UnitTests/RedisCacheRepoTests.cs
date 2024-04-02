@@ -1,4 +1,5 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Extensions;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Constant;
+using DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
@@ -121,6 +122,24 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
         //    var string2 = await sharedContentRedisInterface.GetDataAsync<PersonalityQuestionSet>("QuestionSet");
+        //}
+
+        //[Fact]
+        //public async Task JobProfileSkillsStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    //var logger = new ILogger<RedisCacheRepoTests>();
+
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterface.GetDataAsync<JobProfileSkillsResponse>(ApplicationKeys.JobProfileSkillsSuffix + "/bookmaker", "PUBLISHED");
         //}
     }
 }
