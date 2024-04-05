@@ -15,19 +15,19 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public string? DisplayText { get; set; }
 
         [JsonProperty("pageLocation")]
-        public PageLocation PageLocation { get; set; }
+        public PageLocation? PageLocation { get; set; }
 
         [JsonProperty("otherrequirements")]
-        public Otherrequirements Otherrequirements { get; set; }
+        public Otherrequirements? Otherrequirements { get; set; }
 
         [JsonProperty("relatedrestrictions")]
-        public Relatedrestrictions Relatedrestrictions { get; set; }
+        public Relatedrestrictions? Relatedrestrictions { get; set; }
 
         [JsonProperty("digitalSkills")]
-        public DigitalSkills DigitalSkills { get; set; }
+        public DigitalSkills? DigitalSkills { get; set; }
 
         [JsonProperty("relatedskills")]
-        public Relatedskills Relatedskills { get; set; }
+        public Relatedskills? Relatedskills { get; set; }
     }
 
     public class Otherrequirements
@@ -39,7 +39,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class Relatedrestrictions
     {
         [JsonProperty("contentItems")]
-        public RelatedrestrictionsContentItem[] ContentItems { get; set; }
+        public RelatedrestrictionsContentItem[]? ContentItems { get; set; }
     }
     public class RelatedrestrictionsContentItem
     {
@@ -47,7 +47,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public string? DisplayText { get; set; }
 
         [JsonPropertyName("info")]
-        public Info Info { get; set; }
+        public Info? Info { get; set; }
 
         [JsonProperty("graphSync")]
         public GraphSync? GraphSync { get; set; }
@@ -62,7 +62,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class DigitalSkills
     {
         [JsonProperty("contentItems")]
-        public DigitalSkillsContentItem[] ContentItems { get; set; }
+        public DigitalSkillsContentItem[]? ContentItems { get; set; }
     }
 
     public class DigitalSkillsContentItem
