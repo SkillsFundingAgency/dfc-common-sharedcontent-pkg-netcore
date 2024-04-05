@@ -24,5 +24,6 @@
         public const string JobProfileSuffix = "ExploreCareers/JobProfiles";
         public const string SitemapPagesAll = "SitemapPages/ALL";
         public const string JobProfileSkillsSuffix = "JobProfileSkills";
+        public const string JobProfilesCarreerPath = "JobProfiles/CareerPath";
     }
 }
