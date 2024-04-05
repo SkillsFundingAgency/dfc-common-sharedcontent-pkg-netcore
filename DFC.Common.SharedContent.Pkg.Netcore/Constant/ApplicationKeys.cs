@@ -26,5 +26,6 @@
         public const string JobProfileSkillsSuffix = "JobProfileSkills";
         public const string JobProfileRelatedCareersPrefix = "RelatedCareers";
         public const string JobProfileRelatedCareersPrefixAll = "RelatedCareers/All";
+        public const string JobProfileHowToBecome = "JobProfiles/HowToBecome";
     }
 }
