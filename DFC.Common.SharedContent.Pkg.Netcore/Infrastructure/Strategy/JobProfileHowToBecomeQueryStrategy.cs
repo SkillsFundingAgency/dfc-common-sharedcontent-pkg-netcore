@@ -20,7 +20,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
         {
             logger.LogInformation("JobProfileHowToBecomeQueryStrategy -> ExecuteQueryAsync");
 
-            var urlName = key.Substring(key.IndexOf('/') + 1);
+            var urlName = key.Substring(key.LastIndexOf('/') + 1);
 
             string query = $@"query JobProfileHowToBecome {{
                   jobProfile(where: {{pageLocation: {{url: ""{urlName}""}}}}, status: {filter}) {{
