@@ -97,5 +97,6 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileSkillsResponse>, JobProfileSkillsStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<RelatedCareersResponse>, JobProfileRelatedCareersQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileHowToBecomeResponse>, JobProfileHowToBecomeQueryStrategy>();
     }
 }
