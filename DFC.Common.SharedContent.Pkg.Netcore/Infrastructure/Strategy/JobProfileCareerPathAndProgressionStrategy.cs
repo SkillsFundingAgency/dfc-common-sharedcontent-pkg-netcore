@@ -18,11 +18,11 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
         public async Task<JobProfileCareerPathAndProgressionResponse> ExecuteQueryAsync(string key, string filter)
         {
-            var text = key.Substring(key.LastIndexOf("/") + 1);
+            var text = string.Concat("/", key.Substring(key.LastIndexOf("/") + 1));
 
             logger.LogInformation("JobProfileCareerPathAndProgressionResponse -> ExecuteQueryAsync");
             string query = @$"query JobProfileCareerPathProgression {{
-              jobProfile(where: {{pageLocation: {{url: ""/{text}""}}}}) {{
+              jobProfile(where: {{pageLocation: {{url: ""{text}""}}}}) {{
                 displayText
                 careerpathandprogression {{
                   html

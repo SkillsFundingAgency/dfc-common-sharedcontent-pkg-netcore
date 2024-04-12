@@ -28,5 +28,6 @@
         public const string JobProfileRelatedCareersPrefixAll = "RelatedCareers/All";
         public const string JobProfileHowToBecome = "JobProfiles/HowToBecome";
         public const string JobProfilesCarreerPath = "JobProfiles/CareerPath";
+        public const string JobProfilesOverview = "JobProfiles/Overview";
     }
 }
