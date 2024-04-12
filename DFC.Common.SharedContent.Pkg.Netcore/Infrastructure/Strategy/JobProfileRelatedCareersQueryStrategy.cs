@@ -12,7 +12,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
     public class JobProfileRelatedCareersQueryStrategy : ISharedContentRedisInterfaceStrategy<RelatedCareersResponse>
     {
-        private static int RelatedCareerCount = 1000;
         private readonly IGraphQLClient client;
         private readonly ILogger<JobProfileRelatedCareersQueryStrategy> logger;
 
@@ -24,22 +23,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
         public async Task<RelatedCareersResponse> ExecuteQueryAsync(string key, string filter)
         {
-            var id = key.Substring(key.IndexOf('/') + 1);
-            string conditionPart = "graphSync";
-            string conditionCheck = "nodeId_contains";
-           
-            if (id == "All")
-            {
-                id = string.Empty;
-            }
-            else if (!IsGuid(id))
-            {
-                conditionPart = "pageLocation";
-                conditionCheck = "urlName";
-            }
+            var url = key.Substring(key.LastIndexOf('/') + 1);
 
             string query = $@"query MyQuery {{
-  jobProfile(where: {{{conditionPart}: {{{conditionCheck}: ""{id}""}}}}, status: {filter}, first: {RelatedCareerCount}) {{
+  jobProfile(where: {{pageLocation: {{urlName: ""{url}""}}}}, status: {filter}) {{
     displayText
     pageLocation {{
       urlName
@@ -66,12 +53,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
             var response = await client.SendQueryAsync<RelatedCareersResponse>(query);
             return response.Data;
-        }
-
-        public bool IsGuid(string id)
-        {
-            Guid nodeId;
-            return Guid.TryParse(id, out nodeId);
         }
     }
 }
