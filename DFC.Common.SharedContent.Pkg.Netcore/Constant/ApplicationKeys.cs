@@ -27,6 +27,7 @@
         public const string JobProfileRelatedCareersPrefix = "JobProfileRelatedCareers";
         public const string JobProfileHowToBecome = "JobProfiles/HowToBecome";
         public const string JobProfilesCarreerPath = "JobProfiles/CareerPath";
+        public const string JobProfileWhatYoullDo = "JobProfiles/WhatYoullDo";
         public const string JobProfileVideoPrefix = "JobProfiles/Video";
     }
 }
