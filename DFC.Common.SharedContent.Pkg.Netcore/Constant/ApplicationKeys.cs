@@ -24,10 +24,11 @@
         public const string JobProfileSuffix = "ExploreCareers/JobProfiles";
         public const string SitemapPagesAll = "SitemapPages/ALL";
         public const string JobProfileSkillsSuffix = "JobProfileSkills";
-        public const string JobProfileRelatedCareersPrefix = "RelatedCareers";
-        public const string JobProfileRelatedCareersPrefixAll = "RelatedCareers/All";
+        public const string JobProfileRelatedCareersPrefix = "JobProfileRelatedCareers";
         public const string JobProfileHowToBecome = "JobProfiles/HowToBecome";
         public const string JobProfilesCarreerPath = "JobProfiles/CareerPath";
         public const string JobProfilesOverview = "JobProfiles/Overview";
+        public const string JobProfileWhatYoullDo = "JobProfiles/WhatYoullDo";
+        public const string JobProfileVideoPrefix = "JobProfiles/Video";
     }
 }
