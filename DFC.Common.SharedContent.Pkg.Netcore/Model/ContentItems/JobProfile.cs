@@ -1,10 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 {
@@ -74,23 +69,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 
         [JsonProperty("relatedSkill")]
         public string? RelatedSkillDesc { get; set; }
-    }
 
-    public class WorkingPattern
-    {
-        [JsonProperty("contentItems")]
-        public List<ContentItem> ContentItems { get; set; }
-    }
-
-    public class WorkingHoursDetails
-    {
-        [JsonProperty("contentItems")]
-        public List<ContentItem> ContentItems { get; set; }
-    }
-
-    public class WorkingPatternDetails
-    {
-        [JsonProperty("contentItems")]
-        public List<ContentItem> ContentItems { get; set; }
+        [JsonProperty("relatedSOCcode")]
+        public string? RelatedSOCcode { get; set; }
     }
 }

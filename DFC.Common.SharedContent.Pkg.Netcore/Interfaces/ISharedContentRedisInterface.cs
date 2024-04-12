@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Json;
-
-namespace DFC.Common.SharedContent.Pkg.Netcore.Interfaces
+﻿namespace DFC.Common.SharedContent.Pkg.Netcore.Interfaces
 {
     public interface ISharedContentRedisInterface
     {
