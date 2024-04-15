@@ -23,6 +23,7 @@
         public const string PageLocationSuffix = "PageLocation";
         public const string JobProfileSuffix = "ExploreCareers/JobProfiles";
         public const string SitemapPagesAll = "SitemapPages/ALL";
+        public const string JobProfileCurrentOpportunitiesAllJobProfiles = "JobProfiles/CurrentOpportunities/AllJobProfiles";
         public const string JobProfileSkillsSuffix = "JobProfileSkills";
         public const string JobProfileRelatedCareersPrefix = "JobProfileRelatedCareers";
         public const string JobProfileHowToBecome = "JobProfiles/HowToBecome";
