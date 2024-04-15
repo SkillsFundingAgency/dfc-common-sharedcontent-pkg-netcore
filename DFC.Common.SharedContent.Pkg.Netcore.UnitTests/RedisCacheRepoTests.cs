@@ -141,7 +141,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 
         //    var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
-        //    var string2 = await sharedContentRedisInterface.GetDataAsyncWithExpire<JobProfileCurrentOpportunitiesResponse>(ApplicationKeys.JobProfileCurrentOpportunitiesAllJobProfiles, "PUBLISHED", 48);
+        //    var string2 = await sharedContentRedisInterface.GetDataAsyncWithExpiry<JobProfileCurrentOpportunitiesResponse>(ApplicationKeys.JobProfileCurrentOpportunitiesAllJobProfiles, "PUBLISHED");
         //}
     }
 }

@@ -42,7 +42,7 @@ public class SharedContentRedis : ISharedContentRedisInterface
         }
     }
 
-    public async Task<T?> GetDataAsyncWithExpire<T>(string cacheKey, string filter, double expire = 4)
+    public async Task<T?> GetDataAsyncWithExpiry<T>(string cacheKey, string filter, double expire = 24)
     {
         try
         {
