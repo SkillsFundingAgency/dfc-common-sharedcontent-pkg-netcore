@@ -2,6 +2,7 @@
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
+using System.Text;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
@@ -32,9 +33,33 @@ public class JobCategoryQueryStrategyDysac : ISharedContentRedisInterfaceStrateg
                 }}
                ";
 
-        string jobProfileQuery = @"
+        var response = await client.SendQueryAsync<JobProfileCategoriesResponseDysac>(jobProfileCategoryQuery);
+        var categories = await Task.FromResult(response.Data);
+
+        foreach (var category in categories.JobProfileCategories)
+        {
+            int skip = 0;
+            var jobProfileResponse = await client.SendQueryAsync<JobProfilesResponse>(string.Format(GetJobProfileQuery(skip), category.ContentItemId));
+            category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfiles);
+
+            skip += 100;
+            if (category.JobProfiles.Count() == skip)
+            {
+                jobProfileResponse = await client.SendQueryAsync<JobProfilesResponse>(string.Format(GetJobProfileQuery(skip), category.ContentItemId));
+                category.JobProfiles.AddRange(await Task.FromResult(jobProfileResponse.Data.JobProfiles));
+            }
+        }
+
+        return categories;
+    }
+
+    private string GetJobProfileQuery(int skip)
+    {
+        StringBuilder sb = new StringBuilder(@"
                 query MyQuery {{
-                  jobProfile(first: 1000, where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{0}""}}}}) {{
+                  jobProfile(first: 100, skip: ");
+        sb.Append(skip.ToString());
+        sb.Append(@", where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{0}""}}}}) {{
                     displayText
                     graphSync {{
                       nodeId
@@ -57,18 +82,7 @@ public class JobCategoryQueryStrategyDysac : ISharedContentRedisInterfaceStrateg
                     }}
                   }}
                 }}
-        ";
-
-        var response = await client.SendQueryAsync<JobProfileCategoriesResponseDysac>(jobProfileCategoryQuery);
-        var categories = await Task.FromResult(response.Data);
-
-        foreach (var category in categories.JobProfileCategories)
-        {
-            var jobProfileResponse = await client.SendQueryAsync<JobProfilesResponse>(string.Format(jobProfileQuery, category.ContentItemId));
-
-            category.JobProfiles = await Task.FromResult(jobProfileResponse.Data.JobProfiles);
-        }
-
-        return categories;
+        ");
+        return sb.ToString();
     }
 }
