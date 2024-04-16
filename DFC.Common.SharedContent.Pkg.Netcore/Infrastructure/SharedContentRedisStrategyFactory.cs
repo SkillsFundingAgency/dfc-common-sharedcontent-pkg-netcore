@@ -17,8 +17,8 @@ public class SharedContentRedisStrategyFactory : ISharedContentRedisInterfaceStr
         return _serviceProvider.GetRequiredService<ISharedContentRedisInterfaceStrategy<T>>();
     }
 
-    public ISharedContentRedisInterfaceStrategyWithRedisExpire<T> GetStrategyWithRedisExpire<T>()
+    public ISharedContentRedisInterfaceStrategyWithRedisExpiry<T> GetStrategyWithRedisExpiry<T>()
     {
-        return _serviceProvider.GetRequiredService<ISharedContentRedisInterfaceStrategyWithRedisExpire<T>>();
+        return _serviceProvider.GetRequiredService<ISharedContentRedisInterfaceStrategyWithRedisExpiry<T>>();
     }
 }

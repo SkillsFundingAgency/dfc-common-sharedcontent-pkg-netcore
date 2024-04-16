@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces; 
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 {
@@ -160,6 +161,22 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
         //    var string2 = await sharedContentRedisInterface.GetDataAsync<JobProfileSkillsResponse>(ApplicationKeys.JobProfileSkillsSuffix + "/bookmaker", "PUBLISHED");
+        //}
+
+        //[Fact]
+        //public async Task JobProfileOverviewStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfilesOverviewResponse>(ApplicationKeys.JobProfilesOverview + "/auditor", "PUBLISHED");
         //}
     }
 }

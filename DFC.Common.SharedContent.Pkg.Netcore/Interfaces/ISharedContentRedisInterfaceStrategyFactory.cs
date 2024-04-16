@@ -4,7 +4,7 @@ public interface ISharedContentRedisInterfaceStrategyFactory
 {
     ISharedContentRedisInterfaceStrategy<T> GetStrategy<T>();
 
-    ISharedContentRedisInterfaceStrategyWithRedisExpire<T> GetStrategyWithRedisExpire<T>();
+    ISharedContentRedisInterfaceStrategyWithRedisExpiry<T> GetStrategyWithRedisExpiry<T>();
 }
 
 public interface ISharedContentRedisInterfaceStrategy<T>
@@ -12,7 +12,7 @@ public interface ISharedContentRedisInterfaceStrategy<T>
     Task<T> ExecuteQueryAsync(string key, string filter);
 }
 
-public interface ISharedContentRedisInterfaceStrategyWithRedisExpire<T>
+public interface ISharedContentRedisInterfaceStrategyWithRedisExpiry<T>
 {
-    Task<T> ExecuteQueryAsync(string key, string filter, double expire = 4);
+    Task<T> ExecuteQueryAsync(string key, string filter, double expire = 24);
 }

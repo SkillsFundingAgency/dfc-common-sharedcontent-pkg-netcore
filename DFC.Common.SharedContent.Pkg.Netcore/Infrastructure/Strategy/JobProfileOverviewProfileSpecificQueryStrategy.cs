@@ -1,12 +1,11 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfileOverviewProfileSpecificQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfilesOverviewResponse>
+    public class JobProfileOverviewProfileSpecificQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesOverviewResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<JobProfileOverviewProfileSpecificQueryStrategy> logger;
@@ -17,14 +16,14 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<JobProfilesOverviewResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<JobProfilesOverviewResponse> ExecuteQueryAsync(string key, string filter, double expire = 24)
         {
             logger.LogInformation("JobProfileOverviewProfileSpecificQueryStrategy -> ExecuteQueryAsync");
 
-            var text = string.Concat("/", key.Substring(key.LastIndexOf("/") + 1));
+            var url = string.Concat("/", key.Substring(key.LastIndexOf("/") + 1));
 
             string query = @$"query JobProfileOverview {{
-                  jobProfile(where: {{pageLocation: {{url: ""{text}""}}}}) {{
+                  jobProfile(where: {{pageLocation: {{url: ""{url}""}}}}) {{
                     displayText
                     pageLocation {{
                       fullUrl
