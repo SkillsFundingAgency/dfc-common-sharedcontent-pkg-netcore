@@ -7,7 +7,7 @@ using System;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfileCurrentOpportunitiesStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpire<JobProfileCurrentOpportunitiesResponse>
+    public class JobProfileCurrentOpportunitiesStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCurrentOpportunitiesResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PageUrlQueryStrategy> logger;

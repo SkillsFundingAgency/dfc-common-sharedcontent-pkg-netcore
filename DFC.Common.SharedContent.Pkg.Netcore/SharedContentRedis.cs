@@ -55,7 +55,7 @@ public class SharedContentRedis : ISharedContentRedisInterface
                 return JsonConvert.DeserializeObject<T>(cachedContent);
             }
 
-            var strategy = sharedContentRedisInterfaceStrategyFactory.GetStrategyWithRedisExpire<T>();
+            var strategy = sharedContentRedisInterfaceStrategyFactory.GetStrategyWithRedisExpiry<T>();
 
             var staxContent = await ReturnDataFromStrategyWithExpireAsync(strategy, cacheKey, filter, expire);
 
@@ -80,7 +80,7 @@ public class SharedContentRedis : ISharedContentRedisInterface
         return true;
     }
 
-    private async Task<T?> ReturnDataFromStrategyWithExpireAsync<T>(ISharedContentRedisInterfaceStrategyWithRedisExpire<T> strategy, string cacheKey, string filter, double expire)
+    private async Task<T?> ReturnDataFromStrategyWithExpireAsync<T>(ISharedContentRedisInterfaceStrategyWithRedisExpiry<T> strategy, string cacheKey, string filter, double expire)
     {
         var staxContent = await strategy.ExecuteQueryAsync(cacheKey, filter);
 
