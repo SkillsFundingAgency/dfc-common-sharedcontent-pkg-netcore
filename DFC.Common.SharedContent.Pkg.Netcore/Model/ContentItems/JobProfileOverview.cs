@@ -32,6 +32,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         [JsonProperty("maximumhours")]
         public string? Maximumhours { get; set; }
 
+        [JsonProperty("sOCCode")]
+        public SocCode? SocCode { get; set; }
+
         [JsonProperty("workingHoursDetails")]
         public WorkingHoursDetails? WorkingHoursDetails { get; set; }
 
