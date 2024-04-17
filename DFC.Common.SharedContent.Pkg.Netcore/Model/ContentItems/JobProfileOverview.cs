@@ -1,7 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles;
 using Newtonsoft.Json;
-using System.Reflection.Emit;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
 {
