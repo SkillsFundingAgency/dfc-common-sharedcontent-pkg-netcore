@@ -21,10 +21,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         public string? Overview { get; set; }
 
         [JsonProperty("salarystarterperyear")]
-        public string? Salarystarterperyear { get; set; }
+        public string? SalaryStarter { get; set; }
 
         [JsonProperty("salaryexperiencedperyear")]
-        public string? Salaryexperiencedperyear { get; set; }
+        public string? SalaryExperienced { get; set; }
 
         [JsonProperty("minimumhours")]
         public string? Minimumhours { get; set; }
