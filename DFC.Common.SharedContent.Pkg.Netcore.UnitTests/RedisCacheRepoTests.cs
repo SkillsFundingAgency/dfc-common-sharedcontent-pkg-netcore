@@ -22,7 +22,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DFC.Common.SharedContent.Pkg.Netcore.Interfaces; 
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using AutoMapper;
+using DFC.FindACourseClient;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 {
@@ -178,5 +180,38 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 
         //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfilesOverviewResponse>(ApplicationKeys.JobProfilesOverview + "/auditor", "PUBLISHED");
         //}
+
+        [Fact]
+        public async Task JobProfileCurrentOpportunitiesCoursesStrategy_ExecuteQueryAsync_TestAsync()
+        {
+            //Arrange
+            int numberVacanciesFound = 2;
+
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+                    services.AddSingleton(serviceProvider =>
+                    {
+                        return new MapperConfiguration(cfg =>
+                        {
+                            cfg.AddProfiles(
+                                new List<Profile>
+                                {
+                                    new FindACourseProfile(),
+                                });
+                        }).CreateMapper();
+                    });
+                })
+                .Build();
+
+            var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+            //Act
+            var response = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<CourseResponse>(ApplicationKeys.JobProfileCurrentOpportunitiesCoursesPrefix + "/'building services engineering'", "PUBLISHED").ConfigureAwait(false);
+
+            //Asserts
+            response?.Courses?.Count().Equals(numberVacanciesFound);
+        }
     }
 }
