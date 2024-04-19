@@ -80,7 +80,7 @@ public static class InitialiseExtensions
                 AccessKey = "  ",
                 CollectionId = "CourseSearchAudit",
                 DatabaseId = "dfc-digital-audit",
-                EndpointUrl = new Uri(""),
+                EndpointUrl = new Uri("https://localhost:8080"),
                 PartitionKey = "/PartitionKey",
             },
             PolicyOptions = new PolicyOptions()
