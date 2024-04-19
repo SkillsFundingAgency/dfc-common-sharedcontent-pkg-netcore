@@ -85,7 +85,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public RelatedRegistrations? RelatedRegistrations { get; set; }
     }
 
-    public class ContentItem
+    public class ContentItemHTB
     {
         [JsonProperty("displayText")]
         public string? DisplayText { get; set; }
@@ -106,7 +106,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class ApprenticeshipEntryRequirements
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class Apprenticeshipfurtherroutesinfo
@@ -130,7 +130,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class CollegeEntryRequirements
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class Collegefurtherrouteinfo
@@ -184,49 +184,49 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class RelatedApprenticeshipLinks
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class RelatedApprenticeshipRequirements
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class RelatedCollegeLinks
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class RelatedCollegeRequirements
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class RelatedRegistrations
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class RelatedUniversityLinks
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class RelatedUniversityRequirements
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class UniversityEntryRequirements
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class Universityfurtherrouteinfo
