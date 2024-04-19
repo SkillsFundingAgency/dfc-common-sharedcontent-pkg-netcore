@@ -24,7 +24,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-		<PackageReference Include="DFC.FindACourseClient" Version="3.0.6" />
+		<PackageReference Include="DFC.FindACourseClient" Version="57.2.0" />
 		<PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="6.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
