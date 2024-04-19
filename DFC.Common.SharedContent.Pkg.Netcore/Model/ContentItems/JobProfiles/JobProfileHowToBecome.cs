@@ -85,6 +85,24 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public RelatedRegistrations? RelatedRegistrations { get; set; }
     }
 
+    public class ContentItem
+    {
+        [JsonProperty("displayText")]
+        public string? DisplayText { get; set; }
+
+        [JsonProperty("description")]
+        public string? Description { get; set; }
+
+        [JsonProperty("info")]
+        public Info? Info { get; set; }
+
+        [JsonProperty("text")]
+        public string? Text { get; set; }
+
+        [JsonProperty("uRL")]
+        public string? URL { get; set; }
+    }
+
     public class ApprenticeshipEntryRequirements
     {
         [JsonProperty("contentItems")]
