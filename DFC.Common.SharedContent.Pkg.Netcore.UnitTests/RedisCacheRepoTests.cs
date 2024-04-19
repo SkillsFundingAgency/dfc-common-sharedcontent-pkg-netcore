@@ -82,7 +82,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var host = Host.CreateDefaultBuilder()
         //        .ConfigureServices((context, services) =>
         //        {
-        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //            services.AddSharedContentRedisInterface("");
         //        })
         //        .Build();
 
@@ -99,7 +99,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var host = Host.CreateDefaultBuilder()
         //        .ConfigureServices((context, services) =>
         //        {
-        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //            services.AddSharedContentRedisInterface("");
 
         //        })
         //        .Build();
@@ -117,7 +117,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var host = Host.CreateDefaultBuilder()
         //        .ConfigureServices((context, services) =>
         //        {
-        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //            services.AddSharedContentRedisInterface("");
 
         //        })
         //        .Build();
@@ -137,7 +137,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var host = Host.CreateDefaultBuilder()
         //        .ConfigureServices((context, services) =>
         //        {
-        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //            services.AddSharedContentRedisInterface("");
 
         //        })
         //        .Build();
@@ -155,7 +155,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var host = Host.CreateDefaultBuilder()
         //        .ConfigureServices((context, services) =>
         //        {
-        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //            services.AddSharedContentRedisInterface("");
 
         //        })
         //        .Build();
@@ -171,7 +171,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var host = Host.CreateDefaultBuilder()
         //        .ConfigureServices((context, services) =>
         //        {
-        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //            services.AddSharedContentRedisInterface("");
 
         //        })
         //        .Build();
@@ -190,7 +190,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var host = Host.CreateDefaultBuilder()
         //        .ConfigureServices((context, services) =>
         //        {
-        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //            services.AddSharedContentRedisInterface("");
         //            services.AddSingleton(serviceProvider =>
         //            {
         //                return new MapperConfiguration(cfg =>
