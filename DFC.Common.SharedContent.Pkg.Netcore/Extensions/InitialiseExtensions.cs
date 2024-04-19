@@ -1,4 +1,6 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
+﻿using AutoMapper;
+using AutoMapper.Configuration;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
@@ -8,15 +10,18 @@ using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.SharedHtml;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DFC.Common.SharedContent.Pkg.Netcore.RequestHandler;
+using DFC.FindACourseClient;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.Documents;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using RestSharp;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 
@@ -59,6 +64,46 @@ public static class InitialiseExtensions
             var client = new RestClient(option);
             return client;
         });
+
+        var courseSearchClientSettings = new CourseSearchClientSettings
+        {
+            CourseSearchSvcSettings = new CourseSearchSvcSettings()
+            {
+                ApiKey = "  ",
+                ServiceEndpoint = new Uri("https://localhost:8080"),
+                RequestTimeOutSeconds = 10,
+                SearchPageSize = "20",
+                TransientErrorsNumberOfRetries = 3,
+            },
+            CourseSearchAuditCosmosDbSettings = new CourseSearchAuditCosmosDbSettings()
+            {
+                AccessKey = "  ",
+                CollectionId = "CourseSearchAudit",
+                DatabaseId = "dfc-digital-audit",
+                EndpointUrl = new Uri(""),
+                PartitionKey = "/PartitionKey",
+            },
+            PolicyOptions = new PolicyOptions()
+            {
+                //HttpCircuitBreaker.DurationOfBreak = "00:01:00",
+                HttpCircuitBreaker = new CircuitBreakerPolicyOptions()
+                {
+                    DurationOfBreak = new TimeSpan(0, 0, 10),
+                    ExceptionsAllowedBeforeBreaking = 3,
+                },
+                HttpRetry = new RetryPolicyOptions()
+                {
+                    BackoffPower = 2,
+                    Count = 3,
+                },
+            },
+        };
+
+        services.AddSingleton(courseSearchClientSettings);
+        services.AddScoped<ICourseSearchApiService, CourseSearchApiService>();
+        services.AddFindACourseServicesWithoutFaultHandling(courseSearchClientSettings);
+        var policyRegistry = services.AddPolicyRegistry();
+        services.AddFindACourseTransientFaultHandlingPolicies(courseSearchClientSettings, policyRegistry);
 
         services.AddScoped<ISharedContentRedisInterfaceStrategy<Page>, PageQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategy<SitemapResponse>, PageSitemapStrategy>();
@@ -105,5 +150,6 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesOverviewResponse>, JobProfileOverviewProfileSpecificQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileWhatYoullDoResponse>, JobProfileWhatYoullDoQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileVideoResponse>, JobProfileVideoQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<CourseResponse>, JobProfileCurrentOpportunitiesCoursesStrategy>();
     }
 }
