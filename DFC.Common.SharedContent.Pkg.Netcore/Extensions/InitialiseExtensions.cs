@@ -69,18 +69,18 @@ public static class InitialiseExtensions
         {
             CourseSearchSvcSettings = new CourseSearchSvcSettings()
             {
-                ApiKey = "8f3bf8c7a39145bb9e36f75cd4452219",
-                ServiceEndpoint = new Uri("https://dev.api.nationalcareersservice.org.uk/coursedirectory/findacourse/"),
+                ApiKey = "  ",
+                ServiceEndpoint = new Uri("https://localhost:8080"),
                 RequestTimeOutSeconds = 10,
                 SearchPageSize = "20",
                 TransientErrorsNumberOfRetries = 3,
             },
             CourseSearchAuditCosmosDbSettings = new CourseSearchAuditCosmosDbSettings()
             {
-                AccessKey = "wBZzC3WgeYkhw3ZLTzfklufnHxYvLuSxj005wtujhFpq3b2AL2bX37rH1oUNrD7lUAQzWmWHZSFg416kmRg5ZQ==",
+                AccessKey = "  ",
                 CollectionId = "CourseSearchAudit",
                 DatabaseId = "dfc-digital-audit",
-                EndpointUrl = new Uri("https://dfc-beta-dev-01-int-av-audit.documents.azure.com:443/"),
+                EndpointUrl = new Uri(""),
                 PartitionKey = "/PartitionKey",
             },
             PolicyOptions = new PolicyOptions()
