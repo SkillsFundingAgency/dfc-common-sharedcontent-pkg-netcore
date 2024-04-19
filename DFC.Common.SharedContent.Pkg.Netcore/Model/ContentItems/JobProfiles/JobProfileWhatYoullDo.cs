@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
+using Newtonsoft.Json;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
 {
@@ -18,12 +19,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
 
         [JsonProperty("relatedUniforms")]
         public RelatedUniforms? RelatedUniforms { get; set; }
-    }
-
-    public class ContentItem
-    {
-        [JsonProperty("description")]
-        public string? Description { get; set; }
     }
 
     public class Daytodaytasks
