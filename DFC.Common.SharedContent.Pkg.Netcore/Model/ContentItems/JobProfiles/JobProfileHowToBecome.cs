@@ -1,4 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
+using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
@@ -84,147 +85,171 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public RelatedRegistrations? RelatedRegistrations { get; set; }
     }
 
+    public class ContentItem
+    {
+        [JsonProperty("displayText")]
+        public string? DisplayText { get; set; }
+
+        [JsonProperty("description")]
+        public string? Description { get; set; }
+
+        [JsonProperty("info")]
+        public Info? Info { get; set; }
+
+        [JsonProperty("text")]
+        public string? Text { get; set; }
+
+        [JsonProperty("uRL")]
+        public string? URL { get; set; }
+    }
+
     public class ApprenticeshipEntryRequirements
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class Apprenticeshipfurtherroutesinfo
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Apprenticeshiprelevantsubjects
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Careertips
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class CollegeEntryRequirements
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class Collegefurtherrouteinfo
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Collegerelevantsubjects
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Directapplication
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Entryroutes
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Furtherinformation
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Otherroutes
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Professionalandindustrybodies
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
+    }
+
+    public class RealStory
+    {
+        [JsonProperty("contentItems")]
+        public List<object>? ContentItems { get; set; }
     }
 
     public class RelatedApprenticeshipLinks
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class RelatedApprenticeshipRequirements
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class RelatedCollegeLinks
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class RelatedCollegeRequirements
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class RelatedRegistrations
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class RelatedUniversityLinks
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class RelatedUniversityRequirements
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class UniversityEntryRequirements
     {
-        [JsonPropertyName("contentItems")]
-        public List<object> ContentItems { get; set; }
+        [JsonProperty("contentItems")]
+        public List<ContentItem>? ContentItems { get; set; }
     }
 
     public class Universityfurtherrouteinfo
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Universityrelevantsubjects
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Volunteering
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 
     public class Work
     {
-        [JsonPropertyName("html")]
-        public string Html { get; set; }
+        [JsonProperty("html")]
+        public string? Html { get; set; }
     }
 }
