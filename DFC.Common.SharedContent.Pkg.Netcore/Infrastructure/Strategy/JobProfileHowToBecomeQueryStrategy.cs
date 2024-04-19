@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfileHowToBecomeQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfileHowToBecomeResponse>
+    public class JobProfileHowToBecomeQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileHowToBecomeResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<JobProfileHowToBecomeQueryStrategy> logger;
@@ -16,7 +16,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<JobProfileHowToBecomeResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<JobProfileHowToBecomeResponse> ExecuteQueryAsync(string key, string filter, double expire = 24)
         {
             logger.LogInformation("JobProfileHowToBecomeQueryStrategy -> ExecuteQueryAsync");
 

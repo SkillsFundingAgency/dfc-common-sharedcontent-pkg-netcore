@@ -1,4 +1,5 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
 using Newtonsoft.Json;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
@@ -19,6 +20,18 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 
         [JsonProperty("graphSync")]
         public GraphSync? GraphSync { get; set; }
+
+        [JsonProperty("description")]
+        public object? Description { get; set; }
+
+        [JsonProperty("info")]
+        public Info? Info { get; set; }
+
+        [JsonProperty("text")]
+        public string? Text { get; set; }
+
+        [JsonProperty("uRL")]
+        public string? URL { get; set; }
     }
 
     public partial class Content
