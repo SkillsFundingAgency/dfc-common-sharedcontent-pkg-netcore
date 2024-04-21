@@ -13,13 +13,13 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public PageLocation? PageLocation { get; set; }
 
         [JsonPropertyName("entryroutes")]
-        public Entryroutes? Entryroutes { get; set; }
+        public Entryroutes? EntryRoutes { get; set; }
 
         [JsonPropertyName("universityrelevantsubjects")]
-        public Universityrelevantsubjects? Universityrelevantsubjects { get; set; }
+        public Universityrelevantsubjects? UniversityRelevantSubjects { get; set; }
 
         [JsonPropertyName("universityfurtherrouteinfo")]
-        public Universityfurtherrouteinfo? Universityfurtherrouteinfo { get; set; }
+        public Universityfurtherrouteinfo? UniversityFurtherRouteInfo { get; set; }
 
         [JsonPropertyName("universityEntryRequirements")]
         public UniversityEntryRequirements? UniversityEntryRequirements { get; set; }
@@ -31,10 +31,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public RelatedUniversityLinks? RelatedUniversityLinks { get; set; }
 
         [JsonPropertyName("collegerelevantsubjects")]
-        public Collegerelevantsubjects? Collegerelevantsubjects { get; set; }
+        public Collegerelevantsubjects? CollegeRelevantSubjects { get; set; }
 
         [JsonPropertyName("collegefurtherrouteinfo")]
-        public Collegefurtherrouteinfo? Collegefurtherrouteinfo { get; set; }
+        public Collegefurtherrouteinfo? CollegeFurtherRouteInfo { get; set; }
 
         [JsonPropertyName("collegeEntryRequirements")]
         public CollegeEntryRequirements? CollegeEntryRequirements { get; set; }
@@ -67,37 +67,52 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public Volunteering? Volunteering { get; set; }
 
         [JsonPropertyName("directapplication")]
-        public Directapplication? Directapplication { get; set; }
+        public Directapplication? DirectApplication { get; set; }
 
         [JsonPropertyName("otherroutes")]
-        public Otherroutes? Otherroutes { get; set; }
+        public Otherroutes? OtherRoutes { get; set; }
 
         [JsonPropertyName("professionalandindustrybodies")]
-        public Professionalandindustrybodies? Professionalandindustrybodies { get; set; }
+        public Professionalandindustrybodies? ProfessionalAndIndustryBodies { get; set; }
 
         [JsonPropertyName("furtherinformation")]
-        public Furtherinformation? Furtherinformation { get; set; }
+        public Furtherinformation? FurtherInformation { get; set; }
 
         [JsonPropertyName("careertips")]
-        public Careertips? Careertips { get; set; }
+        public Careertips? CareerTips { get; set; }
 
         [JsonPropertyName("relatedRegistrations")]
         public RelatedRegistrations? RelatedRegistrations { get; set; }
+
+        [JsonPropertyName("body")]
+        public Body? Body { get; set; }
+
+        [JsonPropertyName("thumbnail")]
+        public Thumbnail? Thumbnail { get; set; }
     }
 
     public class ContentItemHTB
     {
+        [JsonProperty("body")]
+        public Body? Body { get; set; }
+
         [JsonProperty("displayText")]
         public string? DisplayText { get; set; }
 
         [JsonProperty("description")]
         public string? Description { get; set; }
 
+        [JsonProperty("furtherInformation")]
+        public Furtherinformation? FurtherInformation { get; set; }
+
         [JsonProperty("info")]
         public Info? Info { get; set; }
 
         [JsonProperty("text")]
         public string? Text { get; set; }
+
+        [JsonProperty("thumbnail")]
+        public Thumbnail? Thumbnail { get; set; }
 
         [JsonProperty("uRL")]
         public string? URL { get; set; }
@@ -116,6 +131,12 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     }
 
     public class Apprenticeshiprelevantsubjects
+    {
+        [JsonProperty("html")]
+        public string? Html { get; set; }
+    }
+
+    public class Body
     {
         [JsonProperty("html")]
         public string? Html { get; set; }
@@ -178,7 +199,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class RealStory
     {
         [JsonProperty("contentItems")]
-        public List<object>? ContentItems { get; set; }
+        public List<ContentItemHTB>? ContentItems { get; set; }
     }
 
     public class RelatedApprenticeshipLinks
@@ -221,6 +242,15 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     {
         [JsonProperty("contentItems")]
         public List<ContentItemHTB>? ContentItems { get; set; }
+    }
+
+    public class Thumbnail
+    {
+        [JsonProperty("paths")]
+        public string? Paths { get; set; }
+
+        [JsonProperty("urls")]
+        public string? Urls { get; set; }
     }
 
     public class UniversityEntryRequirements
