@@ -10,9 +10,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
     public class JobProfileCurrentOpportunitiesStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCurrentOpportunitiesResponse>
     {
         private readonly IGraphQLClient client;
-        private readonly ILogger<PageUrlQueryStrategy> logger;
+        private readonly ILogger<JobProfileCurrentOpportunitiesStrategy> logger;
 
-        public JobProfileCurrentOpportunitiesStrategy(IGraphQLClient client, ILogger<PageUrlQueryStrategy> logger)
+        public JobProfileCurrentOpportunitiesStrategy(IGraphQLClient client, ILogger<JobProfileCurrentOpportunitiesStrategy> logger)
         {
             this.client = client;
             this.logger = logger;
