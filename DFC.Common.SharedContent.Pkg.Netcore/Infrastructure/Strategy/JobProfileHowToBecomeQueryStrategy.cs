@@ -48,7 +48,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                     }}
                     relatedUniversityRequirements {{
                       contentItems {{
-                        ... on UniversityEntryRequirements {{
+                        ... on UniversityRequirements {{
                           displayText
                           info {{
                             html
