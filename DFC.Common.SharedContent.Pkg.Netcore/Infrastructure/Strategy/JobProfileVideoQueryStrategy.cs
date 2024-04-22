@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfileVideoQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfileVideoResponse>
+    public class JobProfileVideoQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileVideoResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<JobProfileVideoQueryStrategy> logger;
@@ -21,7 +21,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<JobProfileVideoResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<JobProfileVideoResponse> ExecuteQueryAsync(string key, string filter, double expire = 24)
         {
             var url = key.Substring(key.LastIndexOf('/') + 1);
             string query = $@"query JobProfileVideoQuery {{

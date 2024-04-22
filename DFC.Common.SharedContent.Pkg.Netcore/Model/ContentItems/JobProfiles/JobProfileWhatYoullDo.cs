@@ -20,7 +20,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         public RelatedUniforms? RelatedUniforms { get; set; }
     }
 
-    public class ContentItem
+    public class ContentItemWYD
     {
         [JsonProperty("description")]
         public string? Description { get; set; }
@@ -35,18 +35,18 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class RelatedEnvironments
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemWYD>? ContentItems { get; set; }
     }
 
     public class RelatedLocations
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemWYD>? ContentItems { get; set; }
     }
 
     public class RelatedUniforms
     {
         [JsonProperty("contentItems")]
-        public List<ContentItem>? ContentItems { get; set; }
+        public List<ContentItemWYD>? ContentItems { get; set; }
     }
 }

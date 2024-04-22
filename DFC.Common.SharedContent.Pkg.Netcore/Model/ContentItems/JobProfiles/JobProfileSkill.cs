@@ -41,6 +41,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
         [JsonProperty("contentItems")]
         public RelatedrestrictionsContentItem[]? ContentItems { get; set; }
     }
+
     public class RelatedrestrictionsContentItem
     {
         [JsonProperty("displayText")]
@@ -51,12 +52,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
 
         [JsonProperty("graphSync")]
         public GraphSync? GraphSync { get; set; }
-    }
-
-    public class Info
-    {
-        [JsonProperty("html")]
-        public string? Html { get; set; }
     }
 
     public class DigitalSkills
