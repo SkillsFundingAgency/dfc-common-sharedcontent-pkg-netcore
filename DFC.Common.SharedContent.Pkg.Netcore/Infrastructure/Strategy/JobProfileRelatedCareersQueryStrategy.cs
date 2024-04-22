@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfileRelatedCareersQueryStrategy : ISharedContentRedisInterfaceStrategy<RelatedCareersResponse>
+    public class JobProfileRelatedCareersQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<RelatedCareersResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<JobProfileRelatedCareersQueryStrategy> logger;
@@ -21,7 +21,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<RelatedCareersResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<RelatedCareersResponse> ExecuteQueryAsync(string key, string filter, double expire = 24)
         {
             var url = key.Substring(key.LastIndexOf('/') + 1);
 

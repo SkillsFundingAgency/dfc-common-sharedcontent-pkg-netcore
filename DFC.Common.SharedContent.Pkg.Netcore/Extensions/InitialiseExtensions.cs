@@ -144,12 +144,12 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileSkillsResponse>, JobProfileSkillsStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCareerPathAndProgressionResponse>, JobProfileCareerPathAndProgressionStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<RelatedCareersResponse>, JobProfileRelatedCareersQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<RelatedCareersResponse>, JobProfileRelatedCareersQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileHowToBecomeResponse>, JobProfileHowToBecomeQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesOverviewResponse>, JobProfileOverviewProfileSpecificQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileWhatYoullDoResponse>, JobProfileWhatYoullDoQueryStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileVideoResponse>, JobProfileVideoQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileVideoResponse>, JobProfileVideoQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<CourseResponse>, JobProfileCurrentOpportunitiesCoursesStrategy>();
     }
 }
