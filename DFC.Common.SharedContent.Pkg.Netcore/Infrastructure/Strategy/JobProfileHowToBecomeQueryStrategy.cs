@@ -43,7 +43,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                       contentItems {{
                         ... on UniversityEntryRequirements {{
                           displayText
-                          description
                         }}
                       }}
                     }}
@@ -51,7 +50,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                       contentItems {{
                         ... on UniversityEntryRequirements {{
                           displayText
-                          description
+                          info {{
+                            html
+                          }}
                         }}
                       }}
                     }}
@@ -74,7 +75,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                       contentItems {{
                         ... on CollegeEntryRequirements {{
                           displayText
-                          description
                         }}
                       }}
                     }}
@@ -107,7 +107,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                       contentItems {{
                         ... on ApprenticeshipEntryRequirements {{
                           displayText
-                          description
                         }}
                       }}
                     }}
