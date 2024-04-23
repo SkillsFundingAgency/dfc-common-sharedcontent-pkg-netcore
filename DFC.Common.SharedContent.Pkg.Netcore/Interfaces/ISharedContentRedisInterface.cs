@@ -9,5 +9,9 @@
         Task<bool> InvalidateEntityAsync(string cachekey, string filter);
 
         Task<bool> InvalidateEntityAsync(string cachekey);
+
+        Task<T?> GetCurrentOpportunitiesData<T>(string cacheKey);
+
+        Task<bool> SetCurrentOpportunitiesData<T>(T currentOpportunitiesContent, string cacheKey, double expire = 24);
     }
 }
