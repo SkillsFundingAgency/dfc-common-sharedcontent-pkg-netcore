@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using AutoMapper;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.SharedHtml;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 {
@@ -182,20 +183,55 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //}
 
 
-        //[Fact]
-        //public async Task JobProfileCurrentOpportunitiesGetByUrlStrategyy_ExecuteQueryAsync_TestAsync()
-        //{
-        //    var host = Host.CreateDefaultBuilder()
-        //        .ConfigureServices((context, services) =>
-        //        {
-        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        [Fact]
+        public async Task JobProfileCurrentOpportunitiesSetAndGetTest()
+        {
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
 
-        //        })
-        //        .Build();
+                })
+                .Build();
 
-        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+            var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
-        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCurrentOpportunitiesGetbyUrlReponse>(ApplicationKeys.JobProfileCurrentOpportunitiesGetByUrlPrefix + "/auditor", "PUBLISHED");
-        //}
+            var cacheKey = "JobProfileCurrentOpportunitiesSetAndGetTest/CacheKey";
+            var testHtmlString = "JobProfileCurrentOpportunitiesSetAndGetTest";
+
+            var testSharedHtmlObject = new SharedHtmlContent
+            {
+                Content = new SharedHtml
+                {
+                    Html = testHtmlString,
+                },
+            };
+
+            await sharedContentRedisInterface.SetCurrentOpportunitiesData(testSharedHtmlObject, cacheKey, 0.5);
+            var result = await sharedContentRedisInterface.GetCurrentOpportunitiesData<SharedHtmlContent>(cacheKey);
+
+            Assert.IsType<SharedHtmlContent>(result);
+            Assert.Equal(testHtmlString, result.Content.Html);
+        }
+
+        [Fact]
+        public async Task JobProfileCurrentOpportunitiesGetNullTest()
+        {
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+                })
+                .Build();
+
+            var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+            var cacheKey = "JobProfileCurrentOpportunitiesGetNullTest/CacheKey";
+
+            var result = await sharedContentRedisInterface.GetCurrentOpportunitiesData<string>(cacheKey);
+
+            Assert.Null(result);
+        }
     }
 }
