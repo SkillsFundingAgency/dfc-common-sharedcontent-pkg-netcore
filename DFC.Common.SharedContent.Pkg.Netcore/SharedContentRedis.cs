@@ -68,6 +68,43 @@ public class SharedContentRedis : ISharedContentRedisInterface
         }
     }
 
+    public async Task<bool> SetCurrentOpportunitiesData<T>(T currentOpportunitiesContent, string cacheKey, double expire = 24)
+    {
+        try
+        {
+            await cache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(currentOpportunitiesContent), new DistributedCacheEntryOptions
+            {
+                //sliding expiration time for cachekey. Resets when accessed
+                SlidingExpiration = TimeSpan.FromHours(expire),
+            });
+            return true;
+        }
+        catch (Exception error)
+        {
+            Console.WriteLine(error);
+            throw;
+        }
+    }
+
+    public async Task<T?> GetCurrentOpportunitiesData<T>(string cacheKey)
+    {
+        try
+        {
+            var cachedContent = await cache.GetStringAsync(cacheKey);
+
+            if (!string.IsNullOrWhiteSpace(cachedContent))
+            {
+                return JsonConvert.DeserializeObject<T>(cachedContent);
+            }
+            return default(T);
+        }
+        catch (Exception error)
+        {
+            Console.WriteLine(error);
+            throw;
+        }
+    }
+
     public async Task<bool> InvalidateEntityAsync(string cacheKey, string filter)
     {
         await cache.RemoveAsync(cacheKey + "/" + filter);
