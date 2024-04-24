@@ -14,9 +14,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         [JsonProperty("alternativeTitle")]
         public string? AlternativeTitle { get; set; }
 
-        [JsonProperty("hiddenAlternativeTitle")]
-        public HiddenAlternativeTitle? HiddenAlternativeTitle { get; set; }
-
         [JsonProperty("overview")]
         public string? Overview { get; set; }
 
