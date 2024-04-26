@@ -21,94 +21,82 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             logger.LogInformation("JobProfileOverviewProfileSpecificQueryStrategy -> ExecuteQueryAsync");
 
             var url = string.Concat("/", key.Substring(key.LastIndexOf("/") + 1));
-
             string query = @$"query JobProfileOverview {{
-                  jobProfile(where: {{pageLocation: {{url: ""{url}""}}}}) {{
-                    displayText
-                    pageLocation {{
-                      fullUrl
-                      urlName
-                      defaultPageForLocation
-                    }}
-                    alternativeTitle
-                    hiddenAlternativeTitle {{
-                      contentItems {{
-                        ... on HiddenAlternativeTitle {{
-                          displayText
-                          graphSync {{
-                            nodeId
-                          }}
-                          description
-                        }}
+              jobProfile(where: {{pageLocation: {{url: ""{url}""}}}}) {{
+                displayText
+                pageLocation {{
+                  fullUrl
+                  urlName
+                  defaultPageForLocation
+                }}
+                alternativeTitle
+                overview
+                salarystarterperyear
+                salaryexperiencedperyear
+                minimumhours
+                maximumhours
+                sOCCode {{
+                  contentItems {{
+                    ... on SOCCode {{
+                      displayText
+                      graphSync {{
+                        nodeId
                       }}
-                    }}
-                    overview
-                    salarystarterperyear
-                    salaryexperiencedperyear
-                    minimumhours
-                    maximumhours
-                    sOCCode {{
-                      contentItems {{
-                        ... on SOCCode {{
-                          displayText
-                          graphSync {{
-                            nodeId
-                          }}
-                          description
-                          sOC2020
-                          sOC2020extension
-                          onetOccupationCode
-                          apprenticeshipStandards {{
-                            contentItems {{
-                              ... on ApprenticeshipStandard {{
-                                displayText
-                                lARScode
-                                description
-                                graphSync {{
-                                  nodeId
-                                }}
-                              }}
+                      description
+                      sOC2020
+                      sOC2020extension
+                      onetOccupationCode
+                      apprenticeshipStandards {{
+                        contentItems {{
+                          ... on ApprenticeshipStandard {{
+                            displayText
+                            lARScode
+                            description
+                            graphSync {{
+                              nodeId
                             }}
-                          }}
-                        }}
-                      }}
-                    }}
-                    workingHoursDetails {{
-                      contentItems {{
-                        ... on WorkingHoursDetail {{
-                          displayText
-                          graphSync {{
-                            nodeId
-                          }}
-                          description
-                        }}
-                      }}
-                    }}
-                    workingPattern {{
-                      contentItems {{
-                        ... on WorkingPatterns {{
-                          displayText
-                          graphSync {{
-                            nodeId
-                          }}
-                          description
-                        }}
-                      }}
-                    }}
-                    workingPatternDetails {{
-                      contentItems {{
-                        ... on WorkingPatternDetail {{
-                          displayText
-                          description
-                          graphSync {{
-                            nodeId
                           }}
                         }}
                       }}
                     }}
                   }}
                 }}
-                ";
+                workingHoursDetails {{
+                  contentItems {{
+                    ... on WorkingHoursDetail {{
+                      displayText
+                      graphSync {{
+                        nodeId
+                      }}
+                      description
+                    }}
+                  }}
+                }}
+                workingPattern {{
+                  contentItems {{
+                    ... on WorkingPatterns {{
+                      displayText
+                      graphSync {{
+                        nodeId
+                      }}
+                      description
+                    }}
+                  }}
+                }}
+                workingPatternDetails {{
+                  contentItems {{
+                    ... on WorkingPatternDetail {{
+                      displayText
+                      description
+                      graphSync {{
+                        nodeId
+                      }}
+                    }}
+                  }}
+                }}
+              }}
+            }}
+            ";
 
             var response = await client.SendQueryAsync<JobProfilesOverviewResponse>(query);
             return await Task.FromResult(response.Data);
