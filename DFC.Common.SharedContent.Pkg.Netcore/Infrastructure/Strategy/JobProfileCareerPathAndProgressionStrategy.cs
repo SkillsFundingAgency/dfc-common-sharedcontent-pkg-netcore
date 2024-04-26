@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfileCareerPathAndProgressionStrategy : ISharedContentRedisInterfaceStrategy<JobProfileCareerPathAndProgressionResponse>
+    public class JobProfileCareerPathAndProgressionStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCareerPathAndProgressionResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<JobProfileCareerPathAndProgressionStrategy> logger;
@@ -16,7 +16,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<JobProfileCareerPathAndProgressionResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<JobProfileCareerPathAndProgressionResponse> ExecuteQueryAsync(string key, string filter, double expire = 24)
         {
             var text = string.Concat("/", key.Substring(key.LastIndexOf("/") + 1));
 
