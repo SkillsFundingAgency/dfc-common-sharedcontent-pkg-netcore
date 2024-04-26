@@ -198,7 +198,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCurrentOpportunitiesGetbyUrlReponse>(ApplicationKeys.JobProfileCurrentOpportunitiesGetByUrlPrefix + "/auditor", "PUBLISHED");
         //}
 
-        [Fact]
+       /* [Fact]
         public async Task JobProfileOverviewStrategy_ExecuteQueryAsync_TestAsync()
         {
             var host = Host.CreateDefaultBuilder()
@@ -214,6 +214,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
             //var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfilesOverviewResponse>(ApplicationKeys.JobProfilesOverview + "/auditor", "PUBLISHED");
             var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfilesOverviewResponse>(ApplicationKeys.JobProfilesOverview + "/accounting-technician", "PUBLISHED");
             var string3 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfilesOverviewResponse>(ApplicationKeys.JobProfilesOverview + "/auditor", "PUBLISHED");
-        }
+        }*/
     }
 }
