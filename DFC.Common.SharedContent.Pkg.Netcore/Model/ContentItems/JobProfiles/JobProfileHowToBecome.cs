@@ -244,10 +244,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class Thumbnail
     {
         [JsonProperty("paths")]
-        public string? Paths { get; set; }
+        public List<string?> Paths { get; set; }
 
         [JsonProperty("urls")]
-        public string? Urls { get; set; }
+        public List<string?> Urls { get; set; }
     }
 
     public class UniversityEntryRequirements
