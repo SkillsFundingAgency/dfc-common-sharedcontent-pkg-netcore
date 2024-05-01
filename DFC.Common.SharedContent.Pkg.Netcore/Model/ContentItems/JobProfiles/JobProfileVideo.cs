@@ -48,8 +48,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
 
     public partial class VideoThumbnail
     {
-        [JsonPropertyName("paths")]
-        public List<string>? Paths { get; set; }
+        [JsonPropertyName("mediaText")]
+        public List<string>? MediaText { get; set; }
 
         [JsonPropertyName("urls")]
         public List<string>? Urls { get; set; }

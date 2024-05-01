@@ -25,27 +25,27 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
         {
             var url = key.Substring(key.LastIndexOf('/') + 1);
             string query = $@"query JobProfileVideoQuery {{
-  jobProfile(where: {{pageLocation: {{url: ""/{url}""}}}}, status: {filter}) {{
-    displayText
-    videoType
-    videoTitle
-    videoTranscript
-    videoSummary {{
-      html
-    }}
-    videoThumbnail {{
-      paths
-      urls
-    }}
-    videoUrl
-    videoLinkText
-    videoFurtherInformation {{
-      html
-    }}
-    videoDuration
-  }}
-}}
-";
+                                  jobProfile(where: {{pageLocation: {{url: ""/{url}""}}}}, status: {filter}) {{
+                                    displayText
+                                    videoType
+                                    videoTitle
+                                    videoTranscript
+                                    videoSummary {{
+                                      html
+                                    }}
+                                    videoThumbnail {{
+                                      mediaText
+                                      urls
+                                    }}
+                                    videoUrl
+                                    videoLinkText
+                                    videoFurtherInformation {{
+                                      html
+                                    }}
+                                    videoDuration
+                                  }}
+                                }}
+                                ";
 
             var response = await client.SendQueryAsync<JobProfileVideoResponse>(query);
             return response.Data;
