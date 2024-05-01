@@ -32,5 +32,6 @@
         public const string JobProfileWhatYoullDo = "JobProfiles/WhatYoullDo";
         public const string JobProfileVideoPrefix = "JobProfiles/Video";
         public const string JobProfileCurrentOpportunitiesGetByUrlPrefix = "JobProfile/CurrentOpportunitiesCourses";
+        public const string SkillsAll = "Skills/All";
     }
 }
