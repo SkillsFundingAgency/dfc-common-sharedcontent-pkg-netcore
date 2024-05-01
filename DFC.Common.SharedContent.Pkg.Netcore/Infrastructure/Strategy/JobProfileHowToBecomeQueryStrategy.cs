@@ -171,7 +171,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                             html
                           }}
                           thumbnail {{
-                            paths
+                            mediaText
                             urls
                           }}
                         }}
