@@ -39,7 +39,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class Relatedrestrictions
     {
         [JsonProperty("contentItems")]
-        public RelatedrestrictionsContentItem[]? ContentItems { get; set; }
+        public List<RelatedrestrictionsContentItem>? ContentItems { get; set; }
     }
 
     public class RelatedrestrictionsContentItem
@@ -57,7 +57,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
     public class DigitalSkills
     {
         [JsonProperty("contentItems")]
-        public DigitalSkillsContentItem[]? ContentItems { get; set; }
+        public List<DigitalSkillsContentItem>? ContentItems { get; set; }
     }
 
     public class DigitalSkillsContentItem
@@ -70,5 +70,34 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
 
         [JsonProperty("graphSync")]
         public GraphSync? GraphSync { get; set; }
+    }
+
+    public partial class Relatedskills
+    {
+        [JsonProperty("contentItems")]
+        public List<RelatedSkill>? ContentItems { get; set; }
+    }
+
+    public partial class RelatedSkill
+    {
+        [JsonProperty("displayText")]
+        public string? DisplayText { get; set; }
+
+        [JsonProperty("oNetAttributeType")]
+        public string? ONetAttributeType { get; set; }
+
+        [JsonProperty("oNetRank")]
+        public string? ONetRank { get; set; }
+
+        [JsonProperty("graphSync")]
+        public GraphSync? GraphSync { get; set; }
+
+        public int? Ordinal { get; set; }
+
+        [JsonProperty("relatedSkill")]
+        public string? RelatedSkillDesc { get; set; }
+
+        [JsonProperty("relatedSOCcode")]
+        public string? RelatedSOCcode { get; set; }
     }
 }
