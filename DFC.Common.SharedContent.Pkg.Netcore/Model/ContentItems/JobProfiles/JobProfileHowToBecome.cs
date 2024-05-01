@@ -243,8 +243,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles
 
     public class Thumbnail
     {
-        [JsonProperty("paths")]
-        public List<string?> Paths { get; set; }
+        [JsonProperty("mediaText")]
+        public List<string?> MediaText { get; set; }
 
         [JsonProperty("urls")]
         public List<string?> Urls { get; set; }
