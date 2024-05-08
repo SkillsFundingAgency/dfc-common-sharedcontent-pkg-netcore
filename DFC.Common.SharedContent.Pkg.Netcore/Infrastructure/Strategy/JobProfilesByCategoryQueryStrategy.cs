@@ -25,10 +25,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
         public async Task<JobProfilesResponseExploreCareers> ExecuteQueryAsync(string key, string status)
         {
             var filter = key.Substring(key.LastIndexOf("/") + 1);
-            filter = filter.Replace('-', ' ');
 
             string categoryQuery = $@"query MyQuery {{
-                jobProfileCategory(status: {status}, where: {{ displayText: ""{filter}""}}) {{
+                jobProfileCategory(status: {status}, where: {{ pageLocation:{{ url: ""/{filter}""}}}}) {{
                     contentItemId
                 }}
             }}";
