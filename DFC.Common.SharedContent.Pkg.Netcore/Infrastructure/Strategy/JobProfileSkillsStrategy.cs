@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
@@ -23,7 +18,10 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
         public async Task<JobProfileSkillsResponse> ExecuteQueryAsync(string key, string filter, double expire = 24)
         {
-            var url = key.Substring(key.IndexOf('/') + 1);
+            logger.LogInformation("JobProfileSkillsQueryStrategy -> ExecuteQueryAsync");
+
+            var url = key.Substring(key.LastIndexOf('/') + 1);
+
             string query = $@"query JobProfileWhatItTakes {{
                   jobProfile(where: {{pageLocation: {{url: ""/{url}""}}}}) {{
                     displayText
