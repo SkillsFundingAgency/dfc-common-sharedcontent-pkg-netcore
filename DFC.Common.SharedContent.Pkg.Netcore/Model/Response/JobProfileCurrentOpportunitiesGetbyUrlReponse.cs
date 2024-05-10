@@ -11,6 +11,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
     public class JobProfileCurrentOpportunitiesGetbyUrlReponse
     {
         [JsonProperty("jobProfile")]
-        public List<JobProfileCurrentOpportunities>? JobProileCurrentOpportunitiesGetbyUrl { get; set; }
+        public List<JobProfileCurrentOpportunities>? JobProfileCurrentOpportunitiesGetByUrl { get; set; }
     }
 }
