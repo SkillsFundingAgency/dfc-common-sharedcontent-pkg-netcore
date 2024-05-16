@@ -34,5 +34,6 @@
         public const string JobProfileCurrentOpportunitiesCoursesPrefix = "JobProfile/CurrentOpportunities/Courses";
         public const string JobProfileCurrentOpportunitiesAVPrefix = "JobProfile/CurrentOpportunities/ApprenticeshipVacancies";
         public const string SkillsAll = "Skills/All";
+        public const string JobProfileApiSummaryAll = "JobProfileApi/Summary/All";
     }
 }
