@@ -13,5 +13,7 @@
         Task<T?> GetCurrentOpportunitiesData<T>(string cacheKey);
 
         Task<bool> SetCurrentOpportunitiesData<T>(T currentOpportunitiesContent, string cacheKey, double expire = 24);
+
+        Task<T?> GetDataAsyncWithExpiryAndFirstSkip<T>(string cacheKey, string filter, int first, int skip, double expire = 24);
     }
 }
