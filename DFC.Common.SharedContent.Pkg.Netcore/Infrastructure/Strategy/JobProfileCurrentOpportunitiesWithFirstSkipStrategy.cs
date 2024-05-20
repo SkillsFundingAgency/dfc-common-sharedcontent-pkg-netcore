@@ -1,28 +1,31 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfileCurrentOpportunitiesStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCurrentOpportunitiesResponse>
+    public class JobProfileCurrentOpportunitiesWithFirstSkipStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiryAndFirstSkip<JobProfileCurrentOpportunitiesResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<JobProfileCurrentOpportunitiesStrategy> logger;
 
-        public JobProfileCurrentOpportunitiesStrategy(IGraphQLClient client, ILogger<JobProfileCurrentOpportunitiesStrategy> logger)
+        public JobProfileCurrentOpportunitiesWithFirstSkipStrategy(IGraphQLClient client, ILogger<JobProfileCurrentOpportunitiesStrategy> logger)
         {
             this.client = client;
             this.logger = logger;
         }
 
-        public async Task<JobProfileCurrentOpportunitiesResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
+        public async Task<JobProfileCurrentOpportunitiesResponse> ExecuteQueryAsync(string key, string filter, int first, int skip, double expire = 24)
         {
             logger.LogInformation("JobProfileCurrentOpportunitiesStrategy -> ExecuteQueryAsync");
             string query = @$"query MyQuery {{
-                  jobProfile(status: {filter}, first: 100) {{
+                  jobProfile(status: {filter}, first: {first}, skip: {skip}) {{
                     coursekeywords
                     graphSync {{
                       nodeId

@@ -21,4 +21,9 @@ public class SharedContentRedisStrategyFactory : ISharedContentRedisInterfaceStr
     {
         return _serviceProvider.GetRequiredService<ISharedContentRedisInterfaceStrategyWithRedisExpiry<T>>();
     }
+
+    public ISharedContentRedisInterfaceStrategyWithRedisExpiryAndFirstSkip<T> GetDataAsyncWithExpiryAndFirstSkip<T>()
+    {
+        return _serviceProvider.GetRequiredService<ISharedContentRedisInterfaceStrategyWithRedisExpiryAndFirstSkip<T>>();
+    }
 }

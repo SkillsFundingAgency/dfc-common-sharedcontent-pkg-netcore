@@ -131,6 +131,13 @@ public class SharedContentRedis : ISharedContentRedisInterface
         return await SaveContentToCache(staxContent, cacheKey, filter, expire);
     }
 
+    private async Task<T?> ReturnDataFromStrategyWithExpiryAndFirstSkipAsync<T>(ISharedContentRedisInterfaceStrategyWithRedisExpiryAndFirstSkip<T> strategy, string cacheKey, string filter, int first, int skip, double expire)
+    {
+        var staxContent = await strategy.ExecuteQueryAsync(cacheKey, filter, first, skip, expire);
+
+        return await SaveContentToCache(staxContent, cacheKey, filter, expire);
+    }
+
     private async Task<T?> SaveContentToCache<T>(T? staxContent, string cacheKey, string filter, double expire)
     {
         if (staxContent == null)
@@ -144,5 +151,31 @@ public class SharedContentRedis : ISharedContentRedisInterface
             SlidingExpiration = TimeSpan.FromHours(expire),
         });
         return staxContent;
+    }
+
+    public async Task<T?> GetDataAsyncWithExpiryAndFirstSkip<T>(string cacheKey, string filter, int first, int skip, double expire = 24)
+    {
+        try
+        {
+            //get redis cache data from cachekey - use zhaomings function
+            var cachedContent = await cache.GetStringAsync(cacheKey + "/" + filter);
+            //var cacheResponse = cache.GetEntity<TResponse>(cacheKey);
+
+            if (!string.IsNullOrWhiteSpace(cachedContent))
+            {
+                return JsonConvert.DeserializeObject<T>(cachedContent);
+            }
+
+            var strategy = sharedContentRedisInterfaceStrategyFactory.GetDataAsyncWithExpiryAndFirstSkip<T>();
+
+            var staxContent = await ReturnDataFromStrategyWithExpiryAndFirstSkipAsync(strategy, cacheKey, filter, first, skip, expire);
+
+            return staxContent;
+        }
+        catch (Exception error)
+        {
+            Console.WriteLine(error);
+            throw;
+        }
     }
 }
