@@ -22,7 +22,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
         {
             logger.LogInformation("JobProfileCurrentOpportunitiesStrategy -> ExecuteQueryAsync");
             string query = @$"query MyQuery {{
-                  jobProfile(status: {filter}, first: 100) {{
+                  jobProfile(status: {filter}, first: 1000) {{
                     coursekeywords
                     graphSync {{
                       nodeId
