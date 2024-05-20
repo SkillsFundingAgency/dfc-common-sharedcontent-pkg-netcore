@@ -22,7 +22,6 @@ public class SharedContentRedis : ISharedContentRedisInterface
         {
             //get redis cache data from cachekey - use zhaomings function
             var cachedContent = await cache.GetStringAsync(cacheKey + "/" + filter);
-            //var cacheResponse = cache.GetEntity<TResponse>(cacheKey);
 
             if (!string.IsNullOrWhiteSpace(cachedContent))
             {
@@ -48,7 +47,6 @@ public class SharedContentRedis : ISharedContentRedisInterface
         {
             //get redis cache data from cachekey - use zhaomings function
             var cachedContent = await cache.GetStringAsync(cacheKey + "/" + filter);
-            //var cacheResponse = cache.GetEntity<TResponse>(cacheKey);
 
             if (!string.IsNullOrWhiteSpace(cachedContent))
             {
@@ -96,6 +94,7 @@ public class SharedContentRedis : ISharedContentRedisInterface
             {
                 return JsonConvert.DeserializeObject<T>(cachedContent);
             }
+
             return default(T);
         }
         catch (Exception error)
@@ -159,7 +158,6 @@ public class SharedContentRedis : ISharedContentRedisInterface
         {
             //get redis cache data from cachekey - use zhaomings function
             var cachedContent = await cache.GetStringAsync(cacheKey + "/" + filter);
-            //var cacheResponse = cache.GetEntity<TResponse>(cacheKey);
 
             if (!string.IsNullOrWhiteSpace(cachedContent))
             {
