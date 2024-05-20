@@ -198,22 +198,21 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCurrentOpportunitiesGetbyUrlReponse>(ApplicationKeys.JobProfileCurrentOpportunitiesGetByUrlPrefix + "/auditor", "PUBLISHED");
         //}
 
-       /* [Fact]
-        public async Task JobProfileOverviewStrategy_ExecuteQueryAsync_TestAsync()
-        {
-            var host = Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services) =>
-                {
-                    services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //[Fact]
+        //public async Task JobProfileCurrentOpportunitiesWithFirstSkipStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
 
-                })
-                .Build();
+        //        })
+        //        .Build();
 
-            var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
-            //JobProfiles/Overview/accounting-technician/PUBLISHED
-            //var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfilesOverviewResponse>(ApplicationKeys.JobProfilesOverview + "/auditor", "PUBLISHED");
-            var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfilesOverviewResponse>(ApplicationKeys.JobProfilesOverview + "/accounting-technician", "PUBLISHED");
-            var string3 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfilesOverviewResponse>(ApplicationKeys.JobProfilesOverview + "/auditor", "PUBLISHED");
-        }*/
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiryExpiryAndFirstSkip = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+        //    //JobProfiles / Overview / accounting - technician / PUBLISHED
+            
+        //    var string3 = await sharedContentRedisInterfaceStrategyWithRedisExpiryExpiryAndFirstSkip.GetDataAsyncWithExpiryAndFirstSkip<JobProfileCurrentOpportunitiesResponse>(ApplicationKeys.JobProfileCurrentOpportunitiesAllJobProfiles, "PUBLISHED", 100, 0);
+        //}
     }
 }
