@@ -159,7 +159,6 @@ public class SharedContentRedis : ISharedContentRedisInterface
         {
             //get redis cache data from cachekey - use zhaomings function
             var cachedContent = await cache.GetStringAsync(cacheKey + "/" + filter);
-            //var cacheResponse = cache.GetEntity<TResponse>(cacheKey);
 
             if (!string.IsNullOrWhiteSpace(cachedContent))
             {
