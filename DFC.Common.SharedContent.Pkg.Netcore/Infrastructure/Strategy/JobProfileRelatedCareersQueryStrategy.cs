@@ -26,33 +26,34 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             var url = key.Substring(key.LastIndexOf('/') + 1);
 
             string query = $@"query MyQuery {{
-  jobProfile(where: {{pageLocation: {{url: ""/{url}""}}}}, status: {filter}) {{
-    displayText
-    pageLocation {{
-      urlName
-      fullUrl
-    }}
-    relatedcareerprofiles {{
-      contentItems(first: 5) {{
-        ... on JobProfile {{
-          displayText
-          pageLocation {{
-            urlName
-            fullUrl
-          }}
-          graphSync {{
-            nodeId
-          }}
-        }}
-        contentItemId
-      }}
-    }}
-  }}
-}}
-";
+              jobProfile(where: {{pageLocation: {{url: ""/{url}""}}}}, status: {filter}) {{
+                displayText
+                pageLocation {{
+                  urlName
+                  fullUrl
+                }}
+                relatedcareerprofiles {{
+                  contentItems(first: 5) {{
+                    ... on JobProfile {{
+                      displayText
+                      pageLocation {{
+                        urlName
+                        fullUrl
+                      }}
+                      graphSync {{
+                        nodeId
+                      }}
+                    }}
+                    contentItemId
+                  }}
+                }}
+              }}
+            }}
+            ";
 
             var response = await client.SendQueryAsync<RelatedCareersResponse>(query);
-            return response.Data;
+            var result = response.Data;
+            return result.JobProfileRelatedCareers.Count > 0 ? result : null;
         }
     }
 }
