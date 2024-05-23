@@ -99,7 +99,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             ";
 
             var response = await client.SendQueryAsync<JobProfilesOverviewResponse>(query);
-            return await Task.FromResult(response.Data);
+            var result = await Task.FromResult(response.Data);
+            return result.JobProfileOverview.Count > 0 ? result : null;
         }
     }
 }

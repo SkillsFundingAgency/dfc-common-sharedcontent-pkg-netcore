@@ -48,7 +48,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                                 ";
 
             var response = await client.SendQueryAsync<JobProfileVideoResponse>(query);
-            return response.Data;
+            var result = response.Data;
+            return result.JobProfileVideo.Count > 0 ? result : null;
         }
     }
 }

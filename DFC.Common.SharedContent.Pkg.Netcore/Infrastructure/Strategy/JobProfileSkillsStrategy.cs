@@ -76,7 +76,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                 ";
 
             var response = await client.SendQueryAsync<JobProfileSkillsResponse>(query);
-            return response.Data;
+            var result = response.Data;
+            return result.JobProfileSkills.Count > 0 ? result : null;
         }
     }
 }

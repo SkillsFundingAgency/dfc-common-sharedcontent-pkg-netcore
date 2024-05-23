@@ -181,7 +181,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                 }}";
 
             var response = await client.SendQueryAsync<JobProfileHowToBecomeResponse>(query);
-            return response.Data;
+            var result = response.Data;
+            return result.JobProfileHowToBecome.Count > 0 ? result: null;
         }
     }
 }
