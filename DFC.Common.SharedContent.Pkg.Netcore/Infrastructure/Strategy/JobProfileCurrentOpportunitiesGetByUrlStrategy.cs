@@ -48,7 +48,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                 }}";
 
             var response = await client.SendQueryAsync<JobProfileCurrentOpportunitiesGetbyUrlReponse>(query);
-            return await Task.FromResult(response.Data);
+            var result = await Task.FromResult(response.Data);
+            return result.JobProfileCurrentOpportunitiesGetByUrl.Count > 0 ? result : null;
         }
     }
 }

@@ -26,16 +26,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             logger.LogInformation("JobProfileApiSummaryResponse -> ExecuteQueryAsync");
 
             string query = @$"query MyQuery {{
-  jobProfile(first: 1000, status: PUBLISHED) {{
-    displayText
-    publishedUtc
-    pageLocation {{
-      urlName
-      fullUrl
-    }}
-  }}
-}}
-";
+              jobProfile(first: 1000, status: PUBLISHED) {{
+                displayText
+                publishedUtc
+                pageLocation {{
+                  urlName
+                  fullUrl
+                }}
+              }}
+            }}
+            ";
 
             var response = await client.SendQueryAsync<JobProfileApiSummaryResponse>(query);
             return response.Data;
