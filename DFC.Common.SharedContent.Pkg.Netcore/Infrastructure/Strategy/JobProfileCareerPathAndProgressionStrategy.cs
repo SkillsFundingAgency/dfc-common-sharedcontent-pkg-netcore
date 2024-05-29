@@ -22,7 +22,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
             logger.LogInformation("JobProfileCareerPathAndProgressionResponse -> ExecuteQueryAsync");
             string query = @$"query JobProfileCareerPathProgression {{
-              jobProfile(where: {{pageLocation: {{url: ""{text}""}}}}) {{
+              jobProfile(where: {{pageLocation: {{url: ""{text}""}}}}, status: {filter}) {{
                 displayText
                 careerpathandprogression {{
                   html
