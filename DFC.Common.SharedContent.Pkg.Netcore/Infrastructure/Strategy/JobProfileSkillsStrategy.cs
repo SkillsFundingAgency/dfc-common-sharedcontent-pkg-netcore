@@ -23,7 +23,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             var url = key.Substring(key.LastIndexOf('/') + 1);
 
             string query = $@"query JobProfileWhatItTakes {{
-                  jobProfile(where: {{pageLocation: {{url: ""/{url}""}}}}) {{
+                  jobProfile(where: {{pageLocation: {{url: ""/{url}""}}}}, status: {filter}) {{
                     displayText
                     pageLocation {{
                       fullUrl
