@@ -179,27 +179,27 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCurrentOpportunitiesGetbyUrlReponse>(ApplicationKeys.JobProfileCurrentOpportunitiesGetByUrlPrefix + "/auditor", "PUBLISHED");
         //}
 
-        [Fact]
-        public async Task JobProfileCurrentOpportunitiesWithFirstSkipStrategy_ExecuteQueryAsync_TestAsync()
-        {
-            var host = Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services) =>
-                {
-                    services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+        //[Fact]
+        //public async Task JobProfileCurrentOpportunitiesWithFirstSkipStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
 
-                })
-                .Build();
+        //        })
+        //        .Build();
 
-            //1st Request
-            var sharedContentRedisInterfaceStrategyWithRedisExpiryExpiryAndFirstSkip = host.Services.GetRequiredService<ISharedContentRedisInterface>();
-            var string3 = await sharedContentRedisInterfaceStrategyWithRedisExpiryExpiryAndFirstSkip.GetDataAsyncWithExpiryAndFirstSkip<JobProfileCurrentOpportunitiesResponse>(ApplicationKeys.JobProfileCurrentOpportunitiesAllJobProfiles, "PUBLISHED", 100, 0);
-            Console.WriteLine(string3);
+        //    //1st Request
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiryExpiryAndFirstSkip = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+        //    var string3 = await sharedContentRedisInterfaceStrategyWithRedisExpiryExpiryAndFirstSkip.GetDataAsyncWithExpiryAndFirstSkip<JobProfileCurrentOpportunitiesResponse>(ApplicationKeys.JobProfileCurrentOpportunitiesAllJobProfiles, "PUBLISHED", 100, 0);
+        //    Console.WriteLine(string3);
 
-            //2nd Rquest
-            var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
-            var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCurrentOpportunitiesGetbyUrlReponse>(ApplicationKeys.JobProfileCurrentOpportunities + "/auditor", "PUBLISHED");
-            Console.WriteLine(string2);
-            Console.WriteLine(string2);
-        }
+        //    //2nd Rquest
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCurrentOpportunitiesGetbyUrlReponse>(ApplicationKeys.JobProfileCurrentOpportunities + "/auditor", "PUBLISHED");
+        //    Console.WriteLine(string2);
+        //    Console.WriteLine(string2);
+        //}
     }
 }
