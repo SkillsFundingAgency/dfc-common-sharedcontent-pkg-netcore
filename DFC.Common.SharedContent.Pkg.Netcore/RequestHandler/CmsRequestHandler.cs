@@ -1,5 +1,6 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Constant;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
@@ -16,6 +17,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
         private IHttpClientFactory httpClientFactory;
         private IConfiguration config;
         private IHttpContextAccessor accessor;
+        private IMemoryCache memoryCache;
+        private const string OAuthTokenKey = "OAuthToken";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CmsRequestHandler"/> class.
@@ -23,11 +26,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
         /// <param name="httpClientFactory">The HTTP client factory.</param>
         /// <param name="config">The configuration.</param>
         /// <param name="accessor">The accessor.</param>
-        public CmsRequestHandler(IHttpClientFactory httpClientFactory, IConfiguration config, IHttpContextAccessor accessor)
+        public CmsRequestHandler(
+            IHttpClientFactory httpClientFactory,
+            IConfiguration config,
+            IHttpContextAccessor accessor,
+            IMemoryCache memoryCache)
         {
             this.httpClientFactory = httpClientFactory;
             this.config = config;
             this.accessor = accessor;
+            this.memoryCache = memoryCache;
         }
 
         /// <summary>
@@ -51,9 +59,18 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
 
         private async Task<string> GetApiToken()
         {
+            if (memoryCache.TryGetValue(OAuthTokenKey, out OAuthTokenModel token))
+            {
+                if (token != null && token.ExpiryDatetime > DateTime.UtcNow)
+                {
+                    return token.AccessToken;
+                }
+            }
+
             // cache the token response.
             var tokenResponse = await GenerateApiToken<OAuthTokenModel>();
             tokenResponse.ExpiryDatetime = DateTime.UtcNow.AddSeconds(Convert.ToInt32(tokenResponse.ExpiresIn) - 120); // reduce by 120 seconds for time skew tolerance.
+            memoryCache.Set(OAuthTokenKey, tokenResponse);
             return tokenResponse.AccessToken;
         }
 
@@ -65,11 +82,14 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.RequestHandler
                 var tokenEndpointUrl = config[ConfigKeys.TokenEndPointUrl];
                 var clientId = config[ConfigKeys.ClientId];
                 var clientSecret = config[ConfigKeys.ClientSecret];
-                var client = this.httpClientFactory.CreateClient();
-                var formData = new Dictionary<string, string>();
-                formData.Add(CmsOpenIdConfig.ClientIdTokenRequestParam, clientId);
-                formData.Add(CmsOpenIdConfig.ClientSecretTokenRequestParam, clientSecret);
-                formData.Add(CmsOpenIdConfig.GrantTypeTokenRequestParam, CmsOpenIdConfig.GrantTypeTokenRequestParamValue);
+                var client = httpClientFactory.CreateClient();
+                var formData = new Dictionary<string, string>
+                {
+                    { CmsOpenIdConfig.ClientIdTokenRequestParam, clientId },
+                    { CmsOpenIdConfig.ClientSecretTokenRequestParam, clientSecret },
+                    { CmsOpenIdConfig.GrantTypeTokenRequestParam, CmsOpenIdConfig.GrantTypeTokenRequestParamValue },
+                };
+
                 var requestBody = new HttpRequestMessage(HttpMethod.Post, tokenEndpointUrl)
                 {
                     Content = new FormUrlEncodedContent(formData),

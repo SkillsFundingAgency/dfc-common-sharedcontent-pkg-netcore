@@ -1,30 +1,11 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Constant;
 using DFC.Common.SharedContent.Pkg.Netcore.Extensions;
-using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
-using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
-using DfE.NCS.Framework.Cache;
-using DfE.NCS.Framework.Cache.Interface;
-using DfE.NCS.Framework.Cache.Model;
-using GraphQL.Client.Abstractions;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Moq;
-using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using AutoMapper;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 {
@@ -209,10 +190,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //        })
         //        .Build();
 
+        //    //1st Request
         //    var sharedContentRedisInterfaceStrategyWithRedisExpiryExpiryAndFirstSkip = host.Services.GetRequiredService<ISharedContentRedisInterface>();
-        //    //JobProfiles / Overview / accounting - technician / PUBLISHED
-            
         //    var string3 = await sharedContentRedisInterfaceStrategyWithRedisExpiryExpiryAndFirstSkip.GetDataAsyncWithExpiryAndFirstSkip<JobProfileCurrentOpportunitiesResponse>(ApplicationKeys.JobProfileCurrentOpportunitiesAllJobProfiles, "PUBLISHED", 100, 0);
+        //    Console.WriteLine(string3);
+
+        //    //2nd Rquest
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCurrentOpportunitiesGetbyUrlReponse>(ApplicationKeys.JobProfileCurrentOpportunities + "/auditor", "PUBLISHED");
+        //    Console.WriteLine(string2);
+        //    Console.WriteLine(string2);
         //}
     }
 }
