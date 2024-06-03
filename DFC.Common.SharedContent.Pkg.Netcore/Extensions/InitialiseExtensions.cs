@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using AutoMapper.Configuration;
-using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Middleware;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.SharedHtml;
@@ -16,7 +13,7 @@ using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -30,15 +27,19 @@ public static class InitialiseExtensions
     public static void AddSharedContentRedisInterface(this IServiceCollection services, string redisConnectionString)
     {
         services.AddStackExchangeRedisCache(options => { options.Configuration = redisConnectionString; });
-
         services.AddHttpClient();
+
         services.AddScoped<IGraphQLClient>(s =>
         {
             var option = new GraphQLHttpClientOptions()
             {
                 EndPoint = new Uri("https://dfc-dev-stax-editor-as.azurewebsites.net/api/GraphQL"),
 
-                HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
+                HttpMessageHandler = new CmsRequestHandler(
+                    s.GetService<IHttpClientFactory>(),
+                    s.GetService<IConfiguration>(),
+                    s.GetService<IHttpContextAccessor>(),
+                    s.GetService<IMemoryCache>()),
             };
             var client = new GraphQLHttpClient(option, new NewtonsoftJsonSerializer());
             return client;
@@ -49,8 +50,13 @@ public static class InitialiseExtensions
             var option = new RestClientOptions()
             {
                 BaseUrl = new Uri("https://dfc-dev-stax-editor-as.azurewebsites.net/api/queries"),
-                ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
+                ConfigureMessageHandler = handler => new CmsRequestHandler(
+                    s.GetService<IHttpClientFactory>(),
+                    s.GetService<IConfiguration>(),
+                    s.GetService<IHttpContextAccessor>(),
+                    s.GetService<IMemoryCache>()),
             };
+
             JsonSerializerSettings defaultSettings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
