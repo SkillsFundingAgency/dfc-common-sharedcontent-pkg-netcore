@@ -57,16 +57,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.CacheRepository
 
         private async Task ExecutePaginatedQueryAsync(string query, Func<string, int, int, Task<int>> queryFunc, int paginationCount = 100)
         {
-            //if (paginationCount < 1 || paginationCount > maxItemCount)
-            //{
-            //    throw new ArgumentOutOfRangeException(nameof(paginationCount));
-            //}
-
-            //if (!query.Contains(GraphQLConfig.SkipCountToken) || !query.Contains(GraphQLConfig.PaginationCountToken))
-            //{
-            //    throw new ArgumentException("SkipCount or PaginationCount token missing from query");
-            //}
-
             int skipCount = 0;
             bool moreResultsExist = true;
 
