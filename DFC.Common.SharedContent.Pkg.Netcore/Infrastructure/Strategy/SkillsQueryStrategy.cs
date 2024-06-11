@@ -19,16 +19,16 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
         public async Task<SkillsResponse> ExecuteQueryAsync(string key, string filter, double expire = 24)
         {
             string query = $@"query MyQuery {{
-  skill (first: 200, status: {filter}) {{
-    displayText
-    oNetElementId
-    description
-    graphSync {{
-      nodeId
-    }}
-  }}
-}}
-";
+              skill (first: 200, status: {filter}) {{
+                displayText
+                oNetElementId
+                description
+                graphSync {{
+                  nodeId
+                }}
+              }}
+            }}
+            ";
 
             var response = await client.SendQueryAsync<SkillsResponse>(query);
             return response.Data;

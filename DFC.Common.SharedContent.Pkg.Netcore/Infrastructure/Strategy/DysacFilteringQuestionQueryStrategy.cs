@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class DysacFilteringQuestionQueryStrategy : ISharedContentRedisInterfaceStrategy<PersonalityFilteringQuestionResponse>
+    public class DysacFilteringQuestionQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<PersonalityFilteringQuestionResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PageUrlQueryStrategy> logger;
@@ -22,7 +22,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<PersonalityFilteringQuestionResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<PersonalityFilteringQuestionResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
         {
             logger.LogInformation("DysacFilteringQuestionQueryStrategy -> ExecuteQueryAsync");
 

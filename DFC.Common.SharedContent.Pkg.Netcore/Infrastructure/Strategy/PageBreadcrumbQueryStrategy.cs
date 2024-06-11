@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class PageBreadcrumbQueryStrategy : ISharedContentRedisInterfaceStrategy<PageBreadcrumb>
+    public class PageBreadcrumbQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageBreadcrumb>
     {
         private readonly IRestClient sqlClient;
 
@@ -23,7 +23,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.sqlClient = client;
         }
 
-        public async Task<PageBreadcrumb> ExecuteQueryAsync(string key, string filter)
+        public async Task<PageBreadcrumb> ExecuteQueryAsync(string key, string filter, double expire = 4)
         {
             var request = new RestRequest("PageLocation");
             var response = await sqlClient.GetAsync<BreadcrumbResponse>(request);

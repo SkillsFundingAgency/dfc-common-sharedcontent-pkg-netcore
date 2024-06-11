@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class PageBannersAllQueryStrategy : ISharedContentRedisInterfaceStrategy<PageBannerResponse>
+public class PageBannersAllQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageBannerResponse>
 {
     private readonly IGraphQLClient client;
     private readonly ILogger<PageBannerQueryStrategy> logger;
@@ -17,7 +17,7 @@ public class PageBannersAllQueryStrategy : ISharedContentRedisInterfaceStrategy<
         this.logger = logger;
     }
 
-    public async Task<PageBannerResponse> ExecuteQueryAsync(string key, string filter)
+    public async Task<PageBannerResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         string query = @$"
                query PageBanner {{

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
+public class PageQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<Page>
 {
     private readonly IGraphQLClient client;
 
@@ -15,7 +15,7 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategy<Page>
         this.client = client;
     }
 
-    public async Task<Page> ExecuteQueryAsync(string key, string filter)
+    public async Task<Page> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         var url = key.Substring(key.IndexOf('/'));
 
