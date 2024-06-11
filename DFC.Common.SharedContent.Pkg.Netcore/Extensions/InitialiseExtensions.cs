@@ -28,6 +28,7 @@ public static class InitialiseExtensions
     {
         services.AddStackExchangeRedisCache(options => { options.Configuration = redisConnectionString; });
         services.AddHttpClient();
+        services.AddMemoryCache();
 
         services.AddScoped<IGraphQLClient>(s =>
         {
