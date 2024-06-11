@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.CacheRepository;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Pagination;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
@@ -14,32 +12,43 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PageApiStrategy> logger;
-        private int pageLimit = 200;
+        private readonly ICacheRepository cacheRepository;
 
-        public PageApiStrategy(IGraphQLClient client, ILogger<PageApiStrategy> logger)
+        public PageApiStrategy(IGraphQLClient client, ILogger<PageApiStrategy> logger, ICacheRepository cacheRepository)
         {
             this.client = client;
             this.logger = logger;
+            this.cacheRepository = cacheRepository;
         }
 
         public async Task<PageApiResponse> ExecuteQueryAsync(string key, string filter)
         {
-            string query = @$"query MyQuery {{
-  page(first: {pageLimit}) {{
-    displayText
-    graphSync {{
-      nodeId
-    }}
-    contentItemId
-    pageLocation {{
-      fullUrl
-    }}
-  }}
-}}
-";
+            logger.LogInformation("PageApiStrategy -> ExecuteQueryAsync");
 
-            var response = await client.SendQueryAsync<PageApiResponse>(query);
-            return response.Data;
+            Func<PageApiResponse, List<PageApi>> recordSelectorFunc = pageApiList => pageApiList.Page;
+            Func<List<PageApi>, PageApiResponse> mergerFunc = pageApiList => new PageApiResponse { Page = pageApiList };
+
+            var response = await cacheRepository.GetQueryWithPagination(GetQuery(filter), recordSelectorFunc, mergerFunc);
+
+            return response;
+        }
+
+        private string GetQuery(string filter)
+        {
+            string query = @$"query MyQuery {{
+              page(first: {GraphQLConfig.PaginationCountToken},  skip: {GraphQLConfig.SkipCountToken}, status: {filter}) {{
+                displayText
+                graphSync {{
+                  nodeId
+                }}
+                contentItemId
+                pageLocation {{
+                  fullUrl
+                }}
+              }}
+            }}";
+
+            return query;
         }
     }
 }
