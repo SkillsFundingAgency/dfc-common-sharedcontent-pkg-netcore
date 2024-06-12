@@ -2,6 +2,11 @@
 using DFC.Common.SharedContent.Pkg.Netcore.Extensions;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBreadcrumb;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.SharedHtml;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using Grpc.Core;
 using Microsoft.Extensions.DependencyInjection;
@@ -258,6 +263,278 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //    //var result = await sharedContent.GetDataAsyncWithExpiry<SkillsResponse>(ApplicationKeys.SkillsAll, "PUBLISHED"); //95 records new and old query on DEV instances. 
 
         //    Console.WriteLine(result);
+        //}
+
+        //[Fact]
+        //public async Task DysacFilteringQuestionQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<PersonalityFilteringQuestionResponse>(ApplicationKeys.DYSACFilteringQuestion, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task DysacQuestionSetQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<PersonalityQuestionSet>(ApplicationKeys.DYSACQuestionSet, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task GetByIdPageApiStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<GetByPageApiResponse>(ApplicationKeys.PageSuffix+ "/fe7065f1-5c50-4656-972a-6a809f854c12", "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task JobCategoryQueryStrategyDysac_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCategoriesResponseDysac>(ApplicationKeys.DYSACJobProfileCategories, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task JobCategoryQueryStrategyExploreCareers_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<JobProfileCategoriesResponseExploreCareers>(ApplicationKeys.ExploreCareersJobProfileCategories, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task PageApiStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<PageApiResponse>(ApplicationKeys.PageSuffix, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task PageBannerQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<PageBanner>(ApplicationKeys.PagesUrlSuffix+ "/https://dev-beta.nationalcareersservice.org.uk/explore-careers", "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task PageBannersAllQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<PageBannerResponse>(ApplicationKeys.AllPageBanners, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task PageBreadcrumbQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<PageBreadcrumb>("PageBreadcrumb", "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task PageQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<Page>(ApplicationKeys.PageSuffix+ "/about-us/abouts-us", "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task PagesByTriageToolFilterStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<TriagePageResponse>(ApplicationKeys.TriagePages, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task PageSitemapStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<SitemapResponse>(ApplicationKeys.SitemapPagesAll, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task PageUrlQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<PageUrlResponse>(ApplicationKeys.PagesUrlSuffix+"/All", "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task SharedHtmlQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<SharedHtml>(ApplicationKeys.SharedContent + "/2f9b6668-1d73-4c49-a82c-ae92f7505f58", "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task SkillsQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<SkillsResponse>(ApplicationKeys.SkillsAll, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task TraitsQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<PersonalityTraitResponse>(ApplicationKeys.DYSACPersonalityTrait, "PUBLISHED", 4);
+        //}
+
+        //[Fact]
+        //public async Task TriageToolAllQueryStrategy_ExecuteQueryAsync_TestAsync()
+        //{
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("dfc-dev-shared-rdc.redis.cache.windows.net:6380,password=Nuzqmeax2bVwFYQQ7YCbDcxexbtBNUuyyAzCaOtGPLo=,ssl=True,abortConnect=False");
+
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterfaceStrategyWithRedisExpiry = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var string2 = await sharedContentRedisInterfaceStrategyWithRedisExpiry.GetDataAsyncWithExpiry<TriageToolFilterResponse>(ApplicationKeys.TriageToolFilters, "PUBLISHED", 4);
         //}
     }
 }

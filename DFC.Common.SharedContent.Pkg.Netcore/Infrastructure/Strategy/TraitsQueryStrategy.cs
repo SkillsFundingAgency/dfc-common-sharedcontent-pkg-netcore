@@ -6,7 +6,7 @@ using GraphQL.Client.Abstractions;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<PersonalityTraitResponse>
+public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<PersonalityTraitResponse>
 {
     private readonly IGraphQLClient client;
 
@@ -15,7 +15,7 @@ public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<Personal
         this.client = client;
     }
 
-    public async Task<PersonalityTraitResponse> ExecuteQueryAsync(string key, string filter)
+    public async Task<PersonalityTraitResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         string traitsQuery = $@"
                 query MyQuery {{
@@ -70,7 +70,7 @@ public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategy<Personal
                 }
             }
         }
-        
+
         return traits;
     }
 }

@@ -1,4 +1,4 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.CacheRepository;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.CacheRepository;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Pagination;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class PageApiStrategy : ISharedContentRedisInterfaceStrategy<PageApiResponse>
+    public class PageApiStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageApiResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PageApiStrategy> logger;
@@ -21,7 +21,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.cacheRepository = cacheRepository;
         }
 
-        public async Task<PageApiResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<PageApiResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
         {
             logger.LogInformation("PageApiStrategy -> ExecuteQueryAsync");
 

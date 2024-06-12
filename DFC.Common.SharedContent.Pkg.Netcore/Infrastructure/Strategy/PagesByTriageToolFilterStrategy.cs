@@ -8,7 +8,7 @@ using System.Net.NetworkInformation;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-    public class PagesByTriageToolFilterStrategy : ISharedContentRedisInterfaceStrategy<TriagePageResponse>
+    public class PagesByTriageToolFilterStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriagePageResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PagesByTriageToolFilterStrategy> logger;
@@ -18,9 +18,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
             this.client = client;
             this.logger = logger;
         }
-  
 
-    public async Task<TriagePageResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<TriagePageResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
         {
         string query = @$"
          query page {{
@@ -120,4 +119,3 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
         return response.Data;
     }
 }
-

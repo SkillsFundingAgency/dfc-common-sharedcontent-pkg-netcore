@@ -5,7 +5,7 @@ using GraphQL.Client.Abstractions;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<SharedHtml>
+public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<SharedHtml>
 {
     private readonly IGraphQLClient client;
 
@@ -14,7 +14,7 @@ public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategy<Shar
         this.client = client;
     }
 
-    public async Task<SharedHtml> ExecuteQueryAsync(string key, string filter)
+    public async Task<SharedHtml> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         var contentId = key.Substring(key.IndexOf('/') + 1);
 

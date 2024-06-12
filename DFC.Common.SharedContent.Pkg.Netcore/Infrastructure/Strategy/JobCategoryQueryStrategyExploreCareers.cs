@@ -5,7 +5,7 @@ using GraphQL.Client.Abstractions;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class JobCategoryQueryStrategyExploreCareers : ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponseExploreCareers>
+public class JobCategoryQueryStrategyExploreCareers : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCategoriesResponseExploreCareers>
 {
     private readonly IGraphQLClient client;
 
@@ -14,7 +14,7 @@ public class JobCategoryQueryStrategyExploreCareers : ISharedContentRedisInterfa
         this.client = client;
     }
 
-    public async Task<JobProfileCategoriesResponseExploreCareers> ExecuteQueryAsync(string key, string filter)
+    public async Task<JobProfileCategoriesResponseExploreCareers> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         string jobProfileCategoryQuery = $@"
                 query MyQuery {{

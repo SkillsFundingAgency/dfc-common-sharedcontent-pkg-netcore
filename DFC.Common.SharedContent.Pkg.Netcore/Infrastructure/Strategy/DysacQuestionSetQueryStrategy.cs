@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class DysacQuestionSetQueryStrategy : ISharedContentRedisInterfaceStrategy<PersonalityQuestionSet>
+    public class DysacQuestionSetQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<PersonalityQuestionSet>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PageUrlQueryStrategy> logger;
@@ -23,7 +23,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.logger = logger;
         }
 
-        public async Task<PersonalityQuestionSet> ExecuteQueryAsync(string key, string filter)
+        public async Task<PersonalityQuestionSet> ExecuteQueryAsync(string key, string filter, double expire = 4)
         {
             logger.LogInformation("DysacQuestionSetQueryStrategy -> ExecuteQueryAsync");
             string query = @$"
