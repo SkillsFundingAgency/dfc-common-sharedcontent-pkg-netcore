@@ -1,4 +1,4 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.CacheRepository;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.CacheRepository;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Pagination;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Sitemap;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class PageSitemapStrategy : ISharedContentRedisInterfaceStrategy<SitemapResponse>
+    public class PageSitemapStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<SitemapResponse>
     {
         private readonly IGraphQLClient client;
         private readonly ILogger<PageSitemapStrategy> logger;
@@ -21,7 +21,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.cacheRepository = cacheRepository;
         }
 
-        public async Task<SitemapResponse> ExecuteQueryAsync(string key, string filter)
+        public async Task<SitemapResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
         {
             logger.LogInformation(" -> ExecuteQueryAsync");
 

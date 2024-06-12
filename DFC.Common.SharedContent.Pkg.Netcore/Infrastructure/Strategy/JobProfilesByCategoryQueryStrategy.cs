@@ -4,7 +4,7 @@ using GraphQL.Client.Abstractions;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 {
-    public class JobProfilesByCategoryQueryStrategy : ISharedContentRedisInterfaceStrategy<JobProfilesResponseExploreCareers>
+    public class JobProfilesByCategoryQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesResponseExploreCareers>
     {
         private readonly IGraphQLClient client;
 
@@ -13,7 +13,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             this.client = client;
         }
 
-        public async Task<JobProfilesResponseExploreCareers> ExecuteQueryAsync(string key, string status)
+        public async Task<JobProfilesResponseExploreCareers> ExecuteQueryAsync(string key, string status, double expire = 4)
         {
             var filter = key.Substring(key.LastIndexOf("/") + 1);
 

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 
-public class TriageToolAllQueryStrategy : ISharedContentRedisInterfaceStrategy<TriageToolFilterResponse>
+public class TriageToolAllQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriageToolFilterResponse>
 {
     private readonly IGraphQLClient client;
     private readonly ILogger<TriageToolAllQueryStrategy> logger;
@@ -17,17 +17,17 @@ public class TriageToolAllQueryStrategy : ISharedContentRedisInterfaceStrategy<T
         this.logger = logger;
     }
 
-    public async Task<TriageToolFilterResponse> ExecuteQueryAsync(string key, string filter )
+    public async Task<TriageToolFilterResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         string query = @$"
            query MyQuery {{
-  triageToolFilter(status: {filter}) {{
-    displayText
-    graphSync {{
-      nodeId
-    }}
-  }}
-}}";
+          triageToolFilter(status: {filter}) {{
+            displayText
+            graphSync {{
+              nodeId
+            }}
+          }}
+        }}";
 
         var response = await client.SendQueryAsync<TriageToolFilterResponse>(query);
 

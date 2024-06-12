@@ -74,39 +74,35 @@ public static class InitialiseExtensions
             return client;
         });
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<Page>, PageQueryStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<SitemapResponse>, PageSitemapStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<Page>, PageQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<SitemapResponse>, PageSitemapStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<TriagePageResponse>, PagesByTriageToolFilterStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriagePageResponse>, PagesByTriageToolFilterStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<SharedHtml>, SharedHtmlQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<SharedHtml>, SharedHtmlQueryStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PageBanner>, PageBannerQueryStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PageApiResponse>, PageApiStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<GetByPageApiResponse>, GetByIdPageApiStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageBanner>, PageBannerQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageApiResponse>, PageApiStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<GetByPageApiResponse>, GetByIdPageApiStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PageUrlResponse>, PageUrlQueryStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<TriageToolFilterResponse>, TriageToolAllQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageUrlResponse>, PageUrlQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriageToolFilterResponse>, TriageToolAllQueryStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PageBreadcrumb>, PageBreadcrumbQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageBreadcrumb>, PageBreadcrumbQueryStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfilesResponseExploreCareers>, JobProfilesByCategoryQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesResponseExploreCareers>, JobProfilesByCategoryQueryStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponseExploreCareers>, JobCategoryQueryStrategyExploreCareers>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponseDysac>, JobCategoryQueryStrategyDysac>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCategoriesResponseExploreCareers>, JobCategoryQueryStrategyExploreCareers>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCategoriesResponseDysac>, JobCategoryQueryStrategyDysac>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityQuestionSet>, DysacQuestionSetQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PersonalityQuestionSet>, DysacQuestionSetQueryStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityFilteringQuestionResponse>, DysacFilteringQuestionQueryStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityTraitResponse>, TraitsQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PersonalityFilteringQuestionResponse>, DysacFilteringQuestionQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PersonalityTraitResponse>, TraitsQueryStrategy>();
 
         services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
         services.AddScoped<ISharedContentRedisInterface, SharedContentRedis>();
-
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityQuestionSet>, DysacQuestionSetQueryStrategy>();
-
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<PersonalityFilteringQuestionResponse>, DysacFilteringQuestionQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCurrentOpportunitiesResponse>, JobProfileCurrentOpportunitiesStrategy>();
 
@@ -122,8 +118,10 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCurrentOpportunitiesGetbyUrlReponse>, JobProfileCurrentOpportunitiesGetByUrlStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<SkillsResponse>, SkillsQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileApiSummaryResponse>, JobProfileApiSummaryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesResponse>, JobProfileOverviewQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageBannerResponse>, PageBannersAllQueryStrategy>();
         services.AddSingleton<IFunctionContextAccessor, FunctionContextAccessor>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiryAndFirstSkip<JobProfileCurrentOpportunitiesResponse>, JobProfileCurrentOpportunitiesWithFirstSkipStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfileOverviewQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesResponse>, JobProfileOverviewQueryStrategy>();
     }
 }
