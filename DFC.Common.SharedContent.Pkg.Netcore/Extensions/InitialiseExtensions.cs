@@ -122,6 +122,6 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageBannerResponse>, PageBannersAllQueryStrategy>();
         services.AddSingleton<IFunctionContextAccessor, FunctionContextAccessor>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiryAndFirstSkip<JobProfileCurrentOpportunitiesResponse>, JobProfileCurrentOpportunitiesWithFirstSkipStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfileOverviewQueryStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesResponse>, JobProfileOverviewQueryStrategy>();
     }
 }
