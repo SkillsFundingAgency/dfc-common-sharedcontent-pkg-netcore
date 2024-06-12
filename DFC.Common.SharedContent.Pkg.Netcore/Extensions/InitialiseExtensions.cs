@@ -1,4 +1,5 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.CacheRepository;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Middleware;
@@ -29,6 +30,7 @@ public static class InitialiseExtensions
         services.AddStackExchangeRedisCache(options => { options.Configuration = redisConnectionString; });
         services.AddHttpClient();
         services.AddMemoryCache();
+        services.AddScoped<ICacheRepository, CacheRepository>();
 
         services.AddScoped<IGraphQLClient>(s =>
         {
@@ -120,5 +122,6 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageBannerResponse>, PageBannersAllQueryStrategy>();
         services.AddSingleton<IFunctionContextAccessor, FunctionContextAccessor>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiryAndFirstSkip<JobProfileCurrentOpportunitiesResponse>, JobProfileCurrentOpportunitiesWithFirstSkipStrategy>();
+        services.AddScoped<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfileOverviewQueryStrategy>();
     }
 }
