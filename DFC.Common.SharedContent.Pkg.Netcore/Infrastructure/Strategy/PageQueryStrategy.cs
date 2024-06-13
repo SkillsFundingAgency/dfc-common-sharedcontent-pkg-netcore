@@ -23,6 +23,7 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisEx
                query page {{
                   page(status: {filter}, first: 1 , where: {{pageLocation: {{url: ""{url}""}}}}) {{
                     displayText
+                    useBrowserWidth
                     description
                     pageLocation {{
                       urlName
