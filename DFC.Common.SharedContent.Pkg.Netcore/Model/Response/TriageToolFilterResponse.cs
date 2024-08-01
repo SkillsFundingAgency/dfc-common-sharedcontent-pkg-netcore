@@ -18,4 +18,12 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
         public List<TriageToolFilters> TriageToolFilter { get; set; }
     }
 
+    public class TraigeLevelTwoResponse
+    {
+        [JsonPropertyName("TriageLevelTwo")]
+        public List<TriageLevelTwo> TriageLevelTwo { get; set; }
+
+    }
+
+
 }

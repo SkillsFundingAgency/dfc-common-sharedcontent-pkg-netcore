@@ -17,4 +17,30 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
         [JsonProperty("contentType")]
         public string? ContentType { get; set; }
     }
+
+    public class TriageLevelOne
+    {
+        [JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [JsonPropertyName("ordinal")]
+        public int Ordinal { get; set; }
+
+    }
+    public class TriageLevelTwo
+    {
+        [JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        [JsonPropertyName("ordinal")]
+        public int? Ordinal { get; set; }
+
+        [JsonPropertyName("levelOneTitle")]
+        public string LevelOneTitle { get; set; }
+
+        [JsonPropertyName("levelOne")]
+        public TriageLevelOne LevelOne { get; set; }
+        
+
+    }
 }
