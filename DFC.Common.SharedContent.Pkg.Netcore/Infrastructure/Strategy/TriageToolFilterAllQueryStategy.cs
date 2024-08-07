@@ -5,38 +5,6 @@ using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
-
-public class TriageLeveTwoQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<TraigeLevelTwoResponse>
-{
-    private readonly IGraphQLClient client;
-    private readonly ILogger<TriageLeveTwoQueryStrategy> logger;
-
-    public TriageLeveTwoQueryStrategy(IGraphQLClient client, ILogger<TriageLeveTwoQueryStrategy> logger)
-    {
-        this.client = client;
-        this.logger = logger;
-    }
-
-    public async Task<TraigeLevelTwoResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
-    {
-        string query = @$"
-           query MyQuery {{
-          triageLevelTwo(status: {filter}) {{
-            title,
-            ordinal,
-    levelOneTitle,
-            graphSync {{
-              nodeId
-            }}
-          }}
-        }}";
-
-        var response = await client.SendQueryAsync<TraigeLevelTwoResponse>(query);
-
-        return response.Data;
-    }
-
-}
 public class TriageToolAllQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriageToolFilterResponse>
 {
     private readonly IGraphQLClient client;

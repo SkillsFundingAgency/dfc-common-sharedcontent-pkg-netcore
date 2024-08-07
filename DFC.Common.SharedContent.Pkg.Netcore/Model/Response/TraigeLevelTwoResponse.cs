@@ -12,9 +12,13 @@ using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 {
-    public class TriageToolFilterResponse
+
+    public class TraigeLevelTwoResponse
     {
-        [JsonPropertyName("TriageToolFilters")]
-        public List<TriageToolFilters> TriageToolFilter { get; set; }
+        [JsonPropertyName("TriageLevelTwo")]
+        public List<TriageLevelTwo> TriageLevelTwo { get; set; }
+
     }
+
+
 }
