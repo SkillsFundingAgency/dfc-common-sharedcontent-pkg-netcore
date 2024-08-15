@@ -17,8 +17,5 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
     {
         [JsonPropertyName("TriageLevelTwo")]
         public List<TriageLevelTwo> TriageLevelTwo { get; set; }
-
     }
-
-
 }
