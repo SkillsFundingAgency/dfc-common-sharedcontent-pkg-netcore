@@ -89,7 +89,6 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriageToolFilterResponse>, TriageToolAllQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<TraigeLevelTwoResponse>, TriageLeveTwoQueryStrategy>();
 
-
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageBreadcrumb>, PageBreadcrumbQueryStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesResponseExploreCareers>, JobProfilesByCategoryQueryStrategy>();

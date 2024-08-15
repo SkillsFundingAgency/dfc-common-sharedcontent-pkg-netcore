@@ -5,6 +5,7 @@ using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
+
 public class TriageToolAllQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriageToolFilterResponse>
 {
     private readonly IGraphQLClient client;
