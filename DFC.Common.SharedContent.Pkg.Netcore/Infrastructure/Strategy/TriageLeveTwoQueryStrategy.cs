@@ -19,25 +19,23 @@ public class TriageLeveTwoQueryStrategy : ISharedContentRedisInterfaceStrategyWi
     public async Task<TraigeLevelTwoResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         logger.LogInformation("TriageLeveTwoQueryStrategy -> ExecuteQueryAsync");
-        string query = @$"
-           query MyQuery {{
-          triageLevelTwo(status: {filter}) {{
-            title: displayText
-            ordinal
-            value
-            levelOne   {{
-             contentItems {{
-                ... on TriageLevelOne {{
-                    title: displayText
-          
-                     }}
-             }}
-            }}
-            graphSync {{
-              nodeId
-            }}
-          }}
-        }}";
+        string query = @$"query MyQuery {{
+              triageLevelTwo(status: {filter}) {{
+                title: displayText
+                ordinal
+                value
+                levelOne {{
+                    contentItems {{
+                     ... on TriageLevelOne {{
+                            title: displayText
+                           }}
+                        }}
+                   }}
+                graphSync {{
+                    nodeId
+                   }}
+                }}
+            }}";
 
         var response = await client.SendQueryAsync<TraigeLevelTwoResponse>(query);
 
