@@ -4,7 +4,6 @@ using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
-
 public class TriageLeveTwoQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisExpiry<TraigeLevelTwoResponse>
 {
     private readonly IGraphQLClient client;

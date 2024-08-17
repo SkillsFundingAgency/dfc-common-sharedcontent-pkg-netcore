@@ -13,5 +13,14 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 
         [JsonPropertyName("ordinal")]
         public int Ordinal { get; set; }
+
+        [JsonPropertyName("levelTwo")]
+        public TriageLevelTwo? LevelTwo { get; set; }
+
+        [JsonPropertyName("value")]
+        public string? Value { get; set; }
+
+        [JsonPropertyName("filterAdviceGroup")]
+        public FilterAdviceGroup? FilterAdviceGroup { get; set; }
     }
 }

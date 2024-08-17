@@ -13,9 +13,12 @@ using System.Threading.Tasks;
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 {
 
-    public class TraigeLevelTwoResponse
+    public class TriageLookupResponse
     {
         [JsonPropertyName("triageLevelTwo")]
         public List<TriageLevelTwo>? TriageLevelTwo { get; set; }
+
+        [JsonPropertyName("triageLevelOne")]
+        public List<TriageLevelOne>? TriageLevelOne { get; set; }
     }
 }
