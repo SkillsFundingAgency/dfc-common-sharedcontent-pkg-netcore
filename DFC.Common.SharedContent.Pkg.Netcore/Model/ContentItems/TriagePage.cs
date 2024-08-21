@@ -2,6 +2,7 @@
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
+
 public class TriagePage
 {
     [JsonPropertyName("displayText")]
