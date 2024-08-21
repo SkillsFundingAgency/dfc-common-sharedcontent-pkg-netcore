@@ -45,6 +45,29 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                     fullUrl
                 }}
             }}
+            applicationView(status: {filter}) {{
+                title: displayText
+                triageLevelOne {{
+                    contentItems {{
+                        title: displayText
+                    }}
+                }}
+                triageLevelTwo {{
+                    contentItems {{
+                        title: displayText
+                    }}
+                }}
+                filterAdviceGroup {{
+                    contentItems {{
+                        title: displayText
+                    }}
+                }}
+                triageTileTitle
+                triageTileDescription
+                triageOrdinal
+                applicationViewLocation:pageLocation
+                useInTriageTool
+            }}
 
         }}";
 

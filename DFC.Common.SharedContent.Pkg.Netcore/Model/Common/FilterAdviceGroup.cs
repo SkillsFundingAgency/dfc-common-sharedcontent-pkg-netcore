@@ -11,5 +11,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 
         [JsonPropertyName("title")]
         public string? Title { get; set; }
+
+        [JsonPropertyName("triageTileImage")]
+        public string? triageTileImage { get; set; }
     }
 }

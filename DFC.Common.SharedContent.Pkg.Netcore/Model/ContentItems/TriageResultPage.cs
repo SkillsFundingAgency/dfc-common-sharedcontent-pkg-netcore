@@ -31,4 +31,13 @@ public class TriageResultPage
 
     [JsonPropertyName("triageOrdinal")]
     public int? TriageOrdinal { get; set; }
+
+    [JsonPropertyName("triageTileIconName")]
+    public string? TriageTileIconName { get; set; }
+
+    [JsonPropertyName("applicationViewLocation")]
+    public string? ApplicationViewLocation { get; set; }
+
+    [JsonPropertyName("useInTriageTool")]
+    public bool? UseInTriageTool { get; set; }
 }

@@ -16,5 +16,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
     {
         [JsonPropertyName("page")]
         public List<TriageResultPage>? Page { get; set; }
+
+        [JsonPropertyName("applicationView")]
+        public List<TriageResultPage>? ApplicationView { get; set; }
     }
 }
