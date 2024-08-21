@@ -68,7 +68,6 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                 applicationViewLocation:pageLocation
                 useInTriageTool
             }}
-
         }}";
 
         var response = await client.SendQueryAsync<TriageResultPageResponse>(query);
