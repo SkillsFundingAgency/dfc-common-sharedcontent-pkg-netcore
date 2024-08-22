@@ -1,4 +1,4 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -12,9 +12,12 @@ using System.Threading.Tasks;
 
 namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 {
-    public class TriageToolFilterResponse
+    public class TriageResultPageResponse
     {
-        [JsonPropertyName("TriageToolFilters")]
-        public List<TriageToolFilters> TriageToolFilter { get; set; }
+        [JsonPropertyName("page")]
+        public List<TriageResultPage>? Page { get; set; }
+
+        [JsonPropertyName("applicationView")]
+        public List<TriageResultPage>? ApplicationView { get; set; }
     }
 }
