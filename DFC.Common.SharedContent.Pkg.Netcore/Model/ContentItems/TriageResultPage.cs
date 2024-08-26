@@ -29,6 +29,9 @@ public class TriageResultPage
     [JsonPropertyName("triageTileDescription")]
     public string? TriageTileDescription { get; set; }
 
+    [JsonPropertyName("triageTileHtml")]
+    public TriageTileHtml? TriageTileHtml { get; set; }
+
     [JsonPropertyName("triageOrdinal")]
     public int? TriageOrdinal { get; set; }
 

@@ -22,37 +22,32 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
                 triageLevelTwo(status: {filter}) {{ 
                     title: displayText
                     value
+                    contentItemId
                     filterAdviceGroup {{
                         contentItems {{
                             ... on FilterAdviceGroup {{
-                                title: displayText
+          	                contentItemId
                             }}
                         }}
                     }}
                 }}
                 triageLevelOne(status: {filter}) {{
+                    contentItemId
                     title: displayText
                     ordinal
                     value
                     levelTwo {{
                         contentItems {{
                             ... on TriageLevelTwo {{
-                                title: displayText
-                                value
+          	                    contentItemId
                             }}
                         }}
                     }}
-                    filterAdviceGroup {{
-                        contentItems {{
-                            ... on FilterAdviceGroup {{
-                                title: displayText
-                                triageTileImage
-                            }}
-                        }}
-                    }}
-                    graphSync {{
-                        nodeId
-                    }}
+                }}
+                filterAdviceGroup {{
+                    title: displayText
+                    triageTileImage
+                    contentItemId
                 }}
         }}";
 

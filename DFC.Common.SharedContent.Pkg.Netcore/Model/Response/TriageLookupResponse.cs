@@ -19,5 +19,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 
         [JsonPropertyName("triageLevelOne")]
         public List<TriageLevelOne>? TriageLevelOne { get; set; }
+
+        [JsonPropertyName("filterAdviceGroup")]
+        public List<FilterAdviceGroup>? FilterAdviceGroup { get; set; }
     }
 }
