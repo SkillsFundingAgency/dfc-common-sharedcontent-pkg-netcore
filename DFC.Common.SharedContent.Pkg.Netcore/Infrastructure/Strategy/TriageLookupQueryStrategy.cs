@@ -39,7 +39,7 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
                     levelTwo {{
                         contentItems {{
                             ... on TriageLevelTwo {{
-          	                    contentItemId
+                                contentItemId
                             }}
                         }}
                     }}
