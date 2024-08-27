@@ -25,20 +25,26 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                 triageLevelOne {{
                     contentItems {{
                         title: displayText
+                        contentItemId
                     }}
                 }}
                 triageLevelTwo {{
                     contentItems {{
                          title: displayText
+                         contentItemId
                     }}
                 }}
                 filterAdviceGroup {{
                     contentItems {{
                         title: displayText
+                        contentItemId
                     }}
                 }}
                 triageTileTitle
                 triageTileDescription
+                triageTileHtml{{
+                        html
+                    }}
                 triageOrdinal
                 pageLocation {{
                     urlName
@@ -50,21 +56,27 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                 triageLevelOne {{
                     contentItems {{
                         title: displayText
+                        contentItemId
                     }}
                 }}
                 triageLevelTwo {{
                     contentItems {{
                         title: displayText
+                        contentItemId
                     }}
                 }}
                 filterAdviceGroup {{
                     contentItems {{
                         title: displayText
+                        contentItemId
                     }}
                 }}
                 triageTileTitle
                 triageTileDescription
                 triageOrdinal
+                triageTileHtml{{
+                        html
+                    }}
                 applicationViewLocation:pageLocation
                 useInTriageTool
             }}

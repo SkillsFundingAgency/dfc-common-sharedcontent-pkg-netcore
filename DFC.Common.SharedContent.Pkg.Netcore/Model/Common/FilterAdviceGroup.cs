@@ -8,6 +8,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
         [JsonPropertyName("contentItems")]
         public List<FilterAdviceGroup>? ContentItems { get; set; }
 
+        [JsonPropertyName("contentItemId")]
+        public string? ContentItemId { get; set; }
+
         [JsonPropertyName("title")]
         public string? Title { get; set; }
 
