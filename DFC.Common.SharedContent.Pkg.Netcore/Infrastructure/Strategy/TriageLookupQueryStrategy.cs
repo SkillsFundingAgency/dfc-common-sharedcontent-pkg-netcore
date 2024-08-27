@@ -26,7 +26,7 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
                     filterAdviceGroup {{
                         contentItems {{
                             ... on FilterAdviceGroup {{
-          	                    contentItemId
+                                contentItemId
                             }}
                         }}
                     }}
