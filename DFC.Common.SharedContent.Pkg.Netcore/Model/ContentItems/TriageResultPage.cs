@@ -46,4 +46,7 @@ public class TriageResultPage
 
     [JsonPropertyName("useInTriageTool")]
     public bool? UseInTriageTool { get; set; }
+
+    [JsonPropertyName("uRL")]
+    public string? uRL { get; set; }
 }

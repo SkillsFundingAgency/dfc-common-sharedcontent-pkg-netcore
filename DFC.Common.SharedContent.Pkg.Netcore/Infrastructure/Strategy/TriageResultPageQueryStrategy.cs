@@ -82,7 +82,32 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                 applicationViewLocation:pageLocation
                 useInTriageTool
             }}
-            triageResultTile {{
+            apprenticeshipLink(status: {filter}) {{
+                contentItemId
+                displayText
+                uRL
+                triageOrdinal
+                useInTriageTool
+                triageLevelOne {{
+                    contentItems {{
+                        title: displayText
+                        contentItemId
+                    }}
+                }}
+                triageLevelTwo {{
+                    contentItems {{
+                        title: displayText
+                        contentItemId
+                    }}
+                }}
+                filterAdviceGroup {{
+                    contentItems {{
+                        title: displayText
+                        contentItemId
+                    }}
+                }}
+            }}
+            triageResultTile(status: {filter}) {{
                 contentItemId
                 displayText
                 triageLevelOne {{
