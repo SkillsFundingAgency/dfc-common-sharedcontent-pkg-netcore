@@ -22,6 +22,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
         string query = @$"query MyQuery {{
             page(status: {filter}, where: {{pageLocation: {{useInTriageTool: true }}}}) {{
                 title: displayText
+                contentItemId
                 triageLevelOne {{
                     contentItems {{
                         title: displayText
@@ -53,6 +54,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
             }}
             applicationView(status: {filter}) {{
                 title: displayText
+                contentItemId
                 triageLevelOne {{
                     contentItems {{
                         title: displayText
@@ -79,6 +81,23 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                     }}
                 applicationViewLocation:pageLocation
                 useInTriageTool
+            }}
+            triageResultTile {{
+                contentItemId
+                displayText
+                triageLevelOne {{
+                    contentItems {{
+                        contentItemId
+                    }}
+                }}
+                triageResult {{
+                    contentItems {{
+                        resultContentItemId: contentItemId
+                    }}
+                }}
+                triageTileHtml {{
+                    html
+                }}
             }}
         }}";
 

@@ -8,17 +8,20 @@ public class TriageResultPage
     [JsonPropertyName("displayText")]
     public string? DisplayText { get; set; }
 
+    [JsonPropertyName("contentItemId")]
+    public string? ContentItemId { get; set; }
+
     [JsonPropertyName("description")]
     public object? Description { get; set; }
 
     [JsonPropertyName("pageLocation")]
     public PageLocation? PageLocation { get; set; }
 
-    [JsonPropertyName("levelOne")]
-    public TriageLevelOne? LevelOne { get; set; }
+    [JsonPropertyName("triageLevelOne")]
+    public TriageLevelOne? TriageLevelOne { get; set; }
 
-    [JsonPropertyName("levelTwo")]
-    public TriageLevelOne? LevelTwo { get; set; }
+    [JsonPropertyName("triageLevelTwo")]
+    public TriageLevelTwo? TriageLevelTwo { get; set; }
 
     [JsonPropertyName("filterAdviceGroup")]
     public FilterAdviceGroup? FilterAdviceGroup { get; set; }
