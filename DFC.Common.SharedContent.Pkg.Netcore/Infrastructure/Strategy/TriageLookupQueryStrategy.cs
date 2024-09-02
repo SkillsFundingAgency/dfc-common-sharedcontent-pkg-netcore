@@ -45,7 +45,7 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
                     }}
                 }}
                 filterAdviceGroup {{
-                    title: displayText
+                    title: filterGroupTitle
                     triageTileImage
                     contentItemId
                 }}

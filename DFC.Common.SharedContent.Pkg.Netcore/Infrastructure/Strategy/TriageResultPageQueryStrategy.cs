@@ -22,6 +22,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
         string query = @$"query MyQuery {{
             page(status: {filter}, where: {{pageLocation: {{useInTriageTool: true }}}}) {{
                 title: displayText
+                contentItemId
                 triageLevelOne {{
                     contentItems {{
                         title: displayText
@@ -53,6 +54,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
             }}
             applicationView(status: {filter}) {{
                 title: displayText
+                contentItemId
                 triageLevelOne {{
                     contentItems {{
                         title: displayText
@@ -79,6 +81,48 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                     }}
                 applicationViewLocation:pageLocation
                 useInTriageTool
+            }}
+            apprenticeshipLink(status: {filter}) {{
+                contentItemId
+                displayText
+                uRL
+                triageOrdinal
+                useInTriageTool
+                triageLevelOne {{
+                    contentItems {{
+                        title: displayText
+                        contentItemId
+                    }}
+                }}
+                triageLevelTwo {{
+                    contentItems {{
+                        title: displayText
+                        contentItemId
+                    }}
+                }}
+                filterAdviceGroup {{
+                    contentItems {{
+                        title: displayText
+                        contentItemId
+                    }}
+                }}
+            }}
+            triageResultTile(status: {filter}) {{
+                contentItemId
+                displayText
+                triageLevelOne {{
+                    contentItems {{
+                        contentItemId
+                    }}
+                }}
+                triageResult {{
+                    contentItems {{
+                        resultContentItemId: contentItemId
+                    }}
+                }}
+                triageTileHtml {{
+                    html
+                }}
             }}
         }}";
 
