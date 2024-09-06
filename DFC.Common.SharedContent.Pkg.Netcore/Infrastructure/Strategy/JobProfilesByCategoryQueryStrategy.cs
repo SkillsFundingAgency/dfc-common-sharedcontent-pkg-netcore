@@ -29,7 +29,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
 
             string profileQuery = $@"query MyQuery {{
               jobProfile(status: {status}, 
-                where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{categoryId}""}}}}
+                where: {{jobProfileSimplification: {{jobProfileCategory: ""{categoryId}""}}}}
               ) {{
                 displayText
                 overview
