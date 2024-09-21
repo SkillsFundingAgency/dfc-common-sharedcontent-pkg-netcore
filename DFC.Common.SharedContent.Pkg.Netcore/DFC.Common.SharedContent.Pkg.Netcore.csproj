@@ -10,7 +10,7 @@
 		<AssemblyName>DFC.Common.SharedContent.Pkg.Netcore</AssemblyName>
 		<OutputType>Library</OutputType>
 		<CodeAnalysisRuleSet>../DFC.Digital.CodeAnalysis.ruleset</CodeAnalysisRuleSet>
-		<Version>1.0.108-pre16</Version>
+		<Version>1.0.108-pre21</Version>
 	</PropertyGroup>
 	<ItemGroup>
 	  <Compile Remove="Models\**" />

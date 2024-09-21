@@ -25,5 +25,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 
         [JsonPropertyName("triageResultTile")]
         public List<TriageResultTile>? TriageResultTile { get; set; }
+
+        [JsonPropertyName("triageFilterAdviceGroupImage")]
+        public List<TriageFilterAdviceGroupImage>? TriageFilterAdviceGroupImage { get; set; }
     }
 }

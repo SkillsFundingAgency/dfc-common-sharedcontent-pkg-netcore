@@ -1,5 +1,6 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
+using GraphQL;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
 
@@ -15,11 +16,12 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
         this.logger = logger;
     }
 
-    public async Task<TriageLookupResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
+    public async Task<TriageLookupResponse> ExecuteQueryAsync(string key, string status, double expire = 4)
     {
         logger.LogInformation("TriageLookupQueryStrategy -> ExecuteQueryAsync");
-        string query = @$"query MyQuery {{
-                triageLevelTwo(status: {filter}) {{ 
+
+        string query = @$"query MyQuery($status: Status!) {{
+                triageLevelTwo(status: $status) {{ 
                     title: displayText
                     value
                     contentItemId
@@ -31,7 +33,7 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
                         }}
                     }}
                 }}
-                triageLevelOne(status: {filter}) {{
+                triageLevelOne(status: $status) {{
                     contentItemId
                     title: displayText
                     ordinal
@@ -44,14 +46,14 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
                         }}
                     }}
                 }}
-                filterAdviceGroup {{
+                filterAdviceGroup(status: $status) {{
                     title: filterGroupTitle
                     triageTileImage
                     contentItemId
                 }}
         }}";
 
-        var response = await client.SendQueryAsync<TriageLookupResponse>(query);
+        var response = await client.SendQueryAsync<TriageLookupResponse>(query, new { Status = status });
 
         return response.Data;
     }

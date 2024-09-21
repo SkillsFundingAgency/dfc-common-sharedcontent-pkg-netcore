@@ -19,10 +19,27 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 {
     public class RedisCacheRepoTests
     {
+        [Fact]
+        public async Task TriageTriagePageExecuteQueryAsync_TestAsync()
+        {
+            //var logger = new ILogger<RedisCacheRepoTests>();
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddSharedContentRedisInterface("");
+                })
+                .Build();
+
+            var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+            var result = await sharedContentRedisInterface.GetDataAsyncWithExpiry<TriageResultPageResponse>("TriageLookup", "PUBLISHED");
+        }
+
         //[Fact]
-        //public async Task TriageTriagePageExecuteQueryAsync_TestAsync()
+        //public async Task SharedHtmlAsync_TestAsync()
         //{
         //    //var logger = new ILogger<RedisCacheRepoTests>();
+
         //    var host = Host.CreateDefaultBuilder()
         //        .ConfigureServices((context, services) =>
         //        {
@@ -32,7 +49,7 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
 
         //    var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
 
-        //    var result = await sharedContentRedisInterface.GetDataAsyncWithExpiry<TriageResultPageResponse>("TriageLookup", "PUBLISHED");
+        //    var result = await sharedContentRedisInterface.GetDataAsyncWithExpiry<SharedHtml>(ApplicationKeys.SpeakToAnAdviserSharedContent, "PUBLISHED");
         //}
 
         //[Fact]
