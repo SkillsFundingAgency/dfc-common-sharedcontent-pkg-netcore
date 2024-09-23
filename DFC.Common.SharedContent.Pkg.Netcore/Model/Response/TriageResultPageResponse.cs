@@ -1,5 +1,6 @@
 ﻿using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageBanner;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.SharedHtml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -28,5 +29,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Response
 
         [JsonPropertyName("triageFilterAdviceGroupImage")]
         public List<TriageFilterAdviceGroupImage>? TriageFilterAdviceGroupImage { get; set; }
+
+        [JsonPropertyName("sharedContent")]
+        public List<SharedHtmlContent>? SharedContent { get; set; }
     }
 }

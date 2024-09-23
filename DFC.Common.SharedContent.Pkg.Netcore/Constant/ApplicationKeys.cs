@@ -36,7 +36,7 @@
         public const string JobProfileCurrentOpportunities = "JobProfile/CurrentOpportunities";
         public const string SkillsAll = "Skills/All";
         public const string JobProfileApiSummaryAll = "JobProfileApi/Summary/All";
-        public const string TriageToolSpeakToAnAdviser = "SharedContent/5a54b3d6-3001-4c72-a1f9-7e20e11ae30a";
+        public const string TriageToolSpeakToAnAdviserContentItem = "4nvbqeg3sxkjay15qnja3s4t5y";
         public const string TriageToolLookup = "TriageTool/Lookup";
         public const string TriageResults = "TriageTool/TriageResults";
     }

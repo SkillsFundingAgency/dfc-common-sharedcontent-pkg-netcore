@@ -17,19 +17,18 @@ public class SharedHtmlQueryStrategy : ISharedContentRedisInterfaceStrategyWithR
     public async Task<SharedHtml> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         var contentId = key.Substring(key.IndexOf('/') + 1);
-        var nodeId = $@"<<contentapiprefix>>/sharedcontent/{contentId}";
 
         string query = $@"
-        query sharedContent($nodeId: String!, $status: Status!) {{
-           sharedContent(where: {{graphSync: {{nodeId: $nodeId}}}}, status: $status ) {{
-             content {{
-               html
-             }}
-           }}
-         }}
-        ";
+               query sharedContent {{
+                  sharedContent(where: {{graphSync: {{nodeId: ""<<contentapiprefix>>/sharedcontent/{contentId}""}}}}, status: {filter} ) {{
+                    content {{
+                      html
+                    }}
+                  }}
+                }}
+               ";
 
-        var response = await client.SendQueryAsync<SharedHtmlResponse>(query, new { NodeId = nodeId, Status = filter });
+        var response = await client.SendQueryAsync<SharedHtmlResponse>(query);
 
         if (response.Data.SharedContent.Count == 0)
         {

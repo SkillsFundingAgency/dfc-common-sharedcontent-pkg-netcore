@@ -1,4 +1,5 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Constant;
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
@@ -19,7 +20,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
     public async Task<TriageResultPageResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         logger.LogInformation("TriageResultPageQueryStrategy -> ExecuteQueryAsync");
-        string query = @$"query MyQuery($status: Status!) {{
+        string query = @$"query MyQuery($status: Status!, $contentItemId: ID!) {{
             page(status: $status, where: {{pageLocation: {{useInTriageTool: true }}}}) {{
                 title: displayText
                 contentItemId
@@ -139,9 +140,15 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                     html
                 }}
               }}
+            sharedContent(status: $status, where: {{contentItemId: $contentItemId}}) {{
+                content {{
+                  html
+                }}
+              }}
+
         }}";
 
-        var response = await client.SendQueryAsync<TriageResultPageResponse>(query, new { Status = filter });
+        var response = await client.SendQueryAsync<TriageResultPageResponse>(query, new { Status = filter, contentItemId = ApplicationKeys.TriageToolSpeakToAnAdviserContentItem });
 
         return response.Data;
     }
