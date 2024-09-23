@@ -147,8 +147,9 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
               }}
 
         }}";
-
-        var response = await client.SendQueryAsync<TriageResultPageResponse>(query, new { Status = filter, contentItemId = ApplicationKeys.TriageToolSpeakToAnAdviserContentItem });
+        var sharedHtmlKey = ApplicationKeys.TriageToolSpeakToAnAdviserContentItem.Substring(ApplicationKeys.TriageToolSpeakToAnAdviserContentItem.IndexOf('/') + 1);
+        var contentItemId = sharedHtmlKey.Substring(sharedHtmlKey.IndexOf('/') + 1);
+        var response = await client.SendQueryAsync<TriageResultPageResponse>(query, new { Status = filter, contentItemId = contentItemId });
 
         return response.Data;
     }
