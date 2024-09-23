@@ -36,6 +36,23 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.UnitTests
         //}
 
         //[Fact]
+        //public async Task SharedHtmlAsync_TestAsync()
+        //{
+        //    //var logger = new ILogger<RedisCacheRepoTests>();
+
+        //    var host = Host.CreateDefaultBuilder()
+        //        .ConfigureServices((context, services) =>
+        //        {
+        //            services.AddSharedContentRedisInterface("");
+        //        })
+        //        .Build();
+
+        //    var sharedContentRedisInterface = host.Services.GetRequiredService<ISharedContentRedisInterface>();
+
+        //    var result = await sharedContentRedisInterface.GetDataAsyncWithExpiry<SharedHtml>(ApplicationKeys.SpeakToAnAdviserSharedContent, "PUBLISHED");
+        //}
+
+        //[Fact]
         //public async Task TriageLookupExecuteQueryAsync_TestAsync()
         //{
         //    //var logger = new ILogger<RedisCacheRepoTests>();

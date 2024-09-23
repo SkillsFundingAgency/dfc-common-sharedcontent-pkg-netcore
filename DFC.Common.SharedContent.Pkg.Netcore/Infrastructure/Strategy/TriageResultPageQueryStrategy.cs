@@ -1,4 +1,5 @@
-﻿using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+﻿using DFC.Common.SharedContent.Pkg.Netcore.Constant;
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using GraphQL.Client.Abstractions;
 using Microsoft.Extensions.Logging;
@@ -19,8 +20,8 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
     public async Task<TriageResultPageResponse> ExecuteQueryAsync(string key, string filter, double expire = 4)
     {
         logger.LogInformation("TriageResultPageQueryStrategy -> ExecuteQueryAsync");
-        string query = @$"query MyQuery {{
-            page(status: {filter}, where: {{pageLocation: {{useInTriageTool: true }}}}) {{
+        string query = @$"query MyQuery($status: Status!, $contentItemId: ID!) {{
+            page(status: $status, where: {{pageLocation: {{useInTriageTool: true }}}}) {{
                 title: displayText
                 contentItemId
                 triageLevelOne {{
@@ -52,7 +53,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                     fullUrl
                 }}
             }}
-            applicationView(status: {filter}) {{
+            applicationView(status: $status) {{
                 title: displayText
                 contentItemId
                 triageLevelOne {{
@@ -82,7 +83,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                 applicationViewLocation:pageLocation
                 useInTriageTool
             }}
-            apprenticeshipLink(status: {filter}) {{
+            apprenticeshipLink(status: $status) {{
                 contentItemId
                 displayText
                 uRL
@@ -107,7 +108,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                     }}
                 }}
             }}
-            triageResultTile(status: {filter}) {{
+            triageResultTile(status: $status) {{
                 contentItemId
                 displayText
                 triageLevelOne {{
@@ -124,9 +125,31 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                     html
                 }}
             }}
-        }}";
+            triageFilterAdviceGroupImage(status: $status) {{
+                filterAdviceGroup {{
+                    contentItems {{
+                        contentItemId
+                  }}
+                }}
+                triageLevelOne {{
+                    contentItems {{
+                        contentItemId
+                  }}
+                }}
+                imageHtml {{
+                    html
+                }}
+              }}
+            sharedContent(status: $status, where: {{contentItemId: $contentItemId}}) {{
+                content {{
+                  html
+                }}
+              }}
 
-        var response = await client.SendQueryAsync<TriageResultPageResponse>(query);
+        }}";
+        var sharedHtmlKey = ApplicationKeys.TriageToolSpeakToAnAdviserContentItem.Substring(ApplicationKeys.TriageToolSpeakToAnAdviserContentItem.IndexOf('/') + 1);
+        var contentItemId = sharedHtmlKey.Substring(sharedHtmlKey.IndexOf('/') + 1);
+        var response = await client.SendQueryAsync<TriageResultPageResponse>(query, new { Status = filter, contentItemId = contentItemId });
 
         return response.Data;
     }
