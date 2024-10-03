@@ -28,8 +28,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
             var categoryId = responseCategory.Data.JobProfileCategories.FirstOrDefault()?.ContentItemId;
 
             string profileQuery = $@"query MyQuery {{
-              jobProfile(status: {status}, 
-                where: {{jobProfileSimplification: {{jobProfileCategory: ""{categoryId}""}}}}
+                jobProfile(first: 200
+                status: {status}, 
+                where: {{jobProfileSimplification: {{jobProfileCategory_contains: ""{categoryId}""}}}}
               ) {{
                 displayText
                 overview
