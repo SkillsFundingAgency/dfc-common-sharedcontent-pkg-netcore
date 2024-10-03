@@ -26,13 +26,11 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                 contentItemId
                 triageLevelOne {{
                     contentItems {{
-                        title: displayText
                         contentItemId
                     }}
                 }}
                 triageLevelTwo {{
                     contentItems {{
-                         title: displayText
                          contentItemId
                     }}
                 }}
@@ -42,11 +40,6 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                         contentItemId
                     }}
                 }}
-                triageTileTitle
-                triageTileDescription
-                triageTileHtml{{
-                        html
-                    }}
                 triageOrdinal
                 pageLocation {{
                     urlName
@@ -58,13 +51,11 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                 contentItemId
                 triageLevelOne {{
                     contentItems {{
-                        title: displayText
                         contentItemId
                     }}
                 }}
                 triageLevelTwo {{
                     contentItems {{
-                        title: displayText
                         contentItemId
                     }}
                 }}
@@ -74,12 +65,7 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                         contentItemId
                     }}
                 }}
-                triageTileTitle
-                triageTileDescription
                 triageOrdinal
-                triageTileHtml{{
-                        html
-                    }}
                 applicationViewLocation:pageLocation
                 useInTriageTool
             }}
@@ -91,13 +77,11 @@ public class TriageResultPageQueryStrategy : ISharedContentRedisInterfaceStrateg
                 useInTriageTool
                 triageLevelOne {{
                     contentItems {{
-                        title: displayText
                         contentItemId
                     }}
                 }}
                 triageLevelTwo {{
                     contentItems {{
-                        title: displayText
                         contentItemId
                     }}
                 }}

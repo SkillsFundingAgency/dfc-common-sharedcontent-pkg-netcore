@@ -22,7 +22,7 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
 
         string query = @$"query MyQuery($status: Status!) {{
                 triageLevelTwo(status: $status) {{ 
-                    title: displayText
+                    title: levelTwoTitle
                     value
                     contentItemId
                     filterAdviceGroup {{
@@ -48,7 +48,6 @@ public class TriageLookupQueryStrategy : ISharedContentRedisInterfaceStrategyWit
                 }}
                 filterAdviceGroup(status: $status) {{
                     title: filterGroupTitle
-                    triageTileImage
                     contentItemId
                 }}
         }}";
