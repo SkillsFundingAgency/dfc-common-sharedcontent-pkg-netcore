@@ -17,6 +17,7 @@
         public const string TriagePages = "TriageTool/TriageToolPages";
         public const string SharedContent = "SharedContent";
         public const string ContactUsSharedContent = "SharedContent/c0117ac7-115a-4bc1-9350-3fb4b00c7857";
+        public const string SpeakToAnAdviserFooterSharedContent = "SharedContent/5a54b3d6-3001-4c72-a1f9-7e20e11ae30a";
         public const string SpeakToAnAdviserSharedContent = "SharedContent/2c9da1b3-3529-4834-afc9-9cd741e59788";
         public const string PagesUrlSuffix = "PagesURL";
         public const string PageSuffix = "Page";
