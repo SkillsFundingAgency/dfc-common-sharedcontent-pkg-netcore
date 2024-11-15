@@ -20,6 +20,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.Dysac.Personal
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
 
+        [JsonProperty("imagePath")]
+        public string? ImagePath { get; set; }
+
         [JsonProperty("jobProfileCategories")]
         public JobProfileCategories JobProfileCategories { get; set; }
     }
