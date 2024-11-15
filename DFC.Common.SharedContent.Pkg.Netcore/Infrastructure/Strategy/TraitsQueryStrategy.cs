@@ -22,6 +22,7 @@ public class TraitsQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedis
                   personalityTrait(status: {filter}) {{
                     displayText
                     description
+                    imagePath
                     graphSync {{
                       nodeId
                     }}
