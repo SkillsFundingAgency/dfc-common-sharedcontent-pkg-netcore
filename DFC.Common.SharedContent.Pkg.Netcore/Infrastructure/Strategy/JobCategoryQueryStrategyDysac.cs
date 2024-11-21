@@ -24,6 +24,8 @@ public class JobCategoryQueryStrategyDysac : ISharedContentRedisInterfaceStrateg
                       nodeId
                     }}
                     displayText
+                    imagePathDesktop
+                    imagePathMobile
                     pageLocation {{
                       fullUrl
                       urlName

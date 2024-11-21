@@ -23,5 +23,11 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 
         [JsonProperty("pageLocation")]
         public PageLocation PageLocation { get; set; }
+
+        [JsonProperty("imagePathDesktop")]
+        public string? ImagePathDesktop { get; set; }
+
+        [JsonProperty("imagePathMobile")]
+        public string? ImagePathMobile { get; set; }
     }
 }
