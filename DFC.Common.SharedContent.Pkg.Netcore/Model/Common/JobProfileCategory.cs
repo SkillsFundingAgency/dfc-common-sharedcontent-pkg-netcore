@@ -16,6 +16,9 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
         [JsonProperty("displayText")]
         public string? DisplayText { get; set; }
 
+        [JsonProperty("description")]
+        public string? Description { get; set; }
+
         [JsonProperty("graphSync")]
         public GraphSync GraphSync { get; set; }
 
@@ -29,5 +32,8 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.Common
 
         [JsonProperty("imagePathMobile")]
         public string? ImagePathMobile { get; set; }
+
+        [JsonProperty("imagePathTitle")]
+        public string? ImagePathTitle { get; set; }
     }
 }
