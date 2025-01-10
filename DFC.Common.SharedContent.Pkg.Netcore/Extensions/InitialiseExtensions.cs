@@ -77,7 +77,6 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<Page>, PageQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<SitemapResponse>, PageSitemapStrategy>();
 
-        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriagePageResponse>, PagesByTriageToolFilterStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<SharedHtml>, SharedHtmlQueryStrategy>();
 
@@ -86,7 +85,6 @@ public static class InitialiseExtensions
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<GetByPageApiResponse>, GetByIdPageApiStrategy>();
 
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<PageUrlResponse>, PageUrlQueryStrategy>();
-        services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriageToolFilterResponse>, TriageToolAllQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriageLookupResponse>, TriageLookupQueryStrategy>();
         services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<TriageResultPageResponse>, TriageResultPageQueryStrategy>();
 
