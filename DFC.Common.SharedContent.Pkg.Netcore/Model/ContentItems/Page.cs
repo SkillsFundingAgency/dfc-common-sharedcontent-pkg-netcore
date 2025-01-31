@@ -32,12 +32,6 @@ public class Page
     [JsonPropertyName("useInTriageTool")]
     public bool? UseInTriageTool { get; set; }
 
-    [JsonPropertyName("triageToolSummary")]
-    public TriageToolSummary? TriageToolSummary { get; set; }
-
-    [JsonPropertyName("triageToolFilters")]
-    public TriageToolFilters? TriageToolFilters { get; set; }
-
     [JsonPropertyName("flow")]
     public Flow? Flow { get; set; }
 

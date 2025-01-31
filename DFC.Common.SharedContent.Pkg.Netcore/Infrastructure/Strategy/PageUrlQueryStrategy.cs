@@ -39,13 +39,6 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy
                             }}
                           }}
                         }}
-                    triageToolFilters {{
-                        contentItems {{
-                        ... on TriageToolFilter {{
-                            displayText
-                        }}
-                        }}
-                    }} 
                     }}
                 }}";
             var response = await client.SendQueryAsync<PageUrlResponse>(query);

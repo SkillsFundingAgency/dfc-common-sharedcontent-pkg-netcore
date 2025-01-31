@@ -46,16 +46,6 @@ public class PageQueryStrategy : ISharedContentRedisInterfaceStrategyWithRedisEx
                         html
                     }}
                     useInTriageTool
-                    triageToolSummary {{
-                      html
-                    }}
-                    triageToolFilters {{
-                      contentItems {{
-                        ... on TriageToolFilter {{
-                          displayText
-                        }}
-                      }}
-                    }}
                     flow {{
                       widgets {{
                         contentType
