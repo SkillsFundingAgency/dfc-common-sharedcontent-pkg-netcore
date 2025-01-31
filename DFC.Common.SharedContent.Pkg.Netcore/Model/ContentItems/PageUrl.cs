@@ -14,7 +14,5 @@ namespace DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems
         [JsonPropertyName("breadcrumb")]
         public Breadcrumb? Breadcrumb { get; set; }
 
-        [JsonPropertyName("triageToolFilters")]
-        public TriageToolFilters? TriageToolFilters { get; set; }
     }
 }
